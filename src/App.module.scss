@@ -3,21 +3,23 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
 
 .screen{
+    margin-left: auto;
+    margin-right: auto;
+    
     box-sizing: border-box;
     margin: 0px;
     
     height: calc(var(--vh,1vh)*100); // var() : Css변수를 가져오고, 값이 없을경우 기본값으로 1vh를 사용.
-
+    width: 100vw;
     // min-width: 1920px;
     // min-height: 960px;
     
+    // 최소 높이/너비 결정
     min-height: 1024px;
-    max-height: 1080px;
-    
     min-width: 1440px;
-    max-width: 1920px;
-    
 
+    max-height: 1080px;
+    max-width: 1920px;
     font-family: "Pretendard Variable",Pretendard;
     position: relative;
 
@@ -27,6 +29,10 @@
     
     background-color: antiquewhite;
 
+    // /* PC용 CSS */
+    // @media all and (min-width:960px){
+        
+    // }
 
 
 }

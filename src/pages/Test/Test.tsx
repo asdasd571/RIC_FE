@@ -1,5 +1,6 @@
 import React from "react";
-import useTestStore from "../store/useTestStore";
+import useTestStore from "../../store/useTestStore";
+import Header from "../../components/Header/Header";
 
 const Test: React.FC = () => {
 
@@ -10,6 +11,7 @@ const Test: React.FC = () => {
             <h2>Count : {count} </h2>
             <button onClick={increment}> Increment </button>
             <button onClick={decrement}> decrement </button>
+            
         </div>
     )
 }

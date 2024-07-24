@@ -3,8 +3,9 @@ import logo from './logo.svg';
 // import './App.module.scss'; // 연결안됨
 import styles from './App.module.scss';
 
-import Test from './Test/Test';
+import Test from './pages/Test/Test';
 import { Route, Routes } from 'react-router-dom';
+import DashBoard from './pages/Test/DashBoard/DashBoard';
 
 function App() {
 
@@ -35,7 +36,7 @@ function App() {
   return (
     <div className={styles.screen}>
       <Routes>
-        <Route path="/" element = {<div >대시보드 </div>}/>
+        <Route path="/" element = {<DashBoard/>}/>
         <Route path="/structure" element={<div>구조화면</div>} />
 
         {/* SMO/OAM */}
