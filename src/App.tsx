@@ -5,7 +5,7 @@ import styles from './App.module.scss';
 
 import Test from './pages/Test/Test';
 import { Route, Routes } from 'react-router-dom';
-import DashBoard from './pages/Test/DashBoard/DashBoard';
+import DashBoard from './pages/DashBoard/DashBoard';
 
 function App() {
 

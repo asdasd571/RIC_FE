@@ -10,6 +10,10 @@ body {
   display: flex;
   justify-content: center;
   /* flex-direction: column; */
+  /* 최소, 최대 넓이 지정 */
+  min-width: 1440px;
+  min-height: 1024px;
+  /* min-width: 1440px; */
   
 }
 
