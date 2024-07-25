@@ -18,58 +18,60 @@ import influxdb from "../../assets/imgs/influxdb.svg"
 import setting from "../../assets/imgs/setting.svg"
 import logout from "../../assets/imgs/logout.svg"
 import { SidebarData } from "../../types/Sidebar.types";
+import useNavigates from "../../hooks/useNavigates";
+
 
 // 사이드바를 나타내는 데이터!
+// 사이드바 데이터 정의
 export const sidebarDatas: SidebarData[] = [
     {
         title: null,
         items: [
-            { name: '대시보드', icon: dashboard },
-            { name: '구조화면', icon: structure }
+            { name: '대시보드', icon: dashboard, path: '/' },
+            { name: '구조화면', icon: structure, path: '/structure' }
         ]
     },
     {
         title: 'SMO/ OAM',
         items: [
-            { name: 'SMO/OAM', icon: smo_oam }
+            { name: 'SMO/OAM', icon: smo_oam, path: '/smo-oam' }
         ]
     },
     {
         title: 'Non-RT',
         items: [
-            { name: 'rAPP 관리', icon: rapp },
-            { name: 'Framework 관리', icon: framework }
+            { name: 'rAPP 관리', icon: rapp, path: '/rapp' },
+            { name: 'Framework 관리', icon: framework, path: '/framework' }
         ]
     },
     {
         title: 'Near-RT',
         items: [
-            { name: 'xAPP 관리', icon: xapp },
-            { name: 'Platform 관리', icon: platform }
+            { name: 'xAPP 관리', icon: xapp, path: '/xapp' },
+            { name: 'Platform 관리', icon: platform, path: '/platform' }
         ]
     },
     {
         title: 'E2Node',
         items: [
-            { name: 'E2Node', icon: e2node }
+            { name: 'E2Node', icon: e2node, path: '/e2-node' }
         ]
     },
     {
         title: '외부연결',
         items: [
-            { name: 'VIAVI', icon: VIAVI },
-            { name: 'InfluxDB', icon: influxdb }
+            { name: 'VIAVI', icon: VIAVI, externalUrl: 'https://naver.com' },
+            { name: 'InfluxDB', icon: influxdb, externalUrl: 'https://naver.com' }
         ]
     },
     {
         title: null,
         items: [
-            { name: '설정', icon: setting },
-            { name: '로그아웃', icon: logout }
+            { name: '설정', icon: setting, path: '/setting' },
+            { name: '로그아웃', icon: logout, action: 'logout' } // 로그아웃 처리}
         ]
     }
 ];
-
 
 
 // 사이드바 컴포넌트

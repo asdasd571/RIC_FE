@@ -8,7 +8,10 @@ const DashBoard: React.FC = () => {
         return(
             <div className={stytls.container}>
                 <Sidebar/>
-                <Header/>
+                <main className={stytls.main_container}>
+                    <Header/>
+                </main>
+                
             </div>
         )
 }

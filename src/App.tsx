@@ -6,6 +6,7 @@ import styles from './App.module.scss';
 import Test from './pages/Test/Test';
 import { Route, Routes } from 'react-router-dom';
 import DashBoard from './pages/DashBoard/DashBoard';
+import Login from './pages/Login/Login';
 
 function App() {
 
@@ -43,15 +44,19 @@ function App() {
         <Route path="/smo-oam" element={<div>smo-oam</div>} />
 
         {/* Non-RT */}
-        <Route path="rapp" element={<div>rapp</div>} />
-        <Route path="framework" element={<div>framework</div>} />
+        <Route path="/rapp" element={<div>rapp</div>} />
+        <Route path="/framework" element={<div>framework</div>} />
 
         {/* Near-RT */}
-        <Route path="xapp" element={<div>xapp</div>} />
-        <Route path="platform" element={<div>platform</div>} />
+        <Route path="/xapp" element={<div>xapp</div>} />
+        <Route path="/platform" element={<div>platform</div>} />
 
         {/* E2 Node */}
-        <Route path="e2-node" element={<div>e2-node</div>} />
+        <Route path="/e2-node" element={<div>e2-node</div>} />
+
+        <Route path="/setting" element={<div>setting</div>} />
+
+        <Route path="/login" element = {<Login/>}   />    
 
         </Routes>
     </div>

@@ -1,7 +1,13 @@
+// types/Sidebar.types.ts
+export interface SidebarItem {
+    name: string;
+    icon: string;
+    path?: string;  // 내부 링크
+    externalUrl?: string;  // 외부 링크
+    action?: 'logout';  // 특별 액션
+}
 
-
-// 사이드바의 데이터를 구성하는 타입
 export interface SidebarData {
-    title: string | null;
-    items: { name: string; icon: string }[];
+    title?: string | null;
+    items: SidebarItem[];
 }
