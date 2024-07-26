@@ -1,66 +1,60 @@
 import React, { useEffect } from 'react';
-import logo from './logo.svg';
-// import './App.module.scss'; // 연결안됨
 import styles from './App.module.scss';
 
-import Test from './pages/Test/Test';
-import { Route, Routes } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import DashBoard from './pages/DashBoard/DashBoard';
 import Login from './pages/Login/Login';
+import Structure from './pages/Structure/Structure';
+import Sidebar from './components/Sidebar/Sidebar';
+import Header from './components/Header/Header';
+import Test from './pages/Test/Test';
 
 function App() {
-
-
   // ** =============뷰포트 높이 구하기 ===============** //
-  
-    /** 현재 뷰포트 높이의 1%를 계산한다. */
-    const setVh = (): void => {
-      const vh:number = window.innerHeight * 0.01; //window.innerHeight : 뷰포트의 높이를 가져온다. | 뷰포트 높이를 100분의 1로 나누어서 사용하는 것 (1%)
-      document.documentElement.style.setProperty('--vh', `${vh}px`); // css 변수를 만들어준다.
-    }
+  /** 현재 뷰포트 높이의 1%를 계산한다. */
+  const setVh = () => {
+    const vh = window.innerHeight * 0.01; // window.innerHeight : 뷰포트의 높이를 가져온다. | 뷰포트 높이를 100분의 1로 나누어서 사용하는 것 (1%)
+    document.documentElement.style.setProperty('--vh', `${vh}px`); // css 변수를 만들어준다.
+  };
 
-    // * 첫 렌더링시, 뷰포트 사이즈 계산 후 적용
-    useEffect(()=> {
+  // * 첫 렌더링시, 뷰포트 사이즈 계산 후 적용
+  useEffect(() => {
+    setVh();
+
+    // 사이즈가 변경될 때, 다시 뷰포트 높이를 구한다.
+    const onResize = () => {
       setVh();
-      
-      // 사이즈가 변경될 때, 다시 뷰포트 높이를 구한다.
-      const onResize = ():void => {
-        setVh();
-      }
-                              // 이벤트 유형 , 이벤트가 발생할때 실행하는 함수.
-      window.addEventListener('resize', onResize);
-    },[]);
+    };
+    window.addEventListener('resize', onResize);
 
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', onResize);
+    };
+  }, []);
 
   // ** ============================================** //
 
+  // 로그인 부분 나타냄.
   return (
     <div className={styles.screen}>
-      <Routes>
-        <Route path="/" element = {<DashBoard/>}/>
-        <Route path="/structure" element={<div>구조화면</div>} />
-
-        {/* SMO/OAM */}
-        <Route path="/smo-oam" element={<div>smo-oam</div>} />
-
-        {/* Non-RT */}
-        <Route path="/rapp" element={<div>rapp</div>} />
-        <Route path="/framework" element={<div>framework</div>} />
-
-        {/* Near-RT */}
-        <Route path="/xapp" element={<div>xapp</div>} />
-        <Route path="/platform" element={<div>platform</div>} />
-
-        {/* E2 Node */}
-        <Route path="/e2-node" element={<div>e2-node</div>} />
-
-        <Route path="/setting" element={<div>setting</div>} />
-
-        <Route path="/login" element = {<Login/>}   />    
-
+        <Routes>
+          <Route path="/" element={<DashBoard />} />
+          <Route path="/structure" element={<Structure />} />
+          <Route path="/smo-oam" element={<div>smo-oam</div>} />
+          <Route path="/rapp" element={<div>rapp</div>} />
+          <Route path="/framework" element={<div>framework</div>} />
+          <Route path="/xapp" element={<div>xapp</div>} />
+          <Route path="/platform" element={<div>platform</div>} />
+          <Route path="/e2-node" element={<div>e2-node</div>} />
+          <Route path="/setting" element={<div>setting</div>} />
+          <Route path="/login" element={<Login/>}/>
+          <Route path="*" element={<div>404 Not Found Page</div>}/>
+          <Route path="/test" element={<Test/>}/>
         </Routes>
     </div>
-  );
+  ); 
 }
+
 
 export default App;

@@ -1,0 +1,24 @@
+
+// *믹스인 정의
+// @mixin full-size-flex($direction) {
+//     display: flex;
+//     flex-direction: $direction;
+//     width: 100%;
+//     height: 100%;
+// }
+
+@import "../../styles/mixins";
+
+.img_section{
+    // width: 100%;
+    @include full-size-flex(column);
+
+    align-items: center;
+    justify-content: center;
+
+    .img_o_ran{
+        width: 100%;
+        height: 100%;
+    }
+
+}

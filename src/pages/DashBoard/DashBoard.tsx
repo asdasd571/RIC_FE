@@ -1,17 +1,20 @@
 import Header  from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
-
+// import '../../styles/common.scss';
 import stytls from "./DashBoard.module.scss";
 
 const DashBoard: React.FC = () => {
 
         return(
-            <div className={stytls.container}>
+            <div className="container">
                 <Sidebar/>
-                <main className={stytls.main_container}>
-                    <Header/>
-                </main>
-                
+                <div className="main_header_container">
+                    <Header titleText="Dashboard"/>
+                    <main className="main_container">
+                        
+                    </main>
+                    
+                </div>
             </div>
         )
 }

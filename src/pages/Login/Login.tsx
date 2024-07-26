@@ -4,6 +4,9 @@ import dashboradImg from "../../assets/imgs/dashboardImg.png";
 import { useState } from "react";
 import useNavigates from "../../hooks/useNavigates";
 
+import eyeOFF from "../../assets/imgs/eyeOFF.svg";
+import eyeON from "../../assets/imgs/eyeON.svg";
+
 const Login: React.FC = () => {
 
         const {goMain} = useNavigates(); // 홈으로 가는 네비게이션 함수.
@@ -11,6 +14,13 @@ const Login: React.FC = () => {
         const [userName , setUserName] = useState(""); // 유저 id
         const [password, setPassword]  = useState(""); // 유저 비밀번호
         const [isLogin, setIsLogin] = useState(false); // 로그인 상태
+
+        const [isShowPass, setIsShowPass] = useState(false); // 비밀번호 볼건지 안볼건지
+
+        //* 눈버튼 클릭 함수
+        const handleShowPass = ():void =>{
+            setIsShowPass(!isShowPass); // 반대로 변경!
+        }
 
         //* 로그인하는 함수
         const handleLogin = ():void =>{
@@ -52,14 +62,23 @@ const Login: React.FC = () => {
                             value={userName}
                             onChange={(e) => setUserName(e.target.value)}
                             />
-                        <input 
-                            required
-                            maxLength={30}
-                            type="password"
-                            placeholder="Password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            />
+
+                        <div className={styles.pass_container}>
+                            <input 
+                                required
+                                maxLength={30}
+                                type={isShowPass ? "text" : "password"}
+                                placeholder="Password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                />
+                            <img 
+                                className={styles.img_eye}
+                                onClick={handleShowPass}
+                                src={isShowPass ? eyeON : eyeOFF}/>
+                            
+                        </div>
+
                         <button 
                             className={styles.btn_submit}
                             type="submit"

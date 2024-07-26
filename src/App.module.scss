@@ -2,37 +2,32 @@
 // 프리텐다드
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
 
-.screen{
-    margin-left: auto;
-    margin-right: auto;
-    
+.screen {
+    margin: 0 auto;
     box-sizing: border-box;
-    margin: 0px;
-    
-    height: calc(var(--vh,1vh)*100); // var() : Css변수를 가져오고, 값이 없을경우 기본값으로 1vh를 사용.
+    height: calc(var(--vh, 1vh) * 100); /* CSS 변수를 사용하여 뷰포트 높이를 계산 */
     width: 100vw;
-    // min-width: 1920px;
-    // min-height: 960px;
-    
-    // 최소 높이/너비 결정
-    // min-height: 1024px;
-    min-width: 1440px;
-
-    max-height: 1080px;
-    max-width: 1920px;
-    font-family: "Pretendard Variable",Pretendard;
+    min-width: 1440px; /* 최소 너비 */
+    max-width: 1920px; /* 최대 너비 */
+    max-height: 1080px; /* 최대 높이 */
+    font-family: "Pretendard Variable", Pretendard;
     position: relative;
 
-    // 가운대 정렬
+    /* 가로 중앙 정렬 */
     display: flex;
-    justify-content: center; // 가로 = 가운대정렬
-    
+    justify-content: center;
     background-color: antiquewhite;
 
-    // /* PC용 CSS */
-    // @media all and (min-width:960px){
-        
-    // }
+    /* Flexbox 설정 */
+    display: flex;
+    flex-direction: row; /* 가로 방향 정렬 *
 
+
+    /* 미디어 쿼리: 모바일, 태블릿, PC 등 */
+    @media (max-width: 960px) {
+      flex-direction: column; /* 작은 화면에서는 세로 방향 정렬 */
+      min-width: auto; /* 최소 너비 해제 */
+      max-width: 100%; /* 최대 너비 해제 */
+    }
 
 }

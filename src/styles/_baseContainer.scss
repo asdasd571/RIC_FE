@@ -1,0 +1,22 @@
+// 믹스인 임포트
+@import 'mixins';
+
+// 기본 대시보드 내의 컨테이너
+
+.container {
+    @include full-size-flex(row);
+
+    // 메인 & 헤더 컨테이너
+    .main_header_container {
+        // 헤더
+        @include full-size-flex(column);
+        
+        // 메인 컨테이너
+        .main_container {
+            flex: 1; // 남은공간 모두 차 지 ~ 
+            background-color: #F5F5F5;
+            box-sizing: border-box;
+            padding: 20px;
+        }
+    }
+}
