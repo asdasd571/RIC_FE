@@ -8,6 +8,8 @@ import Structure from './pages/Structure/Structure';
 import Sidebar from './components/Sidebar/Sidebar';
 import Header from './components/Header/Header';
 import Test from './pages/Test/Test';
+import RApps from './pages/RApps/RApps';
+
 
 function App() {
   // ** =============뷰포트 높이 구하기 ===============** //
@@ -42,7 +44,7 @@ function App() {
           <Route path="/" element={<DashBoard />} />
           <Route path="/structure" element={<Structure />} />
           <Route path="/smo-oam" element={<div>smo-oam</div>} />
-          <Route path="/rapp" element={<div>rapp</div>} />
+          <Route path="/rapp" element={<RApps/>} />
           <Route path="/framework" element={<div>framework</div>} />
           <Route path="/xapp" element={<div>xapp</div>} />
           <Route path="/platform" element={<div>platform</div>} />

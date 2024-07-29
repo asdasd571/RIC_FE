@@ -27,48 +27,48 @@ export const sidebarDatas: SidebarData[] = [
     {
         title: null,
         items: [
-            { name: '대시보드', icon: dashboard, path: '/' },
-            { name: '구조화면', icon: structure, path: '/structure' }
+            { name: 'Dashboard', icon: dashboard, path: '/' , id:0},
+            { name: 'Overview', icon: structure, path: '/structure' , id:1}
         ]
     },
     {
         title: 'SMO/ OAM',
         items: [
-            { name: 'SMO/OAM', icon: smo_oam, path: '/smo-oam' }
+            { name: 'SMO/OAM', icon: smo_oam, path: '/smo-oam' ,id:2}
         ]
     },
     {
-        title: 'Non-RT',
+        title: 'Non-RT-RIC',
         items: [
-            { name: 'rAPP 관리', icon: rapp, path: '/rapp' },
-            { name: 'Framework 관리', icon: framework, path: '/framework' }
+            { name: 'rAPPs', icon: rapp, path: '/rapp' , id:3},
+            { name: 'Framework', icon: framework, path: '/framework' ,id:4}
         ]
     },
     {
-        title: 'Near-RT',
+        title: 'Near-RT-RIC',
         items: [
-            { name: 'xAPP 관리', icon: xapp, path: '/xapp' },
-            { name: 'Platform 관리', icon: platform, path: '/platform' }
+            { name: 'xAPPs', icon: xapp, path: '/xapp' ,id:5},
+            { name: 'Platform', icon: platform, path: '/platform' , id:6}
         ]
     },
     {
-        title: 'E2Node',
+        title: 'E2 Node',
         items: [
-            { name: 'E2Node', icon: e2node, path: '/e2-node' }
+            { name: 'E2 Node', icon: e2node, path: '/e2-node' ,id:7}
         ]
     },
     {
-        title: '외부연결',
+        title: 'Utilities',
         items: [
-            { name: 'VIAVI', icon: VIAVI, externalUrl: 'https://naver.com' },
-            { name: 'InfluxDB', icon: influxdb, externalUrl: 'https://naver.com' }
+            { name: 'VIAVI', icon: VIAVI, externalUrl: process.env.REACT_APP_VIAVI_URL ,id:8},
+            { name: 'InfluxDB', icon: influxdb, externalUrl: 'https://naver.com',id:9 }
         ]
     },
     {
         title: null,
         items: [
-            { name: '설정', icon: setting, path: '/setting' },
-            { name: '로그아웃', icon: logout, action: 'logout' } // 로그아웃 처리}
+            { name: 'Settings', icon: setting, path: '/setting' ,id:10},
+            { name: 'Log out', icon: logout, action: 'logout' , id:11} // 로그아웃 처리}
         ]
     }
 ];

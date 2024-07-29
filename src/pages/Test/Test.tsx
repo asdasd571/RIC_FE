@@ -3,6 +3,7 @@ import useTestStore from "../../store/useTestStore";
 import Header from "../../components/Header/Header";
 import Alarm from "../../components/Header/Alarm/Alarm";
 import ProfileModal from "../../components/Header/ProfileModal/ProfileModal";
+import RApp from "../RApps/RApp/RApp";
 
 const Test: React.FC = () => {
 
@@ -15,6 +16,8 @@ const Test: React.FC = () => {
             <button onClick={decrement}> decrement </button>
             <ProfileModal/>
             <Alarm/>
+            <RApp/>
+            
         </div>
     )
 }

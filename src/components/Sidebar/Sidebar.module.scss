@@ -7,7 +7,7 @@
 
     align-items: center;
     background-color: #333333;
- 
+
     // etri 로고
     .top_container{
         width: 100%;
@@ -34,6 +34,8 @@
     .nav_container{
         flex: 1;
         width: 100%;
+        // 창이 넘어가면 자동으로 스크롤
+        // overflow-y: auto;
 
         
     }

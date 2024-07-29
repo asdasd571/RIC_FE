@@ -1,9 +1,18 @@
 import profileRe from "../../../assets/imgs/profileRe.svg";
 import styles from "./ProfileModal.module.scss";
+import Swal from "sweetalert2";
 
 // * 사용자 프로필모달
 
 const ProfileModal :React.FC = () => {
+
+
+    const handleSavePforile = ():void =>{
+        Swal.fire({
+            icon: 'info',
+            text: '저장 되었습니다.',
+        });
+    }
     return(
         <div className={styles.container}>
             <section>
@@ -17,7 +26,7 @@ const ProfileModal :React.FC = () => {
                     /> 
                     <p>abc123@abc.com</p>
                 </div>
-                <button className={styles.btn_save}>저장하기</button>
+                <button className={styles.btn_save} onClick={handleSavePforile}>저장하기</button>
             </section>
             
             

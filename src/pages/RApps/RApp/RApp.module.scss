@@ -1,0 +1,20 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+
+.container{
+    //todo o-ran 꾸미기 
+    min-width: 329px;
+    // min-height: 200px;
+
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 10px;
+
+    background-color: #FFFFFF;
+    color:#333333;
+
+    box-shadow: $custom-shadow;
+    // overflow-y: hidden;
+
+    
+}

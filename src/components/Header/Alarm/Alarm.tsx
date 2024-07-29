@@ -35,7 +35,7 @@ const Alarm:React.FC = () => {
 
     return(
         <div className={styles.container}>
-            <h3  className={styles.title}>알림</h3>
+            <h3  className={styles.title}>Alarms</h3>
             <section className={styles.alarm_list}>
                 {
                 datas.map((data, index)=> (

@@ -13,10 +13,14 @@
         
         // 메인 컨테이너
         .main_container {
+
             flex: 1; // 남은공간 모두 차 지 ~ 
             background-color: #F5F5F5;
             box-sizing: border-box;
             padding: 20px;
+            min-width: 1660px;
+            min-height: 924px;   
+            overflow: hidden; // 이걸로, 넘어가는걸 막았다
         }
     }
 }
