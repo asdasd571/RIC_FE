@@ -4,11 +4,12 @@ import styles from './App.module.scss';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import DashBoard from './pages/DashBoard/DashBoard';
 import Login from './pages/Login/Login';
-import Structure from './pages/Structure/Structure';
 import Sidebar from './components/Sidebar/Sidebar';
 import Header from './components/Header/Header';
 import Test from './pages/Test/Test';
 import RApps from './pages/RApps/RApps';
+import Framework from './pages/Framework/Framework';
+import Overview from './pages/Overview/Overview';
 
 
 function App() {
@@ -42,10 +43,10 @@ function App() {
     <div className={styles.screen}>
         <Routes>
           <Route path="/" element={<DashBoard />} />
-          <Route path="/structure" element={<Structure />} />
+          <Route path="/overview" element={<Overview/>} />
           <Route path="/smo-oam" element={<div>smo-oam</div>} />
           <Route path="/rapp" element={<RApps/>} />
-          <Route path="/framework" element={<div>framework</div>} />
+          <Route path="/framework" element={<Framework/>} />
           <Route path="/xapp" element={<div>xapp</div>} />
           <Route path="/platform" element={<div>platform</div>} />
           <Route path="/e2-node" element={<div>e2-node</div>} />

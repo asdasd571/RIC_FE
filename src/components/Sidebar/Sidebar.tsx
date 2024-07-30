@@ -28,7 +28,7 @@ export const sidebarDatas: SidebarData[] = [
         title: null,
         items: [
             { name: 'Dashboard', icon: dashboard, path: '/' , id:0},
-            { name: 'Overview', icon: structure, path: '/structure' , id:1}
+            { name: 'Overview', icon: structure, path: '/overview' , id:1}
         ]
     },
     {

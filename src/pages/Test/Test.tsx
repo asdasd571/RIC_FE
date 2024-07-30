@@ -3,7 +3,7 @@ import useTestStore from "../../store/useTestStore";
 import Header from "../../components/Header/Header";
 import Alarm from "../../components/Header/Alarm/Alarm";
 import ProfileModal from "../../components/Header/ProfileModal/ProfileModal";
-import RApp from "../RApps/RApp/RAppCard";
+import RApp from "../RApps/RAppCard/RAppCard";
 
 const Test: React.FC = () => {
 

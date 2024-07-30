@@ -3,7 +3,7 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 // import '../../styles/common.scss';
 import styles from "./RApps.module.scss";
 import { rAppCardType } from "../../types/RApp.types";
-import RAppCard from "./RApp/RAppCard";
+import RAppCard from "./RAppCard/RAppCard";
 // 카드 데이터
 const rAppCardsData:rAppCardType[] =  [
     {
