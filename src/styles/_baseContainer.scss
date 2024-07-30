@@ -6,21 +6,24 @@
 .container {
     @include full-size-flex(row);
 
+    overflow-y: scroll; // y측 길어지면 스크롤
     // 메인 & 헤더 컨테이너
     .main_header_container {
         // 헤더
         @include full-size-flex(column);
-        
+        // justify-content: center;
+        align-items: center; // 내부 가운대 정렬
         // 메인 컨테이너
         .main_container {
-
             flex: 1; // 남은공간 모두 차 지 ~ 
+            width: 100%;
             background-color: #F5F5F5;
             box-sizing: border-box;
-            padding: 20px;
-            min-width: 1660px;
+            padding: 3.125rem;
+            // min-width: 1160px;
             min-height: 924px;   
-            overflow: hidden; // 이걸로, 넘어가는걸 막았다
+            max-width: 1820px; // 최대 1920x 1080 기준으로 진행. 
+            overflow: hidden;
         }
     }
 }

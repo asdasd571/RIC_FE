@@ -82,6 +82,8 @@
             border: 0px;
 
             cursor: pointer;
+
+            @include custom-hover-btn; //버튼에 커서 대면
         }
         
     }
