@@ -4,12 +4,16 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import styles from "./RApps.module.scss";
 import { rAppCardType } from "../../types/RApp.types";
 import RAppCard from "./RAppCard/RAppCard";
+import defaultAxios from "../../apis/defaultAxios";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 // 카드 데이터
 const rAppCardsData:rAppCardType[] =  [
     {
         name : "Energy Saving",
         rappSchema : {
-            rAppID : "1",
+            rAppId : "1",
             ServiceType : "Network Energy Saving Service"
         },
         description : "Turns off cells if the loading is low"
@@ -17,7 +21,7 @@ const rAppCardsData:rAppCardType[] =  [
     {
         name : "RAN Performance",
         rappSchema : {
-            rAppID : "2",
+            rAppId : "2",
             ServiceType : "RAN KPI Monitoring Service"
         },
         description : "Provides insight into RAN KPI"
@@ -25,7 +29,7 @@ const rAppCardsData:rAppCardType[] =  [
     {
         name : "RAN Performance",
         rappSchema : {
-            rAppID : "2",
+            rAppId : "2",
             ServiceType : "RAN KPI Monitoring Service"
         },
         description : "Provides insight into RAN KPI"
@@ -33,7 +37,7 @@ const rAppCardsData:rAppCardType[] =  [
     {
         name : "RAN Performance",
         rappSchema : {
-            rAppID : "2",
+            rAppId : "2",
             ServiceType : "RAN KPI Monitoring Service"
         },
         description : "Provides insight into RAN KPI"
@@ -41,7 +45,7 @@ const rAppCardsData:rAppCardType[] =  [
     {
         name : "RAN Performance",
         rappSchema : {
-            rAppID : "2",
+            rAppId : "2",
             ServiceType : "RAN KPI Monitoring Service"
         },
         description : "Provides insight into RAN KPI"
@@ -49,7 +53,7 @@ const rAppCardsData:rAppCardType[] =  [
     {
         name : "RAN Performance",
         rappSchema : {
-            rAppID : "2",
+            rAppId : "2",
             ServiceType : "RAN KPI Monitoring Service"
         },
         description : "Provides insight into RAN KPI"
@@ -57,7 +61,7 @@ const rAppCardsData:rAppCardType[] =  [
     {
         name : "RAN Performance",
         rappSchema : {
-            rAppID : "2",
+            rAppId : "2",
             ServiceType : "RAN KPI Monitoring Service"
         },
         description : "Provides insight into RAN KPI"
@@ -68,8 +72,40 @@ const rAppCardsData:rAppCardType[] =  [
 
 
 
+
+
 const RApps: React.FC = () => {
 
+    //* ========== state ======================= //
+    const [rAppList, setrAppList] = useState<rAppCardType[]>([]);
+
+    
+    //* ======================================== //
+    
+    //* ========== API RAPP 데이터 받기 =========*// 
+
+    // rAPP 리스트를 받아오는 부분
+    const getrAppList = async (): Promise<void>  => {
+        try{
+            const url:string = `/rapp`;
+            const response = await defaultAxios.get(url);
+
+            setrAppList([response.data]); // todo. 오브젝트 한개만 받아서 [] 배열 씌워둠. 나중에 없애자.
+            // console.log('성공 /rapp', response.data );
+        } catch (error) {
+            console.error('오류 발생!',error);
+        }// finally {
+        //     console.log("항상 실행되는");
+        // }        
+    }
+    //* ======================================== //
+
+    //첫 렌더링시, 실행!
+    useEffect(()=>{
+        getrAppList(); // rApp 리스트 받아오기.
+    },[]);
+
+    
         return(
             <div className="container">
                 <Sidebar/>
@@ -79,7 +115,7 @@ const RApps: React.FC = () => {
                         <article className={styles.rApps_card_container}>
                             <h1>rApps</h1>
                             <section className={styles.rApps_cards}>
-                                <RAppCard data={rAppCardsData}/>
+                                <RAppCard data={rAppList}/>
                             </section>
                         </article>
 

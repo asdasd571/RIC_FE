@@ -10,6 +10,8 @@ import Test from './pages/Test/Test';
 import RApps from './pages/RApps/RApps';
 import Framework from './pages/Framework/Framework';
 import Overview from './pages/Overview/Overview';
+import XApps from './pages/XApps/XApps';
+import Platform from './pages/Platform/Platform';
 
 
 function App() {
@@ -47,8 +49,8 @@ function App() {
           <Route path="/smo-oam" element={<div>smo-oam</div>} />
           <Route path="/rapp" element={<RApps/>} />
           <Route path="/framework" element={<Framework/>} />
-          <Route path="/xapp" element={<div>xapp</div>} />
-          <Route path="/platform" element={<div>platform</div>} />
+          <Route path="/xapp" element={<XApps/>} />
+          <Route path="/platform" element={<Platform/>} />
           <Route path="/e2-node" element={<div>e2-node</div>} />
           <Route path="/setting" element={<div>setting</div>} />
           <Route path="/login" element={<Login/>}/>

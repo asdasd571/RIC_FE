@@ -19,6 +19,7 @@ import setting from "../../assets/imgs/setting.svg"
 import logout from "../../assets/imgs/logout.svg"
 import { SidebarData } from "../../types/Sidebar.types";
 import useNavigates from "../../hooks/useNavigates";
+import grafana from "../../assets/imgs/grafana.svg";
 
 
 // 사이드바를 나타내는 데이터!
@@ -40,14 +41,14 @@ export const sidebarDatas: SidebarData[] = [
     {
         title: 'Non-RT-RIC',
         items: [
-            { name: 'rAPPs', icon: rapp, path: '/rapp' , id:3},
+            { name: 'rApps', icon: rapp, path: '/rapp' , id:3},
             { name: 'Framework', icon: framework, path: '/framework' ,id:4}
         ]
     },
     {
         title: 'Near-RT-RIC',
         items: [
-            { name: 'xAPPs', icon: xapp, path: '/xapp' ,id:5},
+            { name: 'xApps', icon: xapp, path: '/xapp' ,id:5},
             { name: 'Platform', icon: platform, path: '/platform' , id:6}
         ]
     },
@@ -61,14 +62,16 @@ export const sidebarDatas: SidebarData[] = [
         title: 'Utilities',
         items: [
             { name: 'VIAVI', icon: VIAVI, externalUrl: process.env.REACT_APP_VIAVI_URL ,id:8},
-            { name: 'InfluxDB', icon: influxdb, externalUrl: 'https://naver.com',id:9 }
+            { name: 'InfluxDB', icon: influxdb, externalUrl: 'https://naver.com',id:9 },
+            { name: 'DM', icon: influxdb, externalUrl: 'https://naver.com',id:10 },
+            { name: 'Grafana', icon: grafana, externalUrl: 'https://naver.com',id:11 }
         ]
     },
     {
         title: null,
         items: [
-            { name: 'Settings', icon: setting, path: '/setting' ,id:10},
-            { name: 'Log out', icon: logout, action: 'logout' , id:11} // 로그아웃 처리}
+            { name: 'Settings', icon: setting, path: '/setting' ,id:12},
+            { name: 'Log out', icon: logout, action: 'logout' , id:13} // 로그아웃 처리}
         ]
     }
 ];
