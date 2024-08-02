@@ -1,19 +1,21 @@
 
-import styles from "./Login.module.scss";
+import styles from "./SignUpPage.module.scss";
 import dashboradImg from "../../assets/imgs/dashboardImg.png";
 import { useState } from "react";
 import useNavigates from "../../hooks/useNavigates";
 
 import eyeOFF from "../../assets/imgs/eyeOFF.svg";
 import eyeON from "../../assets/imgs/eyeON.svg";
+import Swal from "sweetalert2";
 
-const Login: React.FC = () => {
+const SignUpPage: React.FC = () => {
 
-        const {goMain,  goSignUp} = useNavigates(); // 홈으로 가는 네비게이션 함수.
+        const {  goSignUp, goLogin} = useNavigates(); // 홈으로 가는 네비게이션 함수.
 
-        const [userEmail , setUserEmail] = useState(""); // 유저 id
+        const [userName , setUserName] = useState(""); // 유저 id
         const [password, setPassword]  = useState(""); // 유저 비밀번호
-        const [isLogin, setIsLogin] = useState(false); // 로그인 상태
+        const [userEmail, setUserEmail] = useState("");
+        const [isSignUp, setIsSignUp] = useState(false); // 로그인 상태
 
         const [isShowPass, setIsShowPass] = useState(false); // 비밀번호 볼건지 안볼건지
 
@@ -23,16 +25,22 @@ const Login: React.FC = () => {
         }
 
         //* 로그인하는 함수
-        const handleLogin = ():void =>{
+        const handleSignUp = ():void =>{
              // 로그인 처리 로직을 구현합니다.
-            console.log("로그인 실행!",'UserEmail',userEmail, 'password:',password);
-            goMain();
+            console.log("회원가입 실행!",'userName',userName, 'password:',password);
+            Swal.fire({
+                icon: 'info',
+                text: '회원가입 되었습니다.',
+            });
+
+            
+            goLogin();
         } 
 
         //* 폼 제출 처리 함수
         const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
             e.preventDefault(); // 폼의 이벤트 기본 동작 없앰( 새로고침 등)
-            handleLogin();
+            handleSignUp();
         };
 
 
@@ -45,11 +53,11 @@ const Login: React.FC = () => {
                 <section>
                     <div className={styles.intro_container}>
                         <h1 className={styles.title} >
-                            Welcome!
+                            Create Account
                         </h1>
                         <div className={styles.description}>
-                            Sign in to your account to access<br/>
-                            the O-RAN Dashboard!
+                            hello...
+                            {/* hello... // todo : 여기 글 넣을지 말지 결정해야함 */}
                         </div>
                     </div>
 
@@ -58,7 +66,16 @@ const Login: React.FC = () => {
                             required
                             maxLength={20}
                             type="text"
-                            placeholder="UserEmail"
+                            placeholder="UserName"
+                            value={userName}
+                            onChange={(e) => setUserName(e.target.value)}
+                            />
+
+                        <input 
+                            required
+                            maxLength={20}
+                            type="text"
+                            placeholder="Email"
                             value={userEmail}
                             onChange={(e) => setUserEmail(e.target.value)}
                             />
@@ -79,16 +96,19 @@ const Login: React.FC = () => {
                             
                         </div>
 
+
+
+
                         <button 
                             className={styles.btn_submit}
                             type="submit"
                         >
-                            Login</button>
+                            Sign Up</button>
                     </form>
 
                     <div className={styles.footer_container}>
-                        <span className={styles.footer_text}>Don't have an account?</span>
-                        <button onClick={goSignUp} className={styles.btn_sign}>Sign up</button>
+                        <span className={styles.footer_text}>Already have an account?</span>
+                        <button onClick={goLogin} className={styles.btn_sign}>Sign in</button>
                     </div>
                 </section>
 
@@ -97,4 +117,4 @@ const Login: React.FC = () => {
         )
 }
 
-export default Login;
+export default SignUpPage;

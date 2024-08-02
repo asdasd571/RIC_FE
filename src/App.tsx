@@ -12,6 +12,7 @@ import Framework from './pages/Framework/Framework';
 import Overview from './pages/Overview/Overview';
 import XApps from './pages/XApps/XApps';
 import Platform from './pages/Platform/Platform';
+import SignUpPage from './pages/SignUpPage/SignUpPage';
 
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
           <Route path="/e2-node" element={<div>e2-node</div>} />
           <Route path="/setting" element={<div>setting</div>} />
           <Route path="/login" element={<Login/>}/>
+          <Route path="/sign-up" element={<SignUpPage/>}/>
           <Route path="*" element={<div>404 Not Found Page</div>}/>
           <Route path="/test" element={<Test/>}/>
         </Routes>

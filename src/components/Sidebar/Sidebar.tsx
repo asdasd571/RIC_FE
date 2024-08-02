@@ -20,6 +20,7 @@ import logout from "../../assets/imgs/logout.svg"
 import { SidebarData } from "../../types/Sidebar.types";
 import useNavigates from "../../hooks/useNavigates";
 import grafana from "../../assets/imgs/grafana.svg";
+import log from "../../assets/imgs/log.svg";
 
 
 // 사이드바를 나타내는 데이터!
@@ -63,7 +64,7 @@ export const sidebarDatas: SidebarData[] = [
         items: [
             { name: 'VIAVI', icon: VIAVI, externalUrl: process.env.REACT_APP_VIAVI_URL ,id:8},
             { name: 'InfluxDB', icon: influxdb, externalUrl: 'https://naver.com',id:9 },
-            { name: 'DM', icon: influxdb, externalUrl: 'https://naver.com',id:10 },
+            { name: 'DM', icon: log, externalUrl: 'https://naver.com',id:10 },
             { name: 'Grafana', icon: grafana, externalUrl: 'https://naver.com',id:11 }
         ]
     },

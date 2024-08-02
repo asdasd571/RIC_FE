@@ -62,7 +62,16 @@ const useNavigates = (): Record<string, ()=> void>  => {
         navigate("/setting");
     }
 
+    //회원가입
+    const goSignUp = ():void => {
+        navigate("/sign-up")
+    }
 
+    
+    //로그인
+    const goLogin = ():void => {
+        navigate("/login")
+    }
     return {
             //메인 페이지(Dashboard)
         goMain,
@@ -74,6 +83,8 @@ const useNavigates = (): Record<string, ()=> void>  => {
         goE2Node,
         goSmoOam,
         goSetting,
+        goSignUp,
+        goLogin,
     }
 
 }

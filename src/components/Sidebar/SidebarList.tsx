@@ -45,7 +45,7 @@ const SidebarList: React.FC<SidebarListProps> = ({ sidebarDatas }) => {
 
     // *로그아웃 처리
     const handleLogout = () => {
-        console.log('Logging out...');
+        // console.log('Logging out...');
         Swal.fire({
             icon: 'info',
             text: '로그아웃 되었습니다.',
