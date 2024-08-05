@@ -5,8 +5,10 @@ import bellOFF from"../../assets/imgs/bellOFF.svg";
 import bellON from"../../assets/imgs/bellON.svg";
 import profile from"../../assets/imgs/profile.svg";
 import Alarm from "./Alarm/Alarm";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProfileModal from "./ProfileModal/ProfileModal";
+import { AlarmData } from "../../types/Alarm.types";
+import defaultAxios from "../../apis/defaultAxios";
 
 interface HeaderProps  {
     titleText?: string; // titleText, 선택적 속성
@@ -23,12 +25,28 @@ interface HeaderProps  {
 const Header : React.FC<HeaderProps> = ( {titleText = "DashBoard"}) => {
 
     //* 알림 -------------------//
-    const [isShowAlarm, setIsShowAlarm] = useState<boolean>(false); // true : 알림창 보임, false : 알림창 끔
+    const [alarmDatas, setAlarmDatas] = useState<AlarmData[]>([]); // 알림데이터
 
-    //벨 버튼 클릭시 알림 on / off
-    const handleShowAlarm = ():void =>{
-        setIsShowAlarm(!isShowAlarm); //
+    
+    // 알림 alarm 리스트 데이터를 받아오는 부분
+    const getAlarmDatas = async (): Promise<void>  => {
+        try{
+            const url:string = `/alarm`;
+            const response = await defaultAxios.get(url);
+
+            setAlarmDatas(response?.data); 
+            // console.log('성공 /alarm', response.data );
+        } catch (error) {
+            console.error('오류 발생!',error);
+        }     
     }
+
+        //첫 렌더링시, 실행!
+        useEffect(()=>{
+            getAlarmDatas(); // rApp 리스트 받아오기.
+        },[]);
+    
+
     //* 알림끝 -----------------//
 
     //* 프로필모달 -------------------//
@@ -47,13 +65,7 @@ const Header : React.FC<HeaderProps> = ( {titleText = "DashBoard"}) => {
             </div>
             
             <div className={styles.header_right}>
-
-                <img 
-                    className={styles.bell}
-                    src={bellON}
-                    alt="벨"
-                    onClick={handleShowAlarm}/>
-                { isShowAlarm ? <Alarm/> : <></>}
+                <Alarm data={alarmDatas}/>
 
                 <div className={styles.profile}>
                     <span>홍길동</span>

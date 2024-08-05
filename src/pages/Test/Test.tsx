@@ -15,7 +15,7 @@ const Test: React.FC = () => {
             <button onClick={increment}> Increment </button>
             <button onClick={decrement}> decrement </button>
             <ProfileModal/>
-            <Alarm/>
+            {/* <Alarm/> */}
             {/* <RApp/> */}
             
         </div>
