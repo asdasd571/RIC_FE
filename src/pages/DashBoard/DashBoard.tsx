@@ -1,7 +1,8 @@
 import Header  from "../../components/Header/Header";
+import MapView from "../../components/MapView/MapView";
 import Sidebar from "../../components/Sidebar/Sidebar";
 // import '../../styles/common.scss';
-import stytls from "./DashBoard.module.scss";
+import styles from "./DashBoard.module.scss";
 
 const DashBoard: React.FC = () => {
 
@@ -11,7 +12,49 @@ const DashBoard: React.FC = () => {
                 <div className="main_header_container">
                     <Header titleText="Dashboard"/>
                     <main className="main_container">
-                        
+                        <div className={styles.dashboard_grid_container}>
+                            <section className={`${styles.item} ${styles.value1_1}`}>
+                                <h3 className={styles.item_title} >value_1_1</h3>
+                                <hr/>
+                                
+                            </section>
+
+                            <section className={`${styles.item} ${styles.e2_nodes}`}>
+                                <h3 className={styles.item_title} >E2 Nodes</h3>
+                                <hr/>
+                                <div className={styles.item_contents}>
+                                    <MapView/>
+                                </div>
+                                
+                                
+                            </section>
+
+                            <section className={`${styles.item} ${styles.etri_ric}`}>
+                                <h3 className={styles.item_title} >ETRI RIC</h3>
+                                <hr/>
+                            </section>
+
+                            <section className={`${styles.item} ${styles.value1_2}`}>
+                                <h3 className={styles.item_title} >Value1</h3>
+                                <hr/>
+                            </section>
+
+                            <section className={`${styles.item} ${styles.value2}`}>
+                                <h3 className={styles.item_title} >Value2</h3>
+                                <hr/>
+                            </section>
+
+                            <section className={`${styles.item} ${styles.value3}`}>
+                                <h3 className={styles.item_title} >value3</h3>
+                                <hr/>
+                            </section>
+
+                            <section className={`${styles.item} ${styles.value4}`}>
+                                <h3 className={styles.item_title} >value4</h3>
+                                <hr/>
+
+                            </section>
+                        </div>
                     </main>
                     
                 </div>

@@ -16,6 +16,8 @@
         // 메인 컨테이너
         .main_container {
             flex: 1; // 남은공간 모두 차 지 ~ 
+            display: flex;
+            
             width: 100%;
             background-color: #F5F5F5;
             box-sizing: border-box;
@@ -24,6 +26,7 @@
             min-height: 924px;   
             max-width: 1820px; // 최대 1920x 1080 기준으로 진행. 
             overflow: hidden;
+
         }
     }
 }

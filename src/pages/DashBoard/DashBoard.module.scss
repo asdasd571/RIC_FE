@@ -1,20 +1,66 @@
-// 바로 main부터 시작.
-// @mixin full-size-flex($direction) {
-//     display: flex;
-//     flex-direction: $direction;
-//     width: 100%;
-//     height: 100%;
-// }
+@import "../../styles/variables";
+@import "../../styles/mixins";
 
-// // 기본 컨테이너
-// .container {
-//     @include full-size-flex(row);
 
-//     // 메인 컨테이너
-//     .main_container {
-//         @include full-size-flex(column);
-//         background-color: #F5F5F5;
-//     }
-// }
 
-// @include full-size-flex(row)
+// *대시보드 메인 grid conatiner
+.dashboard_grid_container{
+    flex:1;
+    display: grid;
+    box-sizing: border-box;
+    max-height: 980px;
+    
+    //4x4 그리드 선언
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 1.875rem; //30px
+
+    //영역 나누기.
+    grid-template-areas: 
+        "value1_1 e2_nodes e2_nodes etri_ric"
+        "value1_1 e2_nodes e2_nodes etri_ric"
+        "value1_2 value1_2 value1_2 value3"
+        "value2 value2 value2 value4";
+
+    //* 그리드 영역 내 아이템 특징
+    .item {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+
+        box-sizing: border-box;
+        padding: 0.625rem; //10px
+        
+        border: 0px;
+        border-radius: 10px;
+        background-color:  $pannel_background;
+        box-shadow: $custom-shadow;
+        
+        // 각 패널 제목
+        .item_title{
+            font-size: 1.5625rem; //25px
+            margin: 0px;
+        }
+        // 타이틀 hr
+        hr{
+            @include pannel_hr;
+        }
+
+        // 각 패널 내용 컨테이너
+        .item_contents{
+            //남은 부분을 모두 차지하도록 진행.
+            flex:1;
+        }
+    }
+
+    .value1_1 { grid-area: value1_1; }
+    .e2_nodes { grid-area: e2_nodes; }
+    .etri_ric { grid-area: etri_ric; }
+    .value1_2 { grid-area: value1_2; }
+    .value2   { grid-area: value2; }
+    .value3   { grid-area: value3; }
+    .value4   { grid-area: value4; }
+
+
+}

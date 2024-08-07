@@ -23,3 +23,11 @@
 
     }
 }
+
+
+// *pannel_hr
+@mixin pannel_hr{
+    // 중간 선.
+    border: 1px solid #CCCCCC;
+    width: 100%;
+}
