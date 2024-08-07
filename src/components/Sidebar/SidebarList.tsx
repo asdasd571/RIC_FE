@@ -5,6 +5,7 @@ import styles from './SidebarList.module.scss';
 import { SidebarData, SidebarItem } from '../../types/Sidebar.types';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from "sweetalert2";
+import {ReactComponent as Svg} from "../../assets/*.svg";
 
 
 // 사이드바 리스트 컴포넌트 Props 정의
@@ -65,7 +66,9 @@ const SidebarList: React.FC<SidebarListProps> = ({ sidebarDatas }) => {
                                 key={item.id}
                                 onClick={() => handleItemClick(item)}
                             >
-                                <img className={styles.icon} src={item.icon} alt={item.name} />
+                                <img className={styles.icon} 
+                                    src={item.icon}
+                                />
                                 {item.name}
                             </li>
                         ))}
