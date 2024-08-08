@@ -1,0 +1,17 @@
+
+@import '../../../styles/variables';
+
+.container{
+    flex: 1; // 꽉채움.
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    row-gap: 1.25rem; //20px;
+
+    // 그리드 아이템
+    .item{
+        background-color:  $pannel_inner_background;
+        border-radius: 0.625rem;
+    }
+
+}

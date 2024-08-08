@@ -10,17 +10,19 @@
     box-sizing: border-box;
     max-height: 980px;
     
-    //4x4 그리드 선언
+    //6x6 그리드 선언
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
     gap: 1.875rem; //30px
 
     //영역 나누기.
     grid-template-areas: 
         "value1_1 e2_nodes e2_nodes etri_ric"
         "value1_1 e2_nodes e2_nodes etri_ric"
+        "value1_1 e2_nodes e2_nodes etri_ric"
         "value1_2 value1_2 value1_2 value3"
-        "value2 value2 value2 value4";
+        "value2 value2 value2 value4"
+        "value5 value5 value5 value6";
 
     //* 그리드 영역 내 아이템 특징
     .item {
@@ -36,10 +38,12 @@
         border-radius: 10px;
         background-color:  $pannel_background;
         box-shadow: $custom-shadow;
+
+        
         
         // 각 패널 제목
         .item_title{
-            font-size: 1.5625rem; //25px
+            font-size: 1.25rem; //20px
             margin: 0px;
         }
         // 타이틀 hr
@@ -61,6 +65,8 @@
     .value2   { grid-area: value2; }
     .value3   { grid-area: value3; }
     .value4   { grid-area: value4; }
+    .value5   { grid-area: value5; }
+    .value6   { grid-area: value6; }
 
 
 }

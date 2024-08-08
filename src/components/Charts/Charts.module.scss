@@ -1,0 +1,42 @@
+.screen_chart{
+    text-align: center;
+    // border : 1px solid black;
+    box-sizing: border-box;
+
+    // border-radius: 10px;
+    position: relative;
+    box-sizing: border-box;
+
+    padding-right: 5px; //내부 padding을 조금 주자.
+    padding-top: 5px;
+    
+    
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    
+
+    // 차트 내부 bar, area 등 컨테이너
+    .chart_container{
+        position: absolute;
+        flex: 1;
+        padding: 0;
+        margin: 0;
+
+    }
+
+}
+// 차트 제목
+.chart_title{
+    margin: 0px;
+    
+    box-sizing: border-box;
+    // padding-bottom: 5px;
+    font-size: 0.9375rem; // 15px
+    color: #5C5C5C;
+    
+    height: auto;
+}
