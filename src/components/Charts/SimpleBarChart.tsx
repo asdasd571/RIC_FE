@@ -17,8 +17,8 @@ const SimpleBarChart: React.FC<ChartProps> = ({
 
     return(
         // 반응형 컨테이너 만들기
-        <>
-            <ResponsiveContainer className={styles.screen_chart}>
+        <div className={styles.screen}>
+            <ResponsiveContainer className={styles.responsive_container}>
                 {/* 바차트 컨테이너 */}
                 <BarChart className = {styles.chart_container} width={500} height={300} data={data} >
                     {/* 네모네모 */}
@@ -37,7 +37,7 @@ const SimpleBarChart: React.FC<ChartProps> = ({
                 </BarChart>
             </ResponsiveContainer>
             <h3 className={styles.chart_title} > {title} </h3>
-        </>
+        </div>
 
     )
 }

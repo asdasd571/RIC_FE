@@ -15,8 +15,8 @@ const MultiLineChart :React.FC<ChartProps> = ({
     {
     
     return(
-        <>
-            <ResponsiveContainer className={styles.screen_chart}>
+        <div className={styles.screen}>
+            <ResponsiveContainer className={styles.responsive_container}>
                 <LineChart  className = {styles.chart_container}
                 
                 width={700}
@@ -48,7 +48,7 @@ const MultiLineChart :React.FC<ChartProps> = ({
                 </LineChart>
             </ResponsiveContainer>
             <h3 className={styles.chart_title}> {title} </h3>
-        </>
+        </div>
 
         
 

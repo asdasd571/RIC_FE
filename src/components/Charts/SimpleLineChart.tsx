@@ -14,8 +14,8 @@ const SimpleLineChart :React.FC<ChartProps> = ({
     {
     // const title = '기지국 번호 : '+props.title || '기지국 번호';
     return(
-        <>
-            <ResponsiveContainer className={styles.screen_chart}>
+        <div className={styles.screen}>
+            <ResponsiveContainer className={styles.responsive_container}>
                 <LineChart 
                     width={700}
                     height={300} 
@@ -42,7 +42,7 @@ const SimpleLineChart :React.FC<ChartProps> = ({
                 </LineChart>
             </ResponsiveContainer>
             <h3 className={styles.chart_title} > {title} </h3>
-        </>
+        </div>
 
         
 

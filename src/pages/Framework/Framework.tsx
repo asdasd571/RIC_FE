@@ -3,7 +3,7 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 // import '../../styles/common.scss';
 import styles from "./Framework.module.scss";
 import FrameworkCard from "./FrameworkCard/FrameworkCard";
-import { FrameworkCardType } from "../../types/Framework.types";
+// import { FrameworkCardType } from "../../types/Framework.types";
 import { useEffect, useState } from "react";
 import defaultAxios from "../../apis/defaultAxios";
 
@@ -25,7 +25,7 @@ const Framework: React.FC = () => {
             const response = await defaultAxios.get(url);
 
             setFrameworkList(response.data); 
-            // console.log('성공 /rblock', response.data );
+            console.log('성공 /rblock', response.data );
         } catch (error) {
             console.error('오류 발생!',error);
         }    

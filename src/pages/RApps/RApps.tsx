@@ -9,65 +9,65 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 // 카드 데이터
-const rAppCardsData:rAppCardType[] =  [
-    {
-        name : "Energy Saving",
-        rappSchema : {
-            rAppId : "1",
-            ServiceType : "Network Energy Saving Service"
-        },
-        description : "Turns off cells if the loading is low"
-    },
-    {
-        name : "RAN Performance",
-        rappSchema : {
-            rAppId : "2",
-            ServiceType : "RAN KPI Monitoring Service"
-        },
-        description : "Provides insight into RAN KPI"
-    },
-    {
-        name : "RAN Performance",
-        rappSchema : {
-            rAppId : "2",
-            ServiceType : "RAN KPI Monitoring Service"
-        },
-        description : "Provides insight into RAN KPI"
-    },
-    {
-        name : "RAN Performance",
-        rappSchema : {
-            rAppId : "2",
-            ServiceType : "RAN KPI Monitoring Service"
-        },
-        description : "Provides insight into RAN KPI"
-    },
-    {
-        name : "RAN Performance",
-        rappSchema : {
-            rAppId : "2",
-            ServiceType : "RAN KPI Monitoring Service"
-        },
-        description : "Provides insight into RAN KPI"
-    },
-    {
-        name : "RAN Performance",
-        rappSchema : {
-            rAppId : "2",
-            ServiceType : "RAN KPI Monitoring Service"
-        },
-        description : "Provides insight into RAN KPI"
-    },
-    {
-        name : "RAN Performance",
-        rappSchema : {
-            rAppId : "2",
-            ServiceType : "RAN KPI Monitoring Service"
-        },
-        description : "Provides insight into RAN KPI"
-    }
+// const rAppCardsData:rAppCardType[] =  [
+//     {
+//         name : "Energy Saving",
+//         rappSchema : {
+//             rAppId : "1",
+//             ServiceType : "Network Energy Saving Service"
+//         },
+//         description : "Turns off cells if the loading is low"
+//     },
+//     {
+//         name : "RAN Performance",
+//         rappSchema : {
+//             rAppId : "2",
+//             ServiceType : "RAN KPI Monitoring Service"
+//         },
+//         description : "Provides insight into RAN KPI"
+//     },
+//     {
+//         name : "RAN Performance",
+//         rappSchema : {
+//             rAppId : "2",
+//             ServiceType : "RAN KPI Monitoring Service"
+//         },
+//         description : "Provides insight into RAN KPI"
+//     },
+//     {
+//         name : "RAN Performance",
+//         rappSchema : {
+//             rAppId : "2",
+//             ServiceType : "RAN KPI Monitoring Service"
+//         },
+//         description : "Provides insight into RAN KPI"
+//     },
+//     {
+//         name : "RAN Performance",
+//         rappSchema : {
+//             rAppId : "2",
+//             ServiceType : "RAN KPI Monitoring Service"
+//         },
+//         description : "Provides insight into RAN KPI"
+//     },
+//     {
+//         name : "RAN Performance",
+//         rappSchema : {
+//             rAppId : "2",
+//             ServiceType : "RAN KPI Monitoring Service"
+//         },
+//         description : "Provides insight into RAN KPI"
+//     },
+//     {
+//         name : "RAN Performance",
+//         rappSchema : {
+//             rAppId : "2",
+//             ServiceType : "RAN KPI Monitoring Service"
+//         },
+//         description : "Provides insight into RAN KPI"
+//     }
 
-]
+// ]
 
 
 
@@ -90,7 +90,7 @@ const RApps: React.FC = () => {
             const url:string = `/rapp`;
             const response = await defaultAxios.get(url);
 
-            setrAppList([response.data]); // todo. 오브젝트 한개만 받아서 [] 배열 씌워둠. 나중에 없애자.
+            setrAppList(response.data); 
             // console.log('성공 /rapp', response.data );
         } catch (error) {
             console.error('오류 발생!',error);

@@ -7,11 +7,104 @@
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     row-gap: 1.25rem; //20px;
+    color: #333333;
+    
+    position: relative;
+    width: 100%;
 
+    .description{
+        width: 100%;
+        position: absolute;
+        // width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        
+        column-gap: 10px;
+        box-sizing: border-box;
+        // padding: 0 10%;
+        // justify-content: space-between;
+
+        top: -75px;
+        
+        place-items: center;
+        
+
+        .des_item{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            column-gap: 5px;
+            margin: 0px;
+            // justify-content: left;
+            align-items: center;
+
+            .state{
+                
+                width: 0.4375rem;
+                height: 0.4375rem;
+                border-radius: 50%;
+            }
+
+            .off{
+                background-color: #CCCCCC;
+            }
+            .on{
+                background-color: #9EEDA7;
+            }
+            .error{
+                background-color: #ED9E9F;
+            }
+            .warning{
+                background-color: #FFE990;
+            }
+
+            .text{
+                color: #5C5C5C;
+                // font-size: clamp(0.75rem,  0.75rem, 0.875rem); /* 최소 0.75rem, 최대 0.875rem, 부모 너비에 따라 유동적으로 조정 */;
+                font-size: 0.8em;
+            }
+        }
+    }
     // 그리드 아이템
     .item{
         background-color:  $pannel_inner_background;
         border-radius: 0.625rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        box-sizing: border-box;
+        padding: 0px 20px; // 높이, 너비
+        // padding-left: 10px;
+        // padding-right: 10px;
+
+        // justify-content: center;
+        .item_values{
+            flex: 1;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+
+            .item_value{
+                font-size: 30px;
+                font-weight: bold;
+            }
+            // 각 아이템 이름
+            .item_name{
+                font-size: 0.8em;
+                color: #5C5C5C;
+
+            }
+        }
+
+
+        .item_state{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #CCCCCC;
+        }
     }
 
 }

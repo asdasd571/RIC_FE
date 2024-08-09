@@ -1,3 +1,4 @@
+import Charts from "../../components/Charts/Charts";
 import Header  from "../../components/Header/Header";
 import MapView from "../../components/MapView/MapView";
 import Sidebar from "../../components/Sidebar/Sidebar";
@@ -40,20 +41,24 @@ const DashBoard: React.FC = () => {
                             <section className={`${styles.item} ${styles.value1_2}`}>
                                 <h3 className={styles.item_title} >DL Throughput</h3>
                                 <hr/>
+                                <Charts chartType="mLine" dataKey={['uv','pv']}/>
+
                             </section>
 
                             <section className={`${styles.item} ${styles.value2}`}>
-                                <h3 className={styles.item_title} >Value2</h3>
+                                <h3 className={styles.item_title} >UL Throughput</h3>
                                 <hr/>
+                                <Charts chartType="mLine" dataKey={['uv','pv']}/>
                             </section>
 
                             <section className={`${styles.item} ${styles.value3}`}>
-                                <h3 className={styles.item_title} >UL Throughput</h3>
+                                <h3 className={styles.item_title} >value3</h3>
                                 <hr/>
+                                
                             </section>
 
                             <section className={`${styles.item} ${styles.value4}`}>
-                                <h3 className={styles.item_title} >value4</h3>
+                                <h3 className={styles.item_title} >UL Throughput</h3>
                                 <hr/>
 
                             </section>
@@ -61,6 +66,7 @@ const DashBoard: React.FC = () => {
                             <section className={`${styles.item} ${styles.value5}`}>
                                 <h3 className={styles.item_title} >Active UE</h3>
                                 <hr/>
+                                <Charts chartType="mLine" dataKey={['uv','pv']}/>
                             </section>
 
                             <section className={`${styles.item} ${styles.value6}`}>

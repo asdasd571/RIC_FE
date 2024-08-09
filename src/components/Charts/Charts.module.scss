@@ -1,42 +1,62 @@
-.screen_chart{
-    text-align: center;
-    // border : 1px solid black;
-    box-sizing: border-box;
 
-    // border-radius: 10px;
+
+.screen{
+    width: 100%;
+    height: 100%;
     position: relative;
-    box-sizing: border-box;
 
-    padding-right: 5px; //내부 padding을 조금 주자.
-    padding-top: 5px;
-    
     
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
-    
 
-    // 차트 내부 bar, area 등 컨테이너
-    .chart_container{
-        position: absolute;
-        flex: 1;
-        padding: 0;
-        margin: 0;
-
+    .responsive_container{
+        height: 100%;
+        // position: absolute;
+        text-align: center;
+        // border : 1px solid black;
+        box-sizing: border-box;
+        // border-radius: 10px;
+        // box-sizing: border-box;
+    
+        padding-right: 5px; //내부 padding을 조금 주자.
+        padding-top: 5px;
+        
+        
+    
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        font-size: 0.75rem;
+        padding-bottom: 10px; //title이 들어갈 자리를 내어줌
+        
+        
+    
+        // // 차트 내부 bar, area 등 컨테이너
+        .chart_container{
+            position: absolute;
+            flex: 1;
+            padding: 0;
+            margin: 0;
+            
+    
+        }
+    
     }
-
-}
-// 차트 제목
-.chart_title{
-    margin: 0px;
-    
-    box-sizing: border-box;
-    // padding-bottom: 5px;
-    font-size: 0.9375rem; // 15px
-    color: #5C5C5C;
-    
-    height: auto;
+    // 차트 제목
+    .chart_title{
+        width: 100%;
+        position: absolute;
+        bottom: 10px; // title이 들어갈 자리
+        
+        text-align: center;
+        margin: 0px;
+        
+        box-sizing: border-box;
+        // padding-bottom: 5px;
+        font-size: 0.9375rem; // 15px
+        color: #5C5C5C;
+        
+        height: auto;
+    }
 }

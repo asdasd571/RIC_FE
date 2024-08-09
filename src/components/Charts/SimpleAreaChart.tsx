@@ -18,8 +18,8 @@ const  SimpleAreaChart:React.FC<ChartProps> = ( {
         
     {
     return(
-        <>
-            <ResponsiveContainer className={styles.screen_chart}>
+        <div className={styles.screen}>
+            <ResponsiveContainer className={styles.responsive_container}>
                 {/* <h1>SimpleAreaCharts</h1> */}
                 {/* AreaChart(영역 차르)// ComposedChart (여러 차트들)를 그리기 위한 컴포넌트 */}
                 <AreaChart className = {styles.chart_container}
@@ -58,7 +58,7 @@ const  SimpleAreaChart:React.FC<ChartProps> = ( {
                 </AreaChart>
             </ResponsiveContainer>
             <h3  className={styles.chart_title}> {title} </h3>
-        </>
+        </div>
     )
 }
 
