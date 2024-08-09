@@ -5,6 +5,7 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 // import '../../styles/common.scss';
 import styles from "./DashBoard.module.scss";
 import EtriRIC from "./EtriRIC/EtriRIC";
+import TimeDLThroughput from "./TimeDLThroughput/TimeDLThroughput";
 import TopDLThroughput from "./TopDLThroughput/TopDLThroughput";
 
 const DashBoard: React.FC = () => {
@@ -41,14 +42,15 @@ const DashBoard: React.FC = () => {
                             <section className={`${styles.item} ${styles.value1_2}`}>
                                 <h3 className={styles.item_title} >DL Throughput</h3>
                                 <hr/>
-                                <Charts chartType="mLine" dataKey={['uv','pv']}/>
+                                <TimeDLThroughput type="DL_rate"/>
+                                {/* <Charts chartType="mLine" title="" dataKey={['uv','pv']}/> */}
 
                             </section>
 
                             <section className={`${styles.item} ${styles.value2}`}>
                                 <h3 className={styles.item_title} >UL Throughput</h3>
                                 <hr/>
-                                <Charts chartType="mLine" dataKey={['uv','pv']}/>
+                                <TimeDLThroughput type="UL_rate"/>
                             </section>
 
                             <section className={`${styles.item} ${styles.value3}`}>
@@ -66,7 +68,7 @@ const DashBoard: React.FC = () => {
                             <section className={`${styles.item} ${styles.value5}`}>
                                 <h3 className={styles.item_title} >Active UE</h3>
                                 <hr/>
-                                <Charts chartType="mLine" dataKey={['uv','pv']}/>
+                                <Charts chartType="mLine" title="" dataKey={['uv','pv']}/>
                             </section>
 
                             <section className={`${styles.item} ${styles.value6}`}>

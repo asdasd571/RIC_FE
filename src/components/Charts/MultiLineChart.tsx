@@ -39,7 +39,7 @@ const MultiLineChart :React.FC<ChartProps> = ({
                                 dataKey={currentName}
                                 stroke={color} // 색상 지정
                                 activeDot={{ r: 8 }}
-                                strokeWidth={2}
+                                strokeWidth={1}
                             />
                         ))
                     }
@@ -47,7 +47,9 @@ const MultiLineChart :React.FC<ChartProps> = ({
                     
                 </LineChart>
             </ResponsiveContainer>
-            <h3 className={styles.chart_title}> {title} </h3>
+            { title?.length > 0 ? // 차트 제목 길이가 0이상이면, 타이틀 출력!
+                <h3 className={styles.chart_title} > {title} </h3> : <></>
+            }
         </div>
 
         

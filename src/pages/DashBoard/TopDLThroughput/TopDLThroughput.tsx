@@ -19,11 +19,11 @@ import defaultAxios from "../../../apis/defaultAxios";
 const TopDLThroughput : React.FC = () => {
 
     // * 상태 ======================== //
-    const [cellData, setCellData] = useState([]);
+    const [cellData, setCellData] = useState([]); // cellMetrics 데이터
     // * ============================= //
 
 
-    //* cellMetrics 데이터 받기 //cell-metrics
+    //* cellMetrics 데이터 받기 //cell-metrics (셀별 DL_Rate)
     const getCellData = async () => { // todo : Charts 실시간 API 연결. 
         try {
             const url: string = `/cell-metrics`;
@@ -60,7 +60,7 @@ const TopDLThroughput : React.FC = () => {
                         textColor="black" 
                         colors={['#0077C2','#0077C2','#C8FFFF']} // 초록-노랑-빨강 그라데이션
                 />
-                <h3 className={styles.chart_title}> 바늘 차트</h3>
+                <h3 className={styles.chart_title}> DL_SUM</h3>
                 
             </section>
             <section className={styles.item}>

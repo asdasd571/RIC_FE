@@ -41,7 +41,9 @@ const SimpleLineChart :React.FC<ChartProps> = ({
                     
                 </LineChart>
             </ResponsiveContainer>
-            <h3 className={styles.chart_title} > {title} </h3>
+            { title?.length > 0 ? // 차트 제목 길이가 0이상이면, 타이틀 출력!
+                <h3 className={styles.chart_title} > {title} </h3> : <></>
+            }
         </div>
 
         

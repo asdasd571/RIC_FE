@@ -22,7 +22,7 @@ const EtriRIC : React.FC = ()=>{
 
 
     
-
+    // todo : 실시간 연결.
     //* ricinfo 데이터 받기
     const getRicInfoData = async ():Promise<void> => {
         try {
