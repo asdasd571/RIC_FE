@@ -58,15 +58,38 @@
         }
     }
 
-    .value1_1 { grid-area: value1_1; }
-    .e2_nodes { grid-area: e2_nodes; }
-    .etri_ric { grid-area: etri_ric; }
-    .value1_2 { grid-area: value1_2; }
-    .value2   { grid-area: value2; }
-    .value3   { grid-area: value3; }
-    .value4   { grid-area: value4; }
-    .value5   { grid-area: value5; }
-    .value6   { grid-area: value6; }
+    .value1_1 { 
+        grid-area: value1_1;
+        min-height: 400px; 
+    }
+        
+    .e2_nodes { 
+        grid-area: e2_nodes;
+        min-height: 504px;
+    }
+    .etri_ric { 
+        grid-area: etri_ric;
+        min-height: 504px;
+    }
+    .value1_2 { 
+        grid-area: value1_2;
+        
+    }
+    .value2   { 
+        grid-area: value2;
+    }
+    .value3   { 
+        grid-area: value3;
+        background-color: #59A5F5; color: #FFFFFF;}
+    .value4   { 
+        grid-area: value4;
+        background-color: #59A5F5; color: #FFFFFF;}
+    .value5   { 
+        grid-area: value5;
+    }
+    .value6   { 
+        grid-area: value6;
+        background-color: #59A5F5; color: #FFFFFF;}
 
 
 }

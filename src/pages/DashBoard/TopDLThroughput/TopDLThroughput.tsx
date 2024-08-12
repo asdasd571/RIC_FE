@@ -13,13 +13,20 @@ import { useEffect, useState } from "react";
 import defaultAxios from "../../../apis/defaultAxios";
 
 
-
-
+// * 입력받는 데이터 형식 [/cell-sum] 
+interface CellSum {
+    DL_rate : number;
+    Num_Cell : number;
+    Num_Ue : number;
+    Timestamp: string;
+    UL_rate : number;
+}
 
 const TopDLThroughput : React.FC = () => {
 
     // * 상태 ======================== //
     const [cellData, setCellData] = useState([]); // cellMetrics 데이터
+    const [cellSumData, setCellSumData] = useState<CellSum>(); // 바늘 차트에 나타낼 데이터
     // * ============================= //
 
 
@@ -36,13 +43,27 @@ const TopDLThroughput : React.FC = () => {
         }
     }
 
+    //* /cell-sum 데이터 받기 //cell-sum (셀 통합 데이터)
+    const getCellSumData = async () => { // todo : Charts 실시간 API 연결. 
+        try {
+            const url: string = `/cell-sum`;
+            const response = await defaultAxios.get(url);
+
+            // 성공 핸들링
+            setCellSumData(response.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+
     //*첫 렌더링 시 실행
     useEffect(()=>{
         getCellData(); // 셀 데이터를 받아온다.
-        console.log(cellData);
+        getCellSumData(); // 셀 통합 데이터 받아오기.
+        // console.log(cellData);
+        
     },[]);
-
-    //todo : 추후 GagueChart API 연결
     
 
 
@@ -56,7 +77,7 @@ const TopDLThroughput : React.FC = () => {
                         arcPadding={0} // 호 사이 패딩
                         nrOfLevels={100}  //100%까지
                         cornerRadius={0}  // 코너 둥글게?
-                        percent={0.56}  /// todo : 차트 percent 백엔드로 받아와야함
+                        percent={cellSumData?.DL_rate}  // sum 데이터 적용
                         textColor="black" 
                         colors={['#0077C2','#0077C2','#C8FFFF']} // 초록-노랑-빨강 그라데이션
                 />

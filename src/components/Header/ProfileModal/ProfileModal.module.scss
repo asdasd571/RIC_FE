@@ -3,6 +3,8 @@
 
 
 .container{
+    z-index: 1; // * 우선순위
+    
     display: grid;
     grid-template-columns: 1fr 2fr;
     place-items: center;

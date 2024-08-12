@@ -5,10 +5,12 @@
 
 .container {
     @include full-size-flex(row);
-
-    overflow-y: scroll; // y측 길어지면 스크롤
+    
+    overflow-y: auto; // y측 길어지면 스크롤
     // 메인 & 헤더 컨테이너
     .main_header_container {
+        overflow: scroll;
+
         // 헤더
         @include full-size-flex(column);
         // justify-content: center;
@@ -25,7 +27,7 @@
             // min-width: 1160px;
             min-height: 924px;   
             max-width: 1820px; // 최대 1920x 1080 기준으로 진행. 
-            overflow: hidden;
+
 
         }
     }

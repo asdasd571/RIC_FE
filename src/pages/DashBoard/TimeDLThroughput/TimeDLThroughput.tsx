@@ -25,6 +25,7 @@ interface TimeDLThroughputProps {
     type : 'DL_rate' | 'UL_rate' | 'Num_UE';
 }
 
+//todo : 이걸 마저 수정해야함. 과연 이게 맞는건가 ? type우로 pros를 주는 것이 
 /** 실시간 TimeStamp가 있는 멀티 라인 그래프 출력. (각각 DL,UL Throughput을 출력.)
  * @param type : 'DL_rate' | 'UL_rate' | 'Num_UE' - 라인 타입을 하나 고를 수 있다
  * ,

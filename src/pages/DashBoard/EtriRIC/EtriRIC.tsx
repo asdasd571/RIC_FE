@@ -9,6 +9,7 @@ interface RicInfoType {
     value: string;
     name: string;
     state: "OFF" | "ON" | "ERROR" | "WARNING";  // 상태는 고정된 문자열이므로 Union 타입으로 정의
+    description: string; // value에 대한 설명
 }
 
 
@@ -73,14 +74,17 @@ const EtriRIC : React.FC = ()=>{
 
         {ricInfoData.map((ric, index)=> (
             <section className={styles.item}>
-                <div className={styles.item_values}>
-                    <span className={styles.item_value}>
-                        {ric.value}
-                    </span>
+                <div className={styles.item_titles}>
                     <span className={styles.item_name}>
                         {ric.name}
                     </span>
+                    <span className={styles.item_description}>
+                        {ric.description}
+                    </span>    
                 </div>
+                <div className={styles.item_value}>
+                        {ric.value}
+                </div>       
                 <div  
                     className={styles.item_state}
                     style={{

@@ -7,6 +7,7 @@ import styles from "./DashBoard.module.scss";
 import EtriRIC from "./EtriRIC/EtriRIC";
 import TimeDLThroughput from "./TimeDLThroughput/TimeDLThroughput";
 import TopDLThroughput from "./TopDLThroughput/TopDLThroughput";
+import ValueCard from "./ValueCard/ValueCard";
 
 const DashBoard: React.FC = () => {
 
@@ -56,12 +57,15 @@ const DashBoard: React.FC = () => {
                             <section className={`${styles.item} ${styles.value3}`}>
                                 <h3 className={styles.item_title} >value3</h3>
                                 <hr/>
+                                <ValueCard/>
                                 
                             </section>
 
                             <section className={`${styles.item} ${styles.value4}`}>
                                 <h3 className={styles.item_title} >UL Throughput</h3>
                                 <hr/>
+                                <ValueCard/>
+
 
                             </section>
 
@@ -74,7 +78,8 @@ const DashBoard: React.FC = () => {
                             <section className={`${styles.item} ${styles.value6}`}>
                                 <h3 className={styles.item_title} >value6</h3>
                                 <hr/>
-
+                                <ValueCard/>
+                                
                             </section>
 
                         </div>

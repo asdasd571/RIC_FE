@@ -1,0 +1,52 @@
+@import '../../../styles/mixins';
+@import '../../../styles/variables';
+
+
+
+.container{
+    @include full-size-flex(column);
+    min-width: 15rem; //240px
+    // min-height: 8.125rem; //130px
+    color: #C8FFFF;
+    box-sizing: border-box;
+    padding-left: 5%;
+    // * value값, +-값
+    .section_value{
+        @include full-size-flex(row);
+        justify-content: center;
+        justify-items: center;
+    
+        // value값
+        .value{
+            font-size: 3.75rem;
+            flex: 2;
+            text-align: left;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .plus_minus{
+            font-size:1.25rem;
+            color: #FFFFFF;
+            font-weight: bold;
+            flex: 1;
+            display: flex;
+            align-items: end;
+            box-sizing: border-box;
+            padding-bottom: 10px;
+            
+
+        }
+
+
+    }
+
+
+    // * 작은 설명 부분 
+    .section_description{
+        font-size: 0.9375rem;
+        width: 100%;
+        text-align: left;
+    }   
+}

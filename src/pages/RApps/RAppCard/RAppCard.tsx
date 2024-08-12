@@ -4,36 +4,7 @@ import styles from "./RAppCard.module.scss";
 // RAPP의 패널을 나타낸다.
 import { rAppCardType } from "../../../types/RApp.types";
 
-// * temp rApp 데이터
-const tempData : rAppCardType[] = [
-    
-    {
-        "description": "TEST",
-        "name": "ETRI RIC Back-end rApp",
-        "open": "localhost:5000",
-        "rappSchema": {
-            "ServiceType": "ETRI RIC Back-end rApp",
-            "rAppId": "etri-ric-gui",
-            "vendor": "ETRI",
-            "version": "v1.0.0"
-        },
-        "state": "ON"
-    },
 
-    {
-        "description": "TEST",
-        "name": "ETRI RIC Back-end rApp2",
-        "open": "localhost:5000",
-        "rappSchema": {
-            "ServiceType": "ETRI RIC Back-end rApp",
-            "rAppId": "etri-ric-gui",
-            "vendor": "ETRI",
-            "version": "v1.0.0"
-        },
-        "state": "ON"
-    },
-
-]
 
 //* Props로 넘겨받기 위해 인터페이스 생성.
 interface RAppProps{
@@ -44,10 +15,10 @@ interface RAppProps{
 /** RAPP 카드들을 출력한다.
  * @param data : rAppCardType[] 으로, 출력할 RAPP 카드 객체 배열이다.
  */
-const RAppCard : React.FC<RAppProps> = ({data = tempData }) => {
+const RAppCard : React.FC<RAppProps> = ({data }) => {
     return (
         <>
-            {data.map((item, index)=> (
+            {data?.map((item, index)=> (
                 <div className={styles.container} key={item.rappSchema.rAppId}>
                     <section className={styles.header_container}>
                         <div className={styles.header_content}>
