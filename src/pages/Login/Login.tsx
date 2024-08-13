@@ -6,12 +6,14 @@ import useNavigates from "../../hooks/useNavigates";
 
 import eyeOFF from "../../assets/imgs/eyeOFF.svg";
 import eyeON from "../../assets/imgs/eyeON.svg";
+import Swal from "sweetalert2";
+import defaultAxios from "../../apis/defaultAxios";
 
 const Login: React.FC = () => {
 
         const {goMain,  goSignUp} = useNavigates(); // 홈으로 가는 네비게이션 함수.
 
-        const [userEmail , setUserEmail] = useState(""); // 유저 id
+        const [userName , setUserName] = useState(""); // 유저 id
         const [password, setPassword]  = useState(""); // 유저 비밀번호
         const [isLogin, setIsLogin] = useState(false); // 로그인 상태
 
@@ -22,11 +24,38 @@ const Login: React.FC = () => {
             setIsShowPass(!isShowPass); // 반대로 변경!
         }
 
-        //* 로그인하는 함수
-        const handleLogin = ():void =>{
-             // 로그인 처리 로직을 구현합니다.
-            console.log("로그인 실행!",'UserEmail',userEmail, 'password:',password);
-            goMain();
+        //* 로그인하는 함수 (id : admin, password : admin)
+        const handleLogin = async () => {            
+            // 1. 폼 데이터 세팅
+            const formData = new FormData();
+            formData.append('username', userName); 
+            formData.append('password',password);
+
+            // 2. 로그인 API 호출
+            const url=`/login`;
+
+            try{
+                const response = await defaultAxios.post(url, formData);
+                
+                //2-1. 성공시/실패시 호출 
+                // 로그인 성공시,
+                if (response.data.message === "OK"){
+                    goMain(); //main 페이지로 이동
+                } else { // 로그인 실패시  
+                    Swal.fire({
+                        icon:'error',
+                        text:'로그인에 실패했습니다.'
+                    });
+                }
+
+                
+            }catch(error){
+                console.error(error);
+                Swal.fire({
+                    icon:'error',
+                    text:'로그인에 실패했습니다.'
+                })
+            }
         } 
 
         //* 폼 제출 처리 함수
@@ -58,9 +87,9 @@ const Login: React.FC = () => {
                             required
                             maxLength={20}
                             type="text"
-                            placeholder="UserEmail"
-                            value={userEmail}
-                            onChange={(e) => setUserEmail(e.target.value)}
+                            placeholder="UserName"
+                            value={userName}
+                            onChange={(e) => setUserName(e.target.value)}
                             />
 
                         <div className={styles.pass_container}>

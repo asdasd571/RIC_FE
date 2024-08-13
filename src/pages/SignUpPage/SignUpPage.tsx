@@ -7,6 +7,16 @@ import useNavigates from "../../hooks/useNavigates";
 import eyeOFF from "../../assets/imgs/eyeOFF.svg";
 import eyeON from "../../assets/imgs/eyeON.svg";
 import Swal from "sweetalert2";
+import defaultAxios from "../../apis/defaultAxios";
+
+// 회원가입 폼 데이터
+interface RegisterDto {
+    username: string;
+    email: string;
+    password: string;
+    password2: string;
+    
+}
 
 const SignUpPage: React.FC = () => {
 
@@ -25,17 +35,66 @@ const SignUpPage: React.FC = () => {
         }
 
         //* 로그인하는 함수
-        const handleSignUp = ():void =>{
+        const handleSignUp = async () =>{
              // 로그인 처리 로직을 구현합니다.
-            console.log("회원가입 실행!",'userName',userName, 'password:',password);
-            Swal.fire({
-                icon: 'info',
-                text: '회원가입 되었습니다.',
-            });
-
+            // console.log("회원가입 실행!",'userName',userName, 'password:',password);
             
-            goLogin();
+            // // from에 입력한 데이터
+            // const dtoData : RegisterDto = {
+            //     username : userName,
+            //     email: userEmail,
+            //     password: password,
+            //     password2: password
+            // }            
+
+            // 1. 폼 데이터 세팅
+            const formData= new FormData();
+            formData.append('username', userName);
+            formData.append('email', userEmail);
+            formData.append('password', password);
+            formData.append('password2', password);
+
+            // 2. API호출  //* 서버로 회원가입 요청
+            const url= `/register`;
+            try{
+                const response = await defaultAxios.post(url,formData); //todo : 회원가입 로직 하기!
+                // console.log('/register',response);
+
+                // 3. 성공시 / 실패시 구현
+                // 회원가입 성공 시 
+                if (response.data.message === "OK"){
+                    Swal.fire({
+                        icon: 'info',
+                        text: '회원가입 되었습니다.',
+                    });
+                    goLogin();// 로그인 페이지로 이동
+                }else { //회원가입 실패시
+                    Swal.fire({
+                        icon: 'error',
+                        text: '회원가입에 실패했습니다.',
+                    });
+
+                    // input 초기화
+                    setUserName('');
+                    setPassword('');
+                    setUserEmail('');
+                }
+
+    
+            }catch(error){ //회원가입 실패시
+                console.log(error);
+                Swal.fire({
+                    icon: 'error',
+                    text: '회원가입에 실패했습니다.',
+                });
+
+                // input 초기화
+                setUserName('');
+                setPassword('');
+                setUserEmail('');
+            }
         } 
+
 
         //* 폼 제출 처리 함수
         const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -53,11 +112,10 @@ const SignUpPage: React.FC = () => {
                 <section>
                     <div className={styles.intro_container}>
                         <h1 className={styles.title} >
-                            Create Account
+                            Sign UP
                         </h1>
                         <div className={styles.description}>
-                            hello...
-                            {/* hello... // todo : 여기 글 넣을지 말지 결정해야함 */}
+                            Create Your Account
                         </div>
                     </div>
 

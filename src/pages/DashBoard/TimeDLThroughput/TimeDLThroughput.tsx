@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react"
 import defaultAxios from "../../../apis/defaultAxios";
 import Charts from "../../../components/Charts/Charts";
 import { testMultiData } from "../../../components/Charts/testData";
+import { useQuery } from "@tanstack/react-query";
 
 
 interface RawData{
@@ -25,6 +26,9 @@ interface TimeDLThroughputProps {
     type : 'DL_rate' | 'UL_rate' | 'Num_UE';
 }
 
+
+
+
 //todo : 이걸 마저 수정해야함. 과연 이게 맞는건가 ? type우로 pros를 주는 것이 
 /** 실시간 TimeStamp가 있는 멀티 라인 그래프 출력. (각각 DL,UL Throughput을 출력.)
  * @param type : 'DL_rate' | 'UL_rate' | 'Num_UE' - 라인 타입을 하나 고를 수 있다
@@ -32,7 +36,6 @@ interface TimeDLThroughputProps {
  *  */ 
 const TimeDLThroughput:React.FC<TimeDLThroughputProps> = ({type}) => {
     // * 상태 ======================== //
-    const [cellData, setCellData] = useState<RawData[]>([]); // cellMetrics 데이터
     const [cellQueue, setCellQueue] = useState<ChartData[]>([]);
     const [keys, setKeys] = useState<string[]>([]); // 키 모음
     // * ============================= //
@@ -54,17 +57,29 @@ const TimeDLThroughput:React.FC<TimeDLThroughputProps> = ({type}) => {
         try {
             const url: string = `/cell-metrics`;
             const response = await defaultAxios.get(url);
+            return response.data;
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
-            // 성공 핸들링
-            setCellData(response.data); // 성공 데이터 저장
 
-            const data : RawData[] = response.data;
 
+    // userQuery로 데이터 패칭 및 주기적 업데이트
+    const {data: cellData} = useQuery({
+        queryKey: ['cellData'],
+        queryFn: getCellData,
+        // refetchInterval: 1000 //1초마다 refetch
+
+    });
+
+    // * cellData가 바뀔때마마다 실행 (큐 업데이트.)
+    useEffect(()=>{
+
+        if (cellData){
             const result: ChartData = { Timestamp: ""};
-            
-
             // 모든 데이터를 하나로 합친다.
-            data.forEach((item) => {
+            cellData?.forEach((item:RawData) => {
                 result[`DL_rate_Cell_ID_${item.Cell_ID}`] = item.DL_rate;
                 result[`UL_rate_Cell_ID_${item.Cell_ID}`] = item.UL_rate;
                 result[`Num_UE_Cell_ID_${item.Cell_ID}`] = item.Num_UE;
@@ -73,23 +88,8 @@ const TimeDLThroughput:React.FC<TimeDLThroughputProps> = ({type}) => {
 
             updateQueue(result, setCellQueue);
             setKeys(Object.keys(result)); // 키 저장
-
-        } catch (error) {
-            console.log(error);
         }
-    }
-
-    //*첫 렌더링 시 실행
-    useEffect(()=>{
-        
-        for (let i:number =0; i <=10; i++){
-            getCellData(); // 셀 데이터를 받아온다.
-            // console.log(cellData);
-            
-            console.log(cellQueue);
-        }
-
-    },[]);
+    }, [cellData]);
 
 
     return(

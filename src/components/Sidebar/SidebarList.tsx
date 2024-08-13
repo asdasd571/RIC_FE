@@ -6,6 +6,7 @@ import { SidebarData, SidebarItem } from '../../types/Sidebar.types';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from "sweetalert2";
 import {ReactComponent as Svg} from "../../assets/*.svg";
+import defaultAxios from '../../apis/defaultAxios';
 
 
 // 사이드바 리스트 컴포넌트 Props 정의
@@ -45,13 +46,27 @@ const SidebarList: React.FC<SidebarListProps> = ({ sidebarDatas }) => {
     };
 
     // *로그아웃 처리
-    const handleLogout = () => {
+    const handleLogout = async () => {
+
+        //1. 로그아웃 API 호출 
+        const url=`/logout`; 
+        try{
+            const response = await defaultAxios.get(url);
+            //todo 로그아웃 성공했는지 비교하는 로직도 필요 (api data 추가되면 수정하기, 0812 ) 
+            Swal.fire({
+                icon: 'info',
+                text: '로그아웃 되었습니다.',
+            });
+            navigate('/login'); // 로그인 페이지로 이동
+        } catch(error){
+            console.error(error);
+            Swal.fire({
+                icon: 'error',
+                text: '로그아웃에 실패했습니다.',
+            });
+        }
         // console.log('Logging out...');
-        Swal.fire({
-            icon: 'info',
-            text: '로그아웃 되었습니다.',
-        });
-        navigate('/login'); // 로그인 페이지로 이동
+
     };
 
     return (

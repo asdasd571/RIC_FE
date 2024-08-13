@@ -13,6 +13,8 @@ import Overview from './pages/Overview/Overview';
 import XApps from './pages/XApps/XApps';
 import Platform from './pages/Platform/Platform';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 
 function App() {
@@ -41,25 +43,40 @@ function App() {
 
   // ** ============================================** //
 
+  //* react-query
+  const queryClient = new QueryClient({
+    defaultOptions:{
+      queries:{
+        refetchInterval : 1000, // *기본 refetchInterval 설정(1초)
+      }
+    }
+  });
+
+
   // 로그인 부분 나타냄.
   return (
-    <div className={styles.screen}>
-        <Routes>
-          <Route path="/" element={<DashBoard />} />
-          <Route path="/overview" element={<Overview/>} />
-          <Route path="/smo-oam" element={<div>smo-oam</div>} />
-          <Route path="/rapp" element={<RApps/>} />
-          <Route path="/framework" element={<Framework/>} />
-          <Route path="/xapp" element={<XApps/>} />
-          <Route path="/platform" element={<Platform/>} />
-          <Route path="/e2-node" element={<div>e2-node</div>} />
-          <Route path="/setting" element={<div>setting</div>} />
-          <Route path="/login" element={<Login/>}/>
-          <Route path="/sign-up" element={<SignUpPage/>}/>
-          <Route path="*" element={<div>404 Not Found Page</div>}/>
-          <Route path="/test" element={<Test/>}/>
-        </Routes>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      {/* 기본적으로 개발 도구가 열려 있도록 설정한다. */}
+      <ReactQueryDevtools initialIsOpen={true}/>     
+        <div className={styles.screen}>
+            <Routes>
+              <Route path="/" element={<DashBoard />} />
+              <Route path="/overview" element={<Overview/>} />
+              <Route path="/smo-oam" element={<div>smo-oam</div>} />
+              <Route path="/rapp" element={<RApps/>} />
+              <Route path="/framework" element={<Framework/>} />
+              <Route path="/xapp" element={<XApps/>} />
+              <Route path="/platform" element={<Platform/>} />
+              <Route path="/e2-node" element={<div>e2-node</div>} />
+              <Route path="/setting" element={<div>setting</div>} />
+              <Route path="/login" element={<Login/>}/>
+              <Route path="/sign-up" element={<SignUpPage/>}/>
+              <Route path="*" element={<div>404 Not Found Page</div>}/>
+              <Route path="/test" element={<Test/>}/>
+            </Routes>
+          
+        </div>
+    </QueryClientProvider>
   ); 
 }
 

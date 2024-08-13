@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./EtriRIC.module.scss";
 import defaultAxios from "../../../apis/defaultAxios";
+import { useQuery } from "@tanstack/react-query";
 
 // * ETRI RIC 목록을 모여주는 컨테이너
 
@@ -13,41 +14,25 @@ interface RicInfoType {
 }
 
 
-const EtriRIC : React.FC = ()=>{
-
-    // *ETRI RIC 4개 데이터
-    // const [ricInfoData, setRicInfoData] = useState<RicInfo[]>([]);
-    // const [ricInfoData, setRicInfoData] = useState<Record<string, any>[]>([]);
-    // Partial을 사용하면 모든 속성이 선택적(optional)이 됩니다.
-    const [ricInfoData, setRicInfoData] = useState<Partial<RicInfoType>[]>([]);
-
-
-    
+const EtriRIC : React.FC = ()=>{    
     // todo : 실시간 연결.
     //* ricinfo 데이터 받기
-    const getRicInfoData = async ():Promise<void> => {
+    const getRicInfoData = async () => {
         try {
             const url: string = `/ric-info`;
             const response=  await defaultAxios.get(url);
-
-            // 성공 핸들링
-            setRicInfoData(response.data);
+            return response.data;
         } catch (error) {
             console.log(error);
         }
     }
 
-
-    // *첫 렌더링 시 실행
-    useEffect(()=> {
-        getRicInfoData();
-        
-    },[]);
-
-    // * 테스트용 
-    useEffect(()=>{
-        console.log(ricInfoData);
-    },[ricInfoData]);
+    //* useQuery로 실시간 데이터 패칭
+    const {data: ricInfoData} = useQuery<RicInfoType[]>({
+        queryKey:['ricInfoData'], // 쿼리 키 
+        queryFn: getRicInfoData, // 쿼리 실행 함수
+        // refetchInterval: 1000, // 1초 단위 실행 
+    });
 
 
     // todo : soft코딩으로 바꿔줘야할듯?
@@ -72,7 +57,7 @@ const EtriRIC : React.FC = ()=>{
             </div>
         </div>
 
-        {ricInfoData.map((ric, index)=> (
+        {ricInfoData?.map((ric, index)=> (
             <section className={styles.item}>
                 <div className={styles.item_titles}>
                     <span className={styles.item_name}>

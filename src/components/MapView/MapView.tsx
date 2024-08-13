@@ -6,6 +6,7 @@ import cellON from "../../assets/imgs/cellON.svg";
 import cellOFF from "../../assets/imgs/cellOFF.svg"
 import axios from 'axios';
 import defaultAxios from '../../apis/defaultAxios';
+import { useQuery } from '@tanstack/react-query';
 
 
 
@@ -33,48 +34,38 @@ const StyledMarkerName = styled.div`
     /* background-color: red; */
 `;
 
+// network-info 데이터 타입
+interface RICData {
+    Cell_ID : number;
+    Cell_ID_Full: string;
+    Num_UE: number;
+    State : number;
+    Tx_Power: number;
+    X_Pos : number;
+    Y_Pos : number;
+    Z_Pos : number;
+}
+
 // * KAKAO 지도를 보여주는 부분.
 const MapView : React.FC = () => {
-
-
-        //========= 상태 ==============//
-    // 위치 정보를 받아옵니당
-    const [ricData, setRicData] = useState([]);
-    //=============================//
 
     //* RIC 데이터 받기 , /network-info
     const getRicData = async () => {
         try {
-
             const url:string = `/network-info`;
             const response = await defaultAxios.get(url);
-            
-            // 성공 핸들링
-            setRicData(response.data);
-            // console.log(ricData)
-            // console.log('network-info',response.data);
-            
+            return response.data;            
         } catch (error) {
-            // 실패시 핸들링
             console.log(error);
-            // throw error; // 오류를 다시 던져서 호출한 쪽에서 오류 처리 가능
         }
-        }
+    }
 
-    // useEffect(()=>{
-    //     // 설정된 시간 간격마다 setInterval 콜백이 실행된다.
-    //     const id = setInterval(()=> {
-    //     getRicData();
-
-
-    //     }, 1000); //n초에 한번씩 실행됨.
-
-    //     return () => clearInterval(id);
-    // }, [ ricData]); // ricData는 n초 간격으로 바뀐다.
-    //* 첫 렌더링 시 실행
-    useEffect(()=>{
-        getRicData();
-    },[])
+    // react-query로 데이터 패칭 및 주기적 업데이트
+    const {data: ricData} = useQuery<RICData[]>({
+        queryKey: ['ricData'],
+        queryFn: getRicData,
+        // refetchInterval: 1000 //1초마다 refetch
+    })
 
     return(
         <>
@@ -83,7 +74,7 @@ const MapView : React.FC = () => {
                 style={{ width: "100%", height: "100%" , borderRadius:"10px" }}
             >
 
-            {ricData.map((ric, index) => (
+            {ricData?.map((ric, index) => (
                 <>
                 <MapMarker
                     
