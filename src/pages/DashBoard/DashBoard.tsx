@@ -35,7 +35,7 @@ const DashBoard: React.FC = () => {
                             </section>
 
                             <section className={`${styles.item} ${styles.etri_ric}`}>
-                                <h3 className={styles.item_title} >ETRI RIC</h3>
+                                <h3 className={styles.item_title} >ERIC</h3>
                                 <hr/>
                                 <EtriRIC/>
                             </section>
@@ -55,7 +55,7 @@ const DashBoard: React.FC = () => {
                             </section>
 
                             <section className={`${styles.item} ${styles.value3}`}>
-                                <h3 className={styles.item_title} >DL Throughpu</h3>
+                                <h3 className={styles.item_title} >DL Throughput</h3>
                                 <hr/>
                                 <ValueCard type="DL_rate"/>
                                 

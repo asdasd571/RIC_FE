@@ -7,10 +7,9 @@
     @include full-size-flex(row);
     
     overflow-y: auto; // y측 길어지면 스크롤
-    
     // 메인 & 헤더 컨테이너
     .main_header_container {
-        overflow: scroll;
+        overflow-y: scroll;
 
         // 헤더
         @include full-size-flex(column);

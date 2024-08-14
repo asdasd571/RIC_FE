@@ -30,42 +30,42 @@ export const sidebarDatas: SidebarData[] = [
         title: null,
         items: [
             { name: 'Dashboard', icon: dashboard, path: '/' , id:0},
-            { name: 'Overview', icon: structure, path: '/overview' , id:1}
+            { name: 'Overview', icon: structure, path: '/overview' , id:1},
+            { name: 'DM', icon: log, path: '/dm',id:2 }
         ]
     },
     {
         title: 'SMO/ OAM',
         items: [
-            { name: 'SMO/OAM', icon: smo_oam, path: '/smo-oam' ,id:2}
+            { name: 'SMO/OAM', icon: smo_oam, externalUrl: process.env.REACT_APP_SMO_OAM_PATH ,id:3}
         ]
     },
     {
         title: 'Non-RT-RIC',
         items: [
-            { name: 'rApps', icon: rapp, path: '/rapp' , id:3},
-            { name: 'Framework', icon: framework, path: '/framework' ,id:4}
+            { name: 'rApps', icon: rapp, path: '/rapp' , id:4},
+            { name: 'Framework', icon: framework, path: '/framework' ,id:5}
         ]
     },
     {
         title: 'Near-RT-RIC',
         items: [
-            { name: 'xApps', icon: xapp, path: '/xapp' ,id:5},
-            { name: 'Platform', icon: platform, path: '/platform' , id:6}
+            { name: 'xApps', icon: xapp, path: '/xapp' ,id:6},
+            { name: 'Platform', icon: platform, path: '/platform' , id:7}
         ]
     },
     {
         title: 'E2 Node',
         items: [
-            { name: 'E2 Node', icon: e2node, path: '/e2-node' ,id:7}
+            { name: 'E2 Node', icon: e2node, externalUrl: process.env.REACT_APP_E2_NODE_PATH ,id:8}
         ]
     },
     {
         title: 'Utilities',
         items: [
-            { name: 'VIAVI', icon: VIAVI, externalUrl: process.env.REACT_APP_VIAVI_URL ,id:8},
-            { name: 'InfluxDB', icon: influxdb, externalUrl: 'https://naver.com',id:9 },
-            { name: 'DM', icon: log, externalUrl: 'https://naver.com',id:10 },
-            { name: 'Grafana', icon: grafana, externalUrl: 'https://naver.com',id:11 }
+            { name: 'VIAVI', icon: VIAVI, externalUrl: process.env.REACT_APP_VIAVI_URL ,id:9},
+            { name: 'InfluxDB', icon: influxdb, externalUrl: process.env.REACT_APP_INFLUXDB_PATH,id:10 },
+            { name: 'Grafana', icon: grafana, externalUrl: process.env.REACT_APP_GRAFANA_PATH ,id:11 }
         ]
     },
     {
