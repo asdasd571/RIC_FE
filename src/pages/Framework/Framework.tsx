@@ -23,9 +23,7 @@ const Framework: React.FC = () => {
         try{
             const url:string = `/rblock`;
             const response = await defaultAxios.get(url);
-
             setFrameworkList(response.data); 
-            console.log('성공 /rblock', response.data );
         } catch (error) {
             console.error('오류 발생!',error);
         }    

@@ -55,16 +55,16 @@ const DashBoard: React.FC = () => {
                             </section>
 
                             <section className={`${styles.item} ${styles.value3}`}>
-                                <h3 className={styles.item_title} >value3</h3>
+                                <h3 className={styles.item_title} >DL Throughpu</h3>
                                 <hr/>
-                                <ValueCard/>
+                                <ValueCard type="DL_rate"/>
                                 
                             </section>
 
                             <section className={`${styles.item} ${styles.value4}`}>
                                 <h3 className={styles.item_title} >UL Throughput</h3>
                                 <hr/>
-                                <ValueCard/>
+                                <ValueCard type="UL_rate"/>
 
 
                             </section>
@@ -72,13 +72,13 @@ const DashBoard: React.FC = () => {
                             <section className={`${styles.item} ${styles.value5}`}>
                                 <h3 className={styles.item_title} >Active UE</h3>
                                 <hr/>
-                                <Charts chartType="mLine" title="" dataKey={['uv','pv']}/>
+                                <TimeDLThroughput type="Num_UE"/>
                             </section>
 
                             <section className={`${styles.item} ${styles.value6}`}>
-                                <h3 className={styles.item_title} >value6</h3>
+                                <h3 className={styles.item_title} >Active UE</h3>
                                 <hr/>
-                                <ValueCard/>
+                                <ValueCard type="Num_UE"/>
                                 
                             </section>
 

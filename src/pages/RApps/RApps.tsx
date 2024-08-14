@@ -8,72 +8,6 @@ import defaultAxios from "../../apis/defaultAxios";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-// 카드 데이터
-// const rAppCardsData:rAppCardType[] =  [
-//     {
-//         name : "Energy Saving",
-//         rappSchema : {
-//             rAppId : "1",
-//             ServiceType : "Network Energy Saving Service"
-//         },
-//         description : "Turns off cells if the loading is low"
-//     },
-//     {
-//         name : "RAN Performance",
-//         rappSchema : {
-//             rAppId : "2",
-//             ServiceType : "RAN KPI Monitoring Service"
-//         },
-//         description : "Provides insight into RAN KPI"
-//     },
-//     {
-//         name : "RAN Performance",
-//         rappSchema : {
-//             rAppId : "2",
-//             ServiceType : "RAN KPI Monitoring Service"
-//         },
-//         description : "Provides insight into RAN KPI"
-//     },
-//     {
-//         name : "RAN Performance",
-//         rappSchema : {
-//             rAppId : "2",
-//             ServiceType : "RAN KPI Monitoring Service"
-//         },
-//         description : "Provides insight into RAN KPI"
-//     },
-//     {
-//         name : "RAN Performance",
-//         rappSchema : {
-//             rAppId : "2",
-//             ServiceType : "RAN KPI Monitoring Service"
-//         },
-//         description : "Provides insight into RAN KPI"
-//     },
-//     {
-//         name : "RAN Performance",
-//         rappSchema : {
-//             rAppId : "2",
-//             ServiceType : "RAN KPI Monitoring Service"
-//         },
-//         description : "Provides insight into RAN KPI"
-//     },
-//     {
-//         name : "RAN Performance",
-//         rappSchema : {
-//             rAppId : "2",
-//             ServiceType : "RAN KPI Monitoring Service"
-//         },
-//         description : "Provides insight into RAN KPI"
-//     }
-
-// ]
-
-
-
-
-
-
 const RApps: React.FC = () => {
 
     //* ========== state ======================= //
@@ -94,9 +28,7 @@ const RApps: React.FC = () => {
             // console.log('성공 /rapp', response.data );
         } catch (error) {
             console.error('오류 발생!',error);
-        }// finally {
-        //     console.log("항상 실행되는");
-        // }        
+        }
     }
     //* ======================================== //
 

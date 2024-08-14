@@ -3,11 +3,11 @@ import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsiv
 import styles from './Charts.module.scss';
 import testData from './testData';
 
-import { ChartProps } from '../../types/Chart.types';
+import { ChartProps, MChartProps } from '../../types/Chart.types';
 
-const MultiLineChart :React.FC<ChartProps> = ({
+const MultiLineChart :React.FC<MChartProps> = ({
     data = testData,
-    color = "#99d98c",
+    color = ["#99d98c","#2d3142"],
     dataKey=["pv","uv"],
     title="ChartName",
     name="name",
@@ -37,8 +37,8 @@ const MultiLineChart :React.FC<ChartProps> = ({
                                 animationDuration={0}
                                 type="monotone"
                                 dataKey={currentName}
-                                stroke={color} // 색상 지정
-                                activeDot={{ r: 8 }}
+                                stroke={color[index]} // 색상 지정
+                                activeDot={{ r: 6 }}
                                 strokeWidth={1}
                             />
                         ))
