@@ -23,6 +23,12 @@ interface CellSum {
     UL_rate : number;
 }
 
+// 바 차트 색상 .
+const colors = [ // .//todo : 이 친구를 전체 상태로 해야할듯 (bar에 적용해야함)
+    "#C8FFFF", "#A1EBFF", "#7AD8FF", "#55C4FF", "#00BFFF",
+    "#0098D4", "#0080B3", "#00699B", "#005282", "#31297C"
+];
+
 const TopDLThroughput : React.FC = () => {
 
     //* cellMetrics 데이터 받기 //cell-metrics (셀별 DL_Rate)
@@ -81,9 +87,9 @@ const TopDLThroughput : React.FC = () => {
             <section className={styles.item}>
                 {/* <SimpleBarChart/> */}
                 <Charts 
-                    chartType="bar"
+                    chartType="cell"
                     data={cellData}
-                    color="#59A5F5"
+                    colors={colors}
                     dataKey="DL_rate"
                     title="DL_rate"
                     name="Cell_ID"

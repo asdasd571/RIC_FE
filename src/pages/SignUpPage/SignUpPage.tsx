@@ -24,7 +24,8 @@ const SignUpPage: React.FC = () => {
 
         const [userName , setUserName] = useState(""); // 유저 id
         const [password, setPassword]  = useState(""); // 유저 비밀번호
-        const [userEmail, setUserEmail] = useState("");
+        const [userEmail, setUserEmail] = useState(""); // 유저 이메일 
+        const [rePassword, setRePassword] = useState(""); // 비밀번호 확인 
         const [isSignUp, setIsSignUp] = useState(false); // 로그인 상태
 
         const [isShowPass, setIsShowPass] = useState(false); // 비밀번호 볼건지 안볼건지
@@ -52,7 +53,7 @@ const SignUpPage: React.FC = () => {
             formData.append('username', userName);
             formData.append('email', userEmail);
             formData.append('password', password);
-            formData.append('password2', password);
+            formData.append('password2', rePassword);
 
             // 2. API호출  //* 서버로 회원가입 요청
             const url= `/register`;
@@ -60,25 +61,38 @@ const SignUpPage: React.FC = () => {
                 const response = await defaultAxios.post(url,formData); //todo : 회원가입 로직 하기!
                 // console.log('/register',response);
 
-                // 3. 성공시 / 실패시 구현
-                // 회원가입 성공 시 
-                if (response.data.message === "OK"){
-                    Swal.fire({
-                        icon: 'info',
-                        text: '회원가입 되었습니다.',
-                    });
-                    goLogin();// 로그인 페이지로 이동
-                }else { //회원가입 실패시
-                    Swal.fire({
-                        icon: 'error',
-                        text: '회원가입에 실패했습니다.',
-                    });
+                // * 3. 비밀번호 유효성 검사 성공 시 
+                if(password === rePassword){ // 비밀번호, 비밀번호 확인이 일치하는 경우,
+                    // *4. 성공시 / 실패시 구현
+                    // 회원가입 성공 시 
+                    if (response.data.message === "OK"){
+                        Swal.fire({
+                            icon: 'info',
+                            text: '회원가입 되었습니다.',
+                        });
+                        goLogin();// 로그인 페이지로 이동
+                    }else { //회원가입 실패시
+                        Swal.fire({
+                            icon: 'error',
+                            text: '회원가입에 실패했습니다.',
+                        });
 
-                    // input 초기화
-                    setUserName('');
-                    setPassword('');
-                    setUserEmail('');
+                        // input 초기화
+                        setUserName('');
+                        setPassword('');
+                        setUserEmail('');
+                        setRePassword('');
+                    }
+
+                    // *3-1. 비밀번호 유효성 검사 실패 시
+                } else{
+                    Swal.fire({
+                        icon: 'warning',
+                        text: '비밀번호가 일치하지 않습니다.',
+                    });
+                    
                 }
+
 
     
             }catch(error){ //회원가입 실패시
@@ -92,6 +106,7 @@ const SignUpPage: React.FC = () => {
                 setUserName('');
                 setPassword('');
                 setUserEmail('');
+                setRePassword('');
             }
         } 
 
@@ -153,6 +168,15 @@ const SignUpPage: React.FC = () => {
                                 src={isShowPass ? eyeON : eyeOFF}/>
                             
                         </div>
+
+                        <input 
+                                required
+                                maxLength={30}
+                                type={isShowPass ? "text" : "password"}
+                                placeholder="Confirm Password"
+                                value={rePassword}
+                                onChange={(e) => setRePassword(e.target.value)}
+                        />
 
 
 

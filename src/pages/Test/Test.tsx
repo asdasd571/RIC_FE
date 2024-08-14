@@ -4,6 +4,8 @@ import Header from "../../components/Header/Header";
 import Alarm from "../../components/Header/Alarm/Alarm";
 import ProfileModal from "../../components/Header/ProfileModal/ProfileModal";
 import RApp from "../RApps/RAppCard/RAppCard";
+import SimpleCellChart from "../../components/Charts/SimpleCellChart";
+import Charts from "../../components/Charts/Charts";
 
 const Test: React.FC = () => {
 
@@ -15,6 +17,8 @@ const Test: React.FC = () => {
             <button onClick={increment}> Increment </button>
             <button onClick={decrement}> decrement </button>
             <ProfileModal/>
+            {/* <SimpleCellChart/> */}
+            {/* <Charts chartType="cell"/> */}
             {/* <Alarm/> */}
             {/* <RApp/> */}
             
