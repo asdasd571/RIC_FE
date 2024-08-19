@@ -6,8 +6,15 @@ import ProfileModal from "../../components/Header/ProfileModal/ProfileModal";
 import RApp from "../RApps/RAppCard/RAppCard";
 import SimpleCellChart from "../../components/Charts/SimpleCellChart";
 import Charts from "../../components/Charts/Charts";
+import Sidebar from "../../components/Sidebar/Sidebar";
+import defaultAxios from "../../apis/defaultAxios";
+import { useQuery } from "@tanstack/react-query";
+import { fetchCellSumData } from "../../apis/dashboardApi";
+import DLSumPieChart from "../DashBoard/TopDLThroughput/DLSum";
 
 const Test: React.FC = () => {
+    
+
 
     const {count, increment, decrement } = useTestStore();
 
@@ -17,6 +24,8 @@ const Test: React.FC = () => {
             <button onClick={increment}> Increment </button>
             <button onClick={decrement}> decrement </button>
             <ProfileModal/>
+            {/* <Sidebar/> */}
+            <DLSumPieChart/>
             {/* <SimpleCellChart/> */}
             {/* <Charts chartType="cell"/> */}
             {/* <Alarm/> */}

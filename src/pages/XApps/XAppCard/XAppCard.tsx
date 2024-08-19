@@ -3,7 +3,7 @@ import xapp from "../../../assets/imgs/xapp.svg";
 import styles from "./XAppCard.module.scss";
 // RAPP의 패널을 나타낸다.
 import { XAppCardType } from "../../../types/XApp.types";
-
+import React from "react"
 
 
 //* Props로 넘겨받기 위해 인터페이스 생성.
@@ -23,7 +23,9 @@ const XAppCard : React.FC<RAppProps> = ({data }) => {
                     <section className={styles.header_container}>
                         <div className={styles.header_content}>
                             <h2>{item.name}</h2>
-                            <p>{item.ServiceType}</p>
+                            <p><strong>ServiceType: </strong>{item.ServiceType}</p>
+                            <p><strong>Version: </strong>{item.version}</p>
+                            <p><strong>Vendor:</strong>{item.vendor}</p>
                         </div>
                         <div className={styles.header_img}>
                             <img src={xapp} alt="xapp" />

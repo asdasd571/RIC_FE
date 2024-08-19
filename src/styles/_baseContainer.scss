@@ -3,32 +3,95 @@
 
 // 기본 대시보드 내의 컨테이너
 
+// .container {
+//     @include full-size-flex(row);
+//     background-color: #F5F5F5;
+//     // overflow-y: auto; // y측 길어지면 스크롤
+//     // 메인 & 헤더 컨테이너
+//     .main_header_container {
+        
+//         // 헤더
+//         @include full-size-flex(column);
+        
+        
+//         // justify-content: center;
+//         align-items: center; // 내부 가운대 정렬
+//         // 메인 컨테이너
+//         // overflow-y: scroll;
+//         background-color: #F5F5F5;
+//         .main_container {
+//             flex: 1; // 남은공간 모두 차 지 ~ 
+//             display: flex;
+            
+//             width: 100%;
+//             background-color: #F5F5F5;
+//             box-sizing: border-box;
+//             padding: 3.125rem;
+//             // min-width: 1160px;
+//             // min-height: 924px;
+//             // max-height: 1200px;
+//             max-width: 1820px; // 최대 1920x 1080 기준으로 진행. 
+
+
+//         }
+//     }
+// }
+
 .container {
     @include full-size-flex(row);
-    
-    overflow-y: auto; // y측 길어지면 스크롤
-    // 메인 & 헤더 컨테이너
-    .main_header_container {
-        overflow-y: scroll;
-
-        // 헤더
+    background-color: #F5F5F5;
+    // overflow: auto; // y측 길어지면 스크롤
+    .main_header_container{
+        flex: 1;
         @include full-size-flex(column);
-        // justify-content: center;
-        align-items: center; // 내부 가운대 정렬
-        // 메인 컨테이너
+        align-items: center;
+        background-color: #F5F5F5;
+            
+        // 메인 & 헤더 컨테이너
         .main_container {
             flex: 1; // 남은공간 모두 차 지 ~ 
-            display: flex;
+            @include full-size-flex(column);
             
-            width: 100%;
+            // justify-content: center;
+            align-items: center; // 내부 가운대 정렬
+            // 메인 컨테이너
+            // overflow-y: scroll;
+
             background-color: #F5F5F5;
             box-sizing: border-box;
-            padding: 3.125rem;
-            // min-width: 1160px;
-            min-height: 924px;   
-            max-width: 1820px; // 최대 1920x 1080 기준으로 진행. 
-
-
+            padding-top: 50px;
+            padding-bottom: 25px;
+            padding-left: 25px;
+            padding-right: 25px;
+            // padding : 2.5rem ;
+            // max-width: 1640px;
+            max-height: 1080px;
+            // max-height: 1200px;
+            max-width: 1640px; // 최대 1920x 1080 기준으로 진행. 
         }
     }
+
+
 }
+
+// .container {
+//     @include full-size-flex(row);
+//     background-color: #F5F5F5;
+//     // overflow-y: auto; // y측 길어지면 스크롤
+    
+//         .main_container {
+//             @include full-size-flex(column);
+//             align-items: center;
+//             flex: 1; // 남은공간 모두 차 지 ~ 
+//             display: flex;
+            
+//             width: 100%;
+//             background-color: #F5F5F5;
+//             box-sizing: border-box;
+//             padding: 3.125rem;
+//             min-width: 1160px;
+//             min-height: 924px;
+//             // max-height: 1200px;
+//         }
+// }
+

@@ -5,12 +5,12 @@
 
 // *대시보드 메인 grid conatiner
 .dashboard_grid_container{
-    
     flex:1;
     display: grid;
     box-sizing: border-box;
-    max-height: 980px;
-    
+    max-height: 980px; // todo 다시 넣어야 할 수도 있다 (새로길이를 길게 제작) (원래는 980px)
+    width: 100%;
+
     //6x6 그리드 선언
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(6, 1fr);
@@ -61,31 +61,33 @@
 
     .value1_1 { 
         grid-area: value1_1;
-        min-height: 400px; 
     }
         
     .e2_nodes { 
         grid-area: e2_nodes;
-        min-height: 504px;
     }
     .etri_ric { 
         grid-area: etri_ric;
-        min-height: 504px;
+        // min-height: 504px;
     }
     .value1_2 { 
         grid-area: value1_2;
         
     }
     .value2   { 
+        
         grid-area: value2;
     }
     .value3   { 
+
+        
         grid-area: value3;
         background-color: #59A5F5; color: #FFFFFF;}
     .value4   { 
         grid-area: value4;
         background-color: #59A5F5; color: #FFFFFF;}
     .value5   { 
+        max-height: 504px;
         grid-area: value5;
     }
     .value6   { 

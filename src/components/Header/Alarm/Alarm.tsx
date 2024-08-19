@@ -4,6 +4,7 @@ import defaultAxios from "../../../apis/defaultAxios";
 import Swal from "sweetalert2";
 import bellOFF from"../../../assets/imgs/bellOFF.svg";
 import bellON from"../../../assets/imgs/bellON.svg";
+import React from "react"
 
 //* 알림 데이터 형식
 interface AlarmData {

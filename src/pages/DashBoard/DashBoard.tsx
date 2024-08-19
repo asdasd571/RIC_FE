@@ -8,14 +8,16 @@ import EtriRIC from "./EtriRIC/EtriRIC";
 import TimeDLThroughput from "./TimeDLThroughput/TimeDLThroughput";
 import TopDLThroughput from "./TopDLThroughput/TopDLThroughput";
 import ValueCard from "./ValueCard/ValueCard";
+import React from "react"
 
 const DashBoard: React.FC = () => {
 
         return(
             <div className="container">
+                
                 <Sidebar/>
                 <div className="main_header_container">
-                    <Header titleText="Dashboard"/>
+                    {/* <Header titleText="Dashboard"/> */}
                     <main className="main_container">
                         <div className={styles.dashboard_grid_container}>
                             <section className={`${styles.item} ${styles.value1_1}`}>
@@ -84,7 +86,6 @@ const DashBoard: React.FC = () => {
 
                         </div>
                     </main>
-                    
                 </div>
             </div>
         )

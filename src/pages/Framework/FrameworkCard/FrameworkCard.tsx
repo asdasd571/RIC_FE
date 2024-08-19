@@ -3,6 +3,7 @@ import Framework from "../../../assets/imgs/Framework.svg";
 import styles from "./FrameworkCard.module.scss";
 import { FrameworkCardType } from "../../../types/Framework.types";
 // Framework의 패널을 나타낸다.
+import React from "react"
 
 //* temp 데이터
 //없앰.
@@ -25,8 +26,9 @@ const FrameworkCard : React.FC<FrameworkProps> = ({data}) => {
                         <div className={styles.header_content}>
                             <h2>{item.name}</h2>
                             <p>
-                                Version: {item.version} <br/>
-                                ServiceType: {item.ServiceType}
+                                <strong>Version</strong>: {item.version} <br/>
+                                <strong>ServiceType</strong>: {item.ServiceType}<br/>
+                                <strong>Vendor</strong>: {item.vendor}
                             </p>
 
                         </div>

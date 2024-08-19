@@ -3,7 +3,7 @@ import rapp from "../../../assets/imgs/rapp.svg";
 import styles from "./RAppCard.module.scss";
 // RAPP의 패널을 나타낸다.
 import { rAppCardType } from "../../../types/RApp.types";
-
+import React from "react"
 
 
 //* Props로 넘겨받기 위해 인터페이스 생성.
@@ -23,7 +23,9 @@ const RAppCard : React.FC<RAppProps> = ({data }) => {
                     <section className={styles.header_container}>
                         <div className={styles.header_content}>
                             <h2>{item.name}</h2>
-                            <p>{item.rappSchema.ServiceType}</p>
+                            <p><strong>ServiceType: </strong>{item.rappSchema.ServiceType}</p>
+                            <p><strong>vendor</strong>: {item.rappSchema.vendor}</p>
+                            <p><strong>version</strong>: {item.rappSchema.version}</p>
                         </div>
                         <div className={styles.header_img}>
                             <img src={rapp} alt="rapp" />

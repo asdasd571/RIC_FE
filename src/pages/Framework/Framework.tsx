@@ -6,7 +6,7 @@ import FrameworkCard from "./FrameworkCard/FrameworkCard";
 // import { FrameworkCardType } from "../../types/Framework.types";
 import { useEffect, useState } from "react";
 import defaultAxios from "../../apis/defaultAxios";
-
+import React from "react"
 
 const Framework: React.FC = () => {
 
@@ -40,7 +40,6 @@ const Framework: React.FC = () => {
             <div className="container">
                 <Sidebar/>
                 <div className="main_header_container">
-                    <Header titleText="Non-RT RIC Framework"/>
                     <main className="main_container">
                         <article className={styles.framework_card_container}>
                             <h1>Non-RT RIC Framework Blocks</h1>

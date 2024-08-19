@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import ProfileModal from "./ProfileModal/ProfileModal";
 import { AlarmData } from "../../types/Alarm.types";
 import defaultAxios from "../../apis/defaultAxios";
+import React from "react"
 
 interface HeaderProps  {
     titleText?: string; // titleText, 선택적 속성
@@ -49,15 +50,6 @@ const Header : React.FC<HeaderProps> = ( {titleText = "DashBoard"}) => {
 
     //* 알림끝 -----------------//
 
-    //* 프로필모달 -------------------//
-    const [isShowProfile, setIsShowProfile] = useState<boolean>(false); // true : 알림창 보임, false : 알림창 끔
-
-    //벨 버튼 클릭시 알림 on / off
-    const handleShowProfile = ():void =>{
-        setIsShowProfile(!isShowProfile); //
-    }
-    //* 프로필모달끝 -----------------//
-
     return(
         <header className={styles.container}> 
             <div className={styles.header_left}>
@@ -67,11 +59,7 @@ const Header : React.FC<HeaderProps> = ( {titleText = "DashBoard"}) => {
             <div className={styles.header_right}>
                 <Alarm data={alarmDatas}/>
 
-                <div className={styles.profile}>
-                    <span>홍길동</span>
-                    <img onClick={handleShowProfile} src={profile} alt="프로필 아이콘"/>
-                    { isShowProfile ? <ProfileModal/> : <></>}
-                </div>
+                <ProfileModal/>
                 
 
             </div>

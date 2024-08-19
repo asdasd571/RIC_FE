@@ -5,21 +5,26 @@
     max-height: 100%;
     max-width: 100%;
     flex: 1; // 꽉채움.
-    display: grid;
-    
-    box-sizing: border-box;
-    // padding-bottom: 1.25rem;
-    grid-template-columns: 100%;
-    grid-template-rows: 1fr 1fr;
-    row-gap: 1.25rem; //20px;
     
     box-sizing: border-box;
 
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap:15px; //20px;
+    
+    box-sizing: border-box;
+    // margin-bottom: 15px;
     // overflow-y: hidden;
 
 
     // 그리드 아이템
     .item{
+        width: 100%;
+        height: 100%;
+        flex: 1;
         position: relative;
         
         display: flex;
@@ -31,6 +36,7 @@
 
         background-color:  $pannel_inner_background;
         border-radius: 0.625rem;
+        max-height: 100%;
         
 
         

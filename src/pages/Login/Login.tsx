@@ -8,6 +8,8 @@ import eyeOFF from "../../assets/imgs/eyeOFF.svg";
 import eyeON from "../../assets/imgs/eyeON.svg";
 import Swal from "sweetalert2";
 import defaultAxios from "../../apis/defaultAxios";
+import React from "react"
+import { useAuthStore } from "../../store/useAuthStore";
 
 const Login: React.FC = () => {
 
@@ -15,7 +17,6 @@ const Login: React.FC = () => {
 
         const [userName , setUserName] = useState(""); // 유저 id
         const [password, setPassword]  = useState(""); // 유저 비밀번호
-        const [isLogin, setIsLogin] = useState(false); // 로그인 상태
 
         const [isShowPass, setIsShowPass] = useState(false); // 비밀번호 볼건지 안볼건지
 
@@ -40,6 +41,8 @@ const Login: React.FC = () => {
                 //2-1. 성공시/실패시 호출 
                 // 로그인 성공시,
                 if (response.data.message === "OK"){
+                    const { storeLogin } = useAuthStore.getState(); // storeLogin 함수 가져오기
+                    storeLogin(userName, password); // 상태 업데이트
                     goMain(); //main 페이지로 이동
                 } else { // 로그인 실패시  
                     Swal.fire({
@@ -57,6 +60,8 @@ const Login: React.FC = () => {
                 })
             }
         } 
+
+
 
         //* 폼 제출 처리 함수
         const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

@@ -15,6 +15,7 @@ import Platform from './pages/Platform/Platform';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import Setting from './pages/SettingPage/SettingPage';
 
 
 function App() {
@@ -68,7 +69,7 @@ function App() {
               <Route path="/xapp" element={<XApps/>} />
               <Route path="/platform" element={<Platform/>} />
               <Route path="/e2-node" element={<div>e2-node</div>} />
-              <Route path="/setting" element={<div>setting</div>} />
+              <Route path="/setting" element={<Setting/>} />
               <Route path="/login" element={<Login/>}/>
               <Route path="/sign-up" element={<SignUpPage/>}/>
               <Route path="*" element={<div>404 Not Found Page</div>}/>

@@ -14,11 +14,11 @@
 
 
 // * 호버 버튼!{
-@mixin custom-hover-btn{
+@mixin custom-hover-btn($background-color:#00619A){
     transition: background-color 0.3s ease; /* 부드러운 배경색 전환 */
 
     &:hover {
-        background-color: #00619A; /* hover 시 배경색 변경 */
+        background-color:$background-color ; /* hover 시 배경색 변경 */
         color:#FFFFFF;
 
     }
@@ -29,6 +29,8 @@
 @mixin pannel_hr{
     // 중간 선.
     border: 1px solid #CCCCCC;
+    transform: scaleY(0.5); //px 0.5민큼 줄이기 (실제 영역은 변하지 않음)
     width: 100%;
+    
     // margin: 0px/;
 }

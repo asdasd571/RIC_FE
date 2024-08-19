@@ -1,0 +1,26 @@
+@import '../../styles/mixins';
+
+@import '../../styles/variables';
+
+.setting_container{
+
+    width: 100%;
+
+
+    // 회원 탈퇴 버튼
+    .btn_delete_user{
+        background-color: #ED9E9F;
+        border: 0px;
+        box-shadow: $custom-shadow;
+        
+        width: 200px;
+        height: 2.7rem;
+        border-radius: 10px;
+        
+        color: #FFFFFF;
+        font-size: 1.25rem;
+
+        cursor: pointer;
+        @include custom-hover-btn(#EC5355);
+    }
+}

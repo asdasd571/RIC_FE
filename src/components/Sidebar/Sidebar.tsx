@@ -2,7 +2,7 @@
 import styles from "./Sidebar.module.scss";
 import etriLogo from "../../assets/imgs/etriLogo.svg";
 import SidebarList from "./SidebarList";
-
+import React from "react"
 
 import dashboard from "../../assets/imgs/dashboard.svg"
 import structure from "../../assets/imgs/structure.svg"
@@ -21,47 +21,48 @@ import { SidebarData } from "../../types/Sidebar.types";
 import useNavigates from "../../hooks/useNavigates";
 import grafana from "../../assets/imgs/grafana.svg";
 import log from "../../assets/imgs/log.svg";
+import Minibar from "./Minibar";
 
 
 // 사이드바를 나타내는 데이터!
 // 사이드바 데이터 정의
 export const sidebarDatas: SidebarData[] = [
     {
-        title: null,
+        title: {name: null, path: null},
         items: [
             { name: 'Dashboard', icon: dashboard, path: '/' , id:0},
-            { name: 'Overview', icon: structure, path: '/overview' , id:1},
-            { name: 'DM', icon: log, path: '/dm',id:2 }
+            
+            
         ]
     },
     {
-        title: 'SMO/ OAM',
+        title: {name: 'SMO/OAM', externalUrl: process.env.REACT_APP_SMO_OAM_PATH},
         items: [
             { name: 'SMO/OAM', icon: smo_oam, externalUrl: process.env.REACT_APP_SMO_OAM_PATH ,id:3}
         ]
     },
     {
-        title: 'Non-RT-RIC',
+        title: {name:'Non-RT-RIC', path:'/rapp'},
         items: [
             { name: 'rApps', icon: rapp, path: '/rapp' , id:4},
             { name: 'Framework', icon: framework, path: '/framework' ,id:5}
         ]
     },
     {
-        title: 'Near-RT-RIC',
+        title: {name:'Near-RT-RIC',path:'/xapp'},
         items: [
             { name: 'xApps', icon: xapp, path: '/xapp' ,id:6},
             { name: 'Platform', icon: platform, path: '/platform' , id:7}
         ]
     },
     {
-        title: 'E2 Node',
+        title: {name:'E2 Node', externalUrl :process.env.REACT_APP_E2_NODE_PATH},
         items: [
             { name: 'E2 Node', icon: e2node, externalUrl: process.env.REACT_APP_E2_NODE_PATH ,id:8}
         ]
     },
     {
-        title: 'Utilities',
+        title: {name:'Utilities',externalUrl: process.env.REACT_APP_VIAVI_URL} ,
         items: [
             { name: 'VIAVI', icon: VIAVI, externalUrl: process.env.REACT_APP_VIAVI_URL ,id:9},
             { name: 'InfluxDB', icon: influxdb, externalUrl: process.env.REACT_APP_INFLUXDB_PATH,id:10 },
@@ -69,10 +70,10 @@ export const sidebarDatas: SidebarData[] = [
         ]
     },
     {
-        title: null,
+        title: { name: null, externalUrl: process.env.REACT_APP_OVERVIEW_PATH },
         items: [
-            { name: 'Settings', icon: setting, path: '/setting' ,id:12},
-            { name: 'Log out', icon: logout, action: 'logout' , id:13} // 로그아웃 처리}
+            { name: 'Overview', icon: structure, externalUrl: process.env.REACT_APP_OVERVIEW_PATH  , id:1},
+            { name: 'DM', icon: log, externalUrl: process.env.REACT_APP_DM_PATH  ,id:2 }
         ]
     }
 ];
@@ -87,7 +88,9 @@ const Sidebar: React.FC = () => {
             </section>
 
             <hr />
-
+            <section className={styles.mini_nav_continaer}>
+                <Minibar/>
+            </section>
             <section className={styles.nav_container}>
                 <SidebarList sidebarDatas={sidebarDatas}/>
             </section>

@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import defaultAxios from '../../../apis/defaultAxios';
 import styles from './ValueCard.module.scss';
-
+import React from "react"
 
 interface ValueProps {
     type: "DL_rate" | "UL_rate" | "Num_UE";

@@ -6,7 +6,7 @@ import { XAppCardType } from "../../types/XApp.types";
 import XAppCard from "./XAppCard/XAppCard";
 import { useEffect, useState } from "react";
 import defaultAxios from "../../apis/defaultAxios";
-
+import React from "react"
 
 const XApps: React.FC = () => {
     //xapp List를 저장할 state
@@ -35,7 +35,7 @@ const XApps: React.FC = () => {
             <div className="container">
                 <Sidebar/>
                 <div className="main_header_container">
-                    <Header titleText="xApps"/>
+                    {/* <Header titleText="xApps"/> */}
                     <main className="main_container">
                         <article className={styles.rApps_card_container}>
                             <h1>xApps</h1>

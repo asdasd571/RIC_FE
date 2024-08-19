@@ -7,6 +7,7 @@ import RAppCard from "./RAppCard/RAppCard";
 import defaultAxios from "../../apis/defaultAxios";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import React from "react"
 
 const RApps: React.FC = () => {
 
@@ -42,7 +43,7 @@ const RApps: React.FC = () => {
             <div className="container">
                 <Sidebar/>
                 <div className="main_header_container">
-                    <Header titleText="rApps"/>
+                    {/* <Header titleText="rApps"/> */}
                     <main className="main_container">
                         <article className={styles.rApps_card_container}>
                             <h1>rApps</h1>

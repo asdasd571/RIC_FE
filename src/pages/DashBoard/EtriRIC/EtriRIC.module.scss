@@ -17,20 +17,23 @@
         position: absolute;
         // width: 100%;
 
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
         
+        justify-content: space-between;
         column-gap: 10px;
         box-sizing: border-box;
         // padding: 0 10%;
         // justify-content: space-between;
-
+        font-size: 1.2em;
         top: -75px;
         
         place-items: center;
         
 
         .des_item{
+            flex: 1;
             width: 100%;
             display: flex;
             flex-direction: row;

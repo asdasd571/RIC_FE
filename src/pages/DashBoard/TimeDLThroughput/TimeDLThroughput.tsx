@@ -5,6 +5,7 @@ import defaultAxios from "../../../apis/defaultAxios";
 import Charts, { MCharts } from "../../../components/Charts/Charts";
 import { testMultiData } from "../../../components/Charts/testData";
 import { useQuery } from "@tanstack/react-query";
+import { fetchCellData, fetchDLData, fetchUEData, fetchULData } from "../../../apis/dashboardApi";
 
 
 interface RawData{
@@ -72,63 +73,10 @@ const TimeDLThroughput:React.FC<TimeDLThroughputProps> = ({type}) => {
         }); 
     };
 
-    //* cellMetrics 데이터 받기 //cell-metrics (셀별 DL_Rate)
-    const getCellData = async () => { 
-        try {
-            const url: string = `/cell-metrics`;
-            const response = await defaultAxios.get(url);
-            return response.data;
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    //* cellMetrics 데이터 받기 // `/ul-rate` (셀별 DL_Rate)
-    const getULData = async () => { 
-        try {
-            const url: string = `/ul-rate`;
-            const response = await defaultAxios.get(url);
-            return response.data;
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    //* cellMetrics 데이터 받기 //dl-rate (셀별 DL_Rate)
-    const getUEData = async () => { 
-        try {
-            const url: string = `/num-ue`;
-            const response = await defaultAxios.get(url);
-            return response.data;
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    //* cellMetrics 데이터 받기 //dl-rate (셀별 DL_Rate)
-    const getDLData = async () => { 
-        try {
-            const url: string = `/dl-rate`;
-            const response = await defaultAxios.get(url);
-            return response.data;
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-
-    // userQuery로 데이터 패칭 및 주기적 업데이트
-    const {data: cellData} = useQuery({
-        queryKey: ['cellData'],
-        queryFn: getCellData,
-        // refetchInterval: 1000 //1초마다 refetch
-
-    });
-
     // userQuery로 데이터 패칭 및 주기적 업데이트
     const {data: UEData} = useQuery({
         queryKey: ['UEData'],
-        queryFn: getUEData,
+        queryFn: fetchUEData,
         // refetchInterval: 1000 //1초마다 refetch
 
     });
@@ -136,7 +84,7 @@ const TimeDLThroughput:React.FC<TimeDLThroughputProps> = ({type}) => {
     // userQuery로 데이터 패칭 및 주기적 업데이트
     const {data: DLData} = useQuery({
         queryKey: ['DLData'],
-        queryFn: getDLData,
+        queryFn: fetchDLData,
         // refetchInterval: 1000 //1초마다 refetch
 
     });
@@ -144,7 +92,7 @@ const TimeDLThroughput:React.FC<TimeDLThroughputProps> = ({type}) => {
     // userQuery로 데이터 패칭 및 주기적 업데이트
     const {data: ULData} = useQuery({
         queryKey: ['ULData'],
-        queryFn: getULData,
+        queryFn: fetchULData,
         // refetchInterval: 1000 //1초마다 refetch
     });
 

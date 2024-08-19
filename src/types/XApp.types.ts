@@ -8,4 +8,5 @@ export interface XAppCardType
     open: string
     state: string;
     vendor: string;
+    version: string;
 }

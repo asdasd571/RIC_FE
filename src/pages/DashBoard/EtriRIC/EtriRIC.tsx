@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import styles from "./EtriRIC.module.scss";
 import defaultAxios from "../../../apis/defaultAxios";
 import { useQuery } from "@tanstack/react-query";
+import React from "react"
+import { fetchRicInfoData } from "../../../apis/dashboardApi";
 
 // * ETRI RIC 목록을 모여주는 컨테이너
 
@@ -15,22 +17,12 @@ interface RicInfoType {
 
 
 const EtriRIC : React.FC = ()=>{    
-    // todo : 실시간 연결.
-    //* ricinfo 데이터 받기
-    const getRicInfoData = async () => {
-        try {
-            const url: string = `/ric-info`;
-            const response=  await defaultAxios.get(url);
-            return response.data;
-        } catch (error) {
-            console.log(error);
-        }
-    }
+
 
     //* useQuery로 실시간 데이터 패칭
     const {data: ricInfoData} = useQuery<RicInfoType[]>({
         queryKey:['ricInfoData'], // 쿼리 키 
-        queryFn: getRicInfoData, // 쿼리 실행 함수
+        queryFn: fetchRicInfoData, // 쿼리 실행 함수
         // refetchInterval: 1000, // 1초 단위 실행 
     });
 

@@ -3,6 +3,7 @@ import Platform from "../../../assets/imgs/Platform.svg";
 import styles from "./PlatformCard.module.scss";
 import { PlatformCardType } from "../../../types/Platform.tpyes";
 // Platform의 패널을 나타낸다.
+import React from "react"
 
 //* temp 데이터
 //없앰.
@@ -25,8 +26,9 @@ const PlatformCard : React.FC<PlatformProps> = ({data}) => {
                         <div className={styles.header_content}>
                             <h2>{item.name}</h2>
                             <p>
-                                Version: {item.version} <br/>
-                                ServiceType: {item.ServiceType}
+                                <strong>Version:</strong> {item.version} <br/>
+                                <strong>ServiceType:</strong> {item.ServiceType} <br/>
+                                <strong>Vendor:</strong> {item.vendor}
                             </p>
 
                         </div>

@@ -9,7 +9,13 @@ export interface SidebarItem {
     
 }
 
+//사이드바 리스트 타이틀 type
+export interface SidebarTitle {
+    name: string | null;  // 타이틀 제목 
+    path? : string | null; // 이동할 path
+    externalUrl?: string;  // 외부 링크
+}
 export interface SidebarData {
-    title?: string | null;
+    title: SidebarTitle;
     items: SidebarItem[];
 }
