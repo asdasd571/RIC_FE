@@ -15,14 +15,11 @@ const StyledMarkerName = styled.div`
     display: flex;
     align-items: center;
 
-    color: #000;
-    /* font-weight: bold; */
-    /* position: relative; */
+    color: #FFFFFF;
     font-size: 0.9rem;
-    /* background-color: white; */
-    background-color : rgba(255, 255, 255, 0.5);
-    /* opacity: 50%; */
-    border-radius: 10px;
+    background-color : #59A5F5;
+    border-radius: 5px;
+    /* border: 1px solid #333333; */
     
     text-align: center;
 
@@ -110,12 +107,12 @@ const MapView : React.FC = () => {
                 <Circle
                     center={{lat : ric['Y_Pos'], lng : ric['X_Pos']}} 
                     radius={ric['Tx_Power']} // 파워값으로, 반지름
-                    strokeWeight={2} // 선의 두께입니다
-                    strokeColor={"#75B8FA"} // 선의 색깔입니다
+                    strokeWeight={1} // 선의 두께입니다
+                    strokeColor={"#0077C2"} // 선의 색깔입니다
                     strokeOpacity={2} // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
                     strokeStyle={"solid"} // 선의 스타일 입니다
-                    fillColor={"#CFE7FF"} // 채우기 색깔입니다
-                    fillOpacity={0.7} // 채우기 불투명도 입니다
+                    fillColor={"#C8FFFF"} // 채우기 색깔입니다
+                    fillOpacity={0.5} // 채우기 불투명도 입니다
                 />
 
 

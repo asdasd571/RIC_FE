@@ -2,7 +2,7 @@
 @import '../../../styles/variables';
 
 .container{
-    max-height: 100%;
+    height: auto;
     max-width: 100%;
     flex: 1; // 꽉채움.
     
@@ -37,26 +37,6 @@
         background-color:  $pannel_inner_background;
         border-radius: 0.625rem;
         max-height: 100%;
-        
-
-        
-        
-        // 차트 제목
-        .chart_title{
-            text-align: center;
-            margin: 0px;
-            padding: 0px;
-
-            position: absolute;
-            bottom: 10px;
-            
-            box-sizing: border-box;
-            // padding-bottom: 5px;
-            font-size: 0.9375rem; // 15px
-            color: #5C5C5C;
-            
-            height: auto;
-        }
     }
 
 }

@@ -40,7 +40,7 @@ const Login: React.FC = () => {
                 
                 //2-1. 성공시/실패시 호출 
                 // 로그인 성공시,
-                if (response.data.message === "OK"){
+                if (response.data.message === "Login OK"){
                     const { storeLogin } = useAuthStore.getState(); // storeLogin 함수 가져오기
                     storeLogin(userName, password); // 상태 업데이트
                     goMain(); //main 페이지로 이동

@@ -16,6 +16,7 @@ import SignUpPage from './pages/SignUpPage/SignUpPage';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import Setting from './pages/SettingPage/SettingPage';
+import { useAuthStore } from './store/useAuthStore';
 
 
 function App() {
@@ -52,6 +53,12 @@ function App() {
       }
     }
   });
+
+
+  // ! 첫 실행 시 로컬스토리지와 토큰 가져와 전역 상태와 동기화.
+  useEffect(()=>{
+    useAuthStore.getState().initializeAuthState(); // 상태 초기화.
+  },[]);
 
 
   // 로그인 부분 나타냄.

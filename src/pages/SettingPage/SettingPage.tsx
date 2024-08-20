@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import useNavigates from "../../hooks/useNavigates";
 import defaultAxios from "../../apis/defaultAxios";
 import { useAuthStore } from "../../store/useAuthStore";
+import { settingData } from "./settingData";
 
 const Setting: React.FC = () => {
     const {goLogin} = useNavigates();
@@ -18,26 +19,32 @@ const Setting: React.FC = () => {
             //1. 폼 데이터 세팅 
             const formData = new FormData();
             formData.append('username', username);
-            formData.append('password',password);
+            formData.append('password', password);
 
             //2. 회원탈퇴 API 호출
             const url=`/deregister`;
-                // todo : 회원 탈퇴 API .원활히 연동 
             try{
-                const response = await defaultAxios.delete(url, { data: {
-                    username: username,
-                    password : password
-                }});
+                const response = await defaultAxios.delete(url, { data: formData});
 
-                storeLogout();/// 로그아웃 상태 업데이트
+                // 성공 시, // todo : 나중에 message는 바뀔 수 있다.
+                if (response.data.message === "Delete OK") {
+                    storeLogout();/// 로그아웃 상태 업데이트
 
-                // * 탈퇴 성공시. 
-                Swal.fire({
-                    icon:'success',
-                    text:'Account successfully deleted.'
-                });
+                    // * 탈퇴 성공시. 
+                    Swal.fire({
+                        icon:'success',
+                        text:'Account successfully deleted.'
+                    });
+    
+                    goLogin(); // 홈화면으로 이동
+                }else{
+                    // * 탈퇴 실패시. 
+                    Swal.fire({
+                        icon:'error',
+                        text: response.data.message
+                    });
+                }
 
-                goLogin(); // 홈화면으로 이동
 
             }catch(error){
                 console.error(error);
@@ -49,7 +56,7 @@ const Setting: React.FC = () => {
             }
 
         }
-        //todo API 로직 작성해야함.
+        
         //* 삭제버튼 클릭시 핸들러. 
         const handleDeleteUser = () => {
             Swal.fire({
@@ -82,7 +89,25 @@ const Setting: React.FC = () => {
                             <button 
                                 className={styles.btn_delete_user}
                                 onClick={handleDeleteUser}>Delete Account</button>
+                            <section>
+                            <table>
+                                <thead>
+                                    <th>이름</th>
+                                    <th>URL</th>
+                                </thead>
+                                <tbody>
+                                    {/* 해당 object의 title을 찾은 뒤 인덱스를 반환한다. 그것을 토대로 화면에 띄워준다. */}
+                                    {settingData.map((item, index) => (
+                                        <tr>
+                                            <td>{item.name}</td>
+                                            <td>{item.path}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                            </section>
                         </article>
+
                     </main>
                     
                 </div>

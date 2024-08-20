@@ -34,30 +34,10 @@ const TopDLThroughput : React.FC = () => {
         // refetchInterval : 1000, //1초마다 refetch (refetchInterval은 쿼리가 주기적으로 다시 실행되는 시간을 밀리초 단위로 설정)
     });
 
-    const {data: cellSumData} = useQuery<CellSum>({
-        queryKey: ['cellSumData'],
-        queryFn: fetchCellSumData,
-        // refetchInterval: 1000, // 1초마다 refetch
-    });
-
-
     return(
         <div className={styles.container}>
             <section className={styles.item}>
                 <DLSumPieChart/>
-                {/* <GaugeChart 
-                        style={{width: "80%" , margin: "0", padding: "0"}}
-                        animate={false} // 애니메이션 제거
-                        id="gauge-chart1"
-                        arcPadding={0} // 호 사이 패딩
-                        nrOfLevels={100}  //100%까지
-                        cornerRadius={0}  // 코너 둥글게?
-                        percent={cellSumData?.DL_rate}  // sum 데이터 적용
-                        textColor="black" 
-                        colors={['#0077C2','#0077C2','#C8FFFF']} // 초록-노랑-빨강 그라데이션
-                />
-                <h3 className={styles.chart_title}> DL_SUM</h3> */}
-                
             </section>
             <section className={styles.item}>
                 {/* <SimpleBarChart/> */}

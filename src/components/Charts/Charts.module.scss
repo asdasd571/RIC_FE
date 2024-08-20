@@ -12,15 +12,14 @@
 
 
     .responsive_container{
-        height: 100%;
+        position: absolute;
+        flex: 1;
         text-align: center;
         box-sizing: border-box;
     
         padding-right: 5px; //내부 padding을 조금 주자.
-        padding-top: 5px;
-        
-        
-    
+
+        padding-bottom: 5px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -40,8 +39,10 @@
     }
     // 차트 제목
     .chart_title{
+
+        position: absolute;
         width: 100%;
-        position: relative;
+        
         bottom: 5px; // title이 들어갈 자리
         
         text-align: center;

@@ -24,8 +24,15 @@ const DLSumPieChart :React.FC = ()=>{
         queryKey: ['cellData'], // c동일한 쿼리 키
         queryFn: fetchCellData, // 데이터 fetching 함수
     });
-
     
+    //pie 차트 내부 스타일
+    const innerTextStyle = {
+        fontSize: '0.9rem', // 16px
+        fontWeight: 'bold',
+        fill: '#333333',  // SVG에서 색상은 'fill' 속성으로 지정
+    };
+
+
     return(
         <div className={styles.screen}>
             <ResponsiveContainer className={styles.responsive_container}>
@@ -36,8 +43,8 @@ const DLSumPieChart :React.FC = ()=>{
                         cy="50%"
                         labelLine={false}
                         // endAngle={0}
-                        innerRadius={50}
-                        outerRadius={80}
+                        innerRadius={45}
+                        outerRadius={70}
                         fill="#8884d8"
                         dataKey="DL_rate"
                         // label // 각 값 표시
@@ -47,20 +54,23 @@ const DLSumPieChart :React.FC = ()=>{
                             <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
                         ))}
                     </Pie>
-
-                    <Pie
+                    {/* 텍스트 가운대 정렬 */}
+                    <text style={innerTextStyle} x="50%" y="50%" textAnchor="middle" dominantBaseline="middle">{cellSumData?.DL_rate}</text>
+                    {/* <Pie
                         data={[cellSumData]}
                         dataKey="DL_rate"
                         cx="50%"
                         cy="50%"
-                        fill="#8884d8"
-                        label
+                        fill={}
+                        label={renderCustomLabel}
                         outerRadius={20}
-                    />
+                    /> */}
+                    
                     <Tooltip />
                 </PieChart>
             </ResponsiveContainer>
-            <h3 className={styles.chart_title} > DL_SUM </h3>
+            <h3 className={styles.chart_title}
+                > DL_SUM </h3>
         </div>
     )
 }

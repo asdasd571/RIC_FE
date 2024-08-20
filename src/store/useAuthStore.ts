@@ -15,12 +15,19 @@ interface StoreState {
     password: string | null; // 비밀번호 저장
     storeLogin: (username: string, password: string) => void; // 로그인 액션 함수
     storeLogout: () => void; // 로그아웃 액션 함수
+    initializeAuthState: () => void; // 초기화 함수 추가
 }
 
 //* 토큰 저장 / 삭제 / 조회 
+// const getToken = () => {
+//     const token = localStorage.getItem('token');
+//     return token;
+// };
+// 로컬 스토리지에서 토큰 가져오기
 const getToken = () => {
-    const token = localStorage.getItem('token');
-    return token;
+    const username = localStorage.getItem('username');
+    const password = localStorage.getItem('password');
+    return { username, password };
 };
 
 // const setToken = (token: string) => {
@@ -63,9 +70,24 @@ export const useAuthStore = create<StoreState>((set) => ({
         }));
 
         removeToken(); // 토큰 삭제.
+    },
+
+    //* 초기화 함수 (로컬 스토리지에서 토큰 가져와 전역 상태와 동기화)
+    initializeAuthState: () => {
+        const { username, password } = getToken();
+        if (username && password) {
+            set(() => ({
+                isLogin: true,
+                username: username,
+                password: password
+            }));
+        }
     }
 }))
 
 
 // * 사용법
 // const { isLogin, username, password, storeLogin, storeLogout } = useAuthStore();
+
+// 사용 예시 (초기화 호출)
+// useAuthStore.getState().initializeAuthState();
