@@ -25,6 +25,17 @@ $off-color: #ED9E9F;
     display: flex;
     flex-direction: column;
     
+    @include custom-hover-scale-btn(#e9e9e9);
+    // transition: background-color 0.3s ease, transform 0.3s ease;
+
+    // &:hover {
+    //     background-color:#e9e9e9 ; /* hover 시 배경색 변경 */
+    //     transform:scale(1.06);
+    //     // border: 3px solid #5C5C5C;
+    //     // color:$color;
+    //     cursor: pointer;
+    // }
+    
 
     // * 제목 부분 컨테이너 
     .header_container{

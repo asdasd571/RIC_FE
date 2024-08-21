@@ -18,10 +18,18 @@ interface PlatformProps{
  * @param data : PlatformCardType[] 으로, 출력할 Platform 카드 객체 배열이다.
  */
 const PlatformCard : React.FC<PlatformProps> = ({data}) => {
+
+    
+    //* 각각 클릭시 적절한 페이지로 이동 
+    const handleCardClick = (url:string) => {
+        window.open(url, '_blank'); // 창 오픈
+        // window.location.href= url; // 탭 오픈
+    }
+
     return (
         <>
             {data?.map((item, index)=> (
-                <div className={styles.container} key={item.id}>
+                <div onClick={()=> {handleCardClick(item.open)}}className={styles.container} key={item.id}>
                     <section className={styles.header_container}>
                         <div className={styles.header_content}>
                             <h2>{item.name}</h2>

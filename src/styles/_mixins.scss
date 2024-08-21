@@ -14,16 +14,28 @@
 
 
 // * 호버 버튼!{
-@mixin custom-hover-btn($background-color:#00619A){
+@mixin custom-hover-btn($background-color:#00619A , $color:#FFFFFF){
     transition: background-color 0.3s ease; /* 부드러운 배경색 전환 */
 
     &:hover {
         background-color:$background-color ; /* hover 시 배경색 변경 */
-        color:#FFFFFF;
+        color:$color;
 
     }
 }
 
+// * 호버 버튼! 올리면 sacle 커짐 (사이즈 커짐){
+@mixin custom-hover-scale-btn($background-color:#e9e9e9, $scale:1.06){
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+        background-color:$background-color ; /* hover 시 배경색 변경 */
+        transform:scale($scale);
+        // border: 3px solid #5C5C5C;
+        // color:$color;
+        cursor: pointer;
+    }
+}
 
 // *pannel_hr
 @mixin pannel_hr{

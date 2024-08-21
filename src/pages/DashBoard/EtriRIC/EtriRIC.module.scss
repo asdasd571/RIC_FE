@@ -1,6 +1,6 @@
 
 @import '../../../styles/variables';
-
+@import '../../../styles/mixins';
 .container{
     flex: 1; // 꽉채움.
     display: grid;
@@ -82,7 +82,8 @@
         padding: 0px 20px; // 높이, 너비
         // padding-left: 10px;
         // padding-right: 10px;
-
+        
+        @include custom-hover-scale-btn(#e9e9e9,1.03);
 
         // justify-content: center;
         .item_titles{

@@ -56,5 +56,6 @@
   },
   "devDependencies": {
     "@types/react-gauge-chart": "^0.4.3"
-  }
+  },
+  "homepage": "./"
 }

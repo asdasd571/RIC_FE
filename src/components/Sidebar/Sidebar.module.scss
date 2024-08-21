@@ -8,6 +8,10 @@
 
     align-items: center;
     background-color: #FFFFFF;
+    
+    
+    // max 사이드바 지정 
+    max-width: 17.5rem;
     // flex-shrink: 1;
     // etri 로고
     .top_container{
@@ -30,6 +34,10 @@
 
     }
 
+    // mini 네비 컨테이너
+    .mini_nav_continaer{
+        width: 100%;
+    }
 
     // 네비바 부분 컨테이너
     .nav_container{

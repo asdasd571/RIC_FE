@@ -4,6 +4,8 @@ import defaultAxios from "../../../apis/defaultAxios";
 import { useQuery } from "@tanstack/react-query";
 import React from "react"
 import { fetchRicInfoData } from "../../../apis/dashboardApi";
+import useNavigates from "../../../hooks/useNavigates";
+import { useNavigate } from "react-router-dom";
 
 // * ETRI RIC 목록을 모여주는 컨테이너
 
@@ -15,9 +17,39 @@ interface RicInfoType {
     description: string; // value에 대한 설명
 }
 
+// 맞춤 경로 
+interface RicInfoPathArray{
+    target: "self" | "blank"; // self: 탭 이동, blank : 새 창 
+    path: string;
+}
+
+// 맞춤 경로데이터. index로 이렇게 넣어줬다. //todo : 후에 순서가 바뀌면, 이것도 변경해줘야함..
+const ricInfoPathArray :RicInfoPathArray[] = [
+    {
+        target : "blank",
+        path: process.env.REACT_APP_SMO_OAM_PATH as string
+
+    },
+    {
+        target : "self",
+        path: "/rapp"
+    },
+    {
+        target : "self",
+        path: "/xapp"
+    },
+    {
+        target : "blank",
+        path:process.env.REACT_APP_E2_NODE_PATH as string
+    } 
+];
+
+
 
 const EtriRIC : React.FC = ()=>{    
 
+    //* 선언 
+    const navigate = useNavigate();
 
     //* useQuery로 실시간 데이터 패칭
     const {data: ricInfoData} = useQuery<RicInfoType[]>({
@@ -26,6 +58,16 @@ const EtriRIC : React.FC = ()=>{
         // refetchInterval: 1000, // 1초 단위 실행 
     });
 
+    //extrenalurl에 따라 비교
+    const handleCardClick = (item:RicInfoPathArray) => {
+        if (item.target === "self") { // .현재 탭인 경우
+            navigate(item.path); // 탭 이동 
+        } else if (item.target ==="blank") {
+            window.open(item.path, '_blank'); // 새 창이동 
+        }
+    }
+
+    
 
     // todo : soft코딩으로 바꿔줘야할듯?
     return(
@@ -50,7 +92,7 @@ const EtriRIC : React.FC = ()=>{
         </div>
 
         {ricInfoData?.map((ric, index)=> (
-            <section className={styles.item}>
+            <section onClick={()=>{handleCardClick(ricInfoPathArray[index])}} className={styles.item}>
                 <div className={styles.item_titles}>
                     <span className={styles.item_name}>
                         {ric.name}
