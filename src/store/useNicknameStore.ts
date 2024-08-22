@@ -12,3 +12,10 @@ export const useNicknameStore = create<Nickname>((set) => ({
         set({ nickname: newNickname }); // 입력받은 닉네임으로 상태 업데이트
     }
 }));
+
+
+// * 사용법
+// const {nickname, storeNickname} = useNicknameStore();
+
+// 사용예시
+// useNicknameStore.getState().storeNickname("김땡땡");

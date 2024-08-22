@@ -90,6 +90,7 @@ const Setting: React.FC = () => {
                                 className={styles.btn_delete_user}
                                 onClick={handleDeleteUser}>Delete Account</button>
                             <section>
+                                
                             <table>
                                 <thead>
                                     <th>이름</th>
@@ -100,7 +101,9 @@ const Setting: React.FC = () => {
                                     {settingData.map((item, index) => (
                                         <tr>
                                             <td>{item.name}</td>
-                                            <td>{item.path}</td>
+                                            <td>path (나중엔 보이게)</td> 
+                                            {/* //! cetting url 나중엔 보여지게. */}
+                                            {/* <td>{item.path}</td> */}
                                         </tr>
                                     ))}
                                 </tbody>

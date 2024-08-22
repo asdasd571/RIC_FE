@@ -7,16 +7,25 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from "sweetalert2";
 import {ReactComponent as Svg} from "../../assets/*.svg";
 import defaultAxios from '../../apis/defaultAxios';
+import toggleON from '../../assets/imgs/toggleON.svg';
+import toggleOFF from '../../assets/imgs/toggleOFF.svg';
+import { useSidebarStore } from '../../store/useSidebarStore';
 
+// // 사이드바 리스트 컴포넌트 Props 정의
+// interface SidebarListProps {
+//     sidebarDatas: SidebarData[];
+//     setSidebarDatas : React.Dispatch<React.SetStateAction<SidebarData[]>>;
+// }
 
-// 사이드바 리스트 컴포넌트 Props 정의
-interface SidebarListProps {
-    sidebarDatas: SidebarData[];
-}
 
 // 사이드바 리스트 컴포넌트
-const SidebarList: React.FC<SidebarListProps> = ({ sidebarDatas }) => {
-    const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+const SidebarList: React.FC = () => {
+    // * 전역 state
+    const { sidebarDatas, toggleTitle } = useSidebarStore(); // 사이드바 데이터
+    //* 지역 state
+    const [selectedIndex, setSelectedIndex] = useState<number | null>(null); // 선택된 사이드바 index
+
+    
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -36,57 +45,28 @@ const SidebarList: React.FC<SidebarListProps> = ({ sidebarDatas }) => {
     const handleItemClick = (item: SidebarItem) => {
         setSelectedIndex(item.id as number); // 선택된 아이템 index 설정
 
-        // if (item.action === 'logout') { // * 로그아웃 처리
-        //     handleLogout();
-        // } else 
         if (item.externalUrl) {
             window.open(item.externalUrl, '_blank'); // 외부 링크 열기
         } else if (item.path) {
             navigate(item.path); // 내부 링크 처리
         }
     };
-
-    //* 타이틀 아이템 클릭 핸들러
-    const handleTitleClick= (titleItem: SidebarTitle) => {
-        if (titleItem.externalUrl) {
-            window.open(titleItem.externalUrl, '_blank'); // 외부 링크 열기
-        } else if (titleItem.path) {
-            navigate(titleItem.path); // 내부 링크 처리
-        }
-    }
-
-    // *로그아웃 처리
-    // const handleLogout = async () => {
-
-    //     //1. 로그아웃 API 호출 
-    //     const url=`/logout`; 
-    //     try{
-    //         const response = await defaultAxios.get(url);
-    //         //todo 로그아웃 성공했는지 비교하는 로직도 필요 (api data 추가되면 수정하기, 0812 ) 
-    //         Swal.fire({
-    //             icon: 'info',
-    //             text: '로그아웃 되었습니다.',
-    //         });
-    //         navigate('/login'); // 로그인 페이지로 이동
-    //     } catch(error){
-    //         console.error(error);
-    //         Swal.fire({
-    //             icon: 'error',
-    //             text: '로그아웃에 실패했습니다.',
-    //         });
-    //     }
-    //     // console.log('Logging out...');
-
-    // };
-
+    
     return (
         <div className={styles.container}>
             {sidebarDatas.map((data, dataIndex) => (
                 <section className={styles.nav_section} key={dataIndex}>
-                    {data.title && 
-                    <h3 className={styles.nav_title}
-                        onClick={()=> handleTitleClick(data.title)}>{data.title.name}</h3>}
-                    <ul className={styles.nav_ul}>
+                    {data.title.name && 
+                    <div className={styles.nav_title_container} onClick={()=> toggleTitle(data.title.name as string)}>
+                        <h3 className={styles.nav_title}>{data.title.name} 
+                        </h3>
+                        {  data.title.isToggle != null && <img src={ data.title.isToggle ? toggleON :toggleOFF} alt=''/>    }
+                    </div>
+
+                    
+                    }
+
+                    <ul className={`${styles.nav_ul} ${data.title.isToggle === true ? styles.toggled : ''}`}>
                         {data.items.map((item) => (
                             <li
                                 className={`${styles.nav_item} ${selectedIndex === item.id ? styles.clicked : ''}`}

@@ -13,6 +13,7 @@ export interface SidebarItem {
 export interface SidebarTitle {
     name: string | null;  // 타이틀 제목 
     path? : string | null; // 이동할 path
+    isToggle? : boolean; //토글됐는지? true : 닫힘, false: 열림
     externalUrl?: string;  // 외부 링크
 }
 export interface SidebarData {

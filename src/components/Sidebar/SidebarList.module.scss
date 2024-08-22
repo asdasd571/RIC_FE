@@ -28,18 +28,37 @@ $item-color : #FFFFFF;
         flex-shrink: 1;
 
 
-        // *네비 세부 타이틀 (SMO/OAM, Non-RT-RIC, Near-RT-RIC, E2 Nodes, Utilities)
-        .nav_title {
+        .nav_title_container{
             cursor: pointer;
-            
-            box-sizing: border-box;
-            padding-left: 15px;
-            color: #5c5c5c;
-            font-size: 1.5rem;
-            margin: 0px 0px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+
+            // *네비 세부 타이틀 (SMO/OAM, Non-RT-RIC, Near-RT-RIC, E2 Nodes, Utilities)
+            .nav_title {
+                flex: 1;
+                box-sizing: border-box;
+                padding-left: 15px;
+                color: #5c5c5c;
+                font-size: 1.5rem;
+                margin: 0px 0px;
+
+            }
+
+            >img {
+                max-width: 0.7em;
+                max-height: 1rem;
+                padding-right: 10px;
+            }
         }
 
-        ul {
+        // * 토글 됐다면, .NAV_UL숨기기
+        .nav_ul.toggled { // toggled 클래스의 display 속성을 아예 다른 속성으로 덮어쓰는 것
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.2s ease-out;
+        }
+        .nav_ul {
             box-sizing: border-box;
             margin: 0px;
             width: 100%;
@@ -54,6 +73,13 @@ $item-color : #FFFFFF;
             justify-content: flex-start;
             flex-grow: 1;
             overflow: hidden;
+
+            // 애니메이션. // 보이는 경우.
+            max-height: 500px; // 임의 값 지정.
+            transition: max-height 0.2s ease;
+            //애니메이션
+            // opacity: 1;
+            
 
             .nav_item {
                 display: grid;
