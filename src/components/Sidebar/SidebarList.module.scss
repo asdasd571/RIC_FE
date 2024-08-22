@@ -132,6 +132,16 @@ $item-color : #FFFFFF;
                 
                 }
             }
+
+            //* item.id ===0, 즉  대시보드 버튼인 경우,
+            .nav_item_dashboard{
+                font-size: 1.5rem;
+                font-weight: bold;
+                
+                box-sizing: border-box;
+                padding-right: 79px;
+
+            }   
         }
     }
 }

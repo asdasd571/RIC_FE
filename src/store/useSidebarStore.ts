@@ -69,15 +69,11 @@ const sidebarDatas :SidebarData[] =[
         items: [
             { name: 'VIAVI', icon: VIAVI, externalUrl: process.env.REACT_APP_VIAVI_URL ,id:9},
             { name: 'InfluxDB', icon: influxdb, externalUrl: process.env.REACT_APP_INFLUXDB_PATH,id:10 },
-            { name: 'Grafana', icon: grafana, externalUrl: process.env.REACT_APP_GRAFANA_PATH ,id:11 }
-        ]
-    },
-    {
-        title: { name: null, externalUrl: process.env.REACT_APP_OVERVIEW_PATH },
-        items: [
+            { name: 'Grafana', icon: grafana, externalUrl: process.env.REACT_APP_GRAFANA_PATH ,id:11 },
             { name: 'Overview', icon: structure, externalUrl: process.env.REACT_APP_OVERVIEW_PATH  , id:1},
             { name: 'DM', icon: log, externalUrl: process.env.REACT_APP_DM_PATH  ,id:2 }
         ]
+
     }
 ];
 

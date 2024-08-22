@@ -65,7 +65,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* 기본적으로 개발 도구가 열려 있도록 설정한다. */}
-      <ReactQueryDevtools initialIsOpen={true}/>     
+      <ReactQueryDevtools initialIsOpen={false}/>     
         <div className={styles.screen}>
             <Routes>
               <Route path="/" element={<DashBoard />} />

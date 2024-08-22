@@ -5,7 +5,7 @@ import SidebarList from "./SidebarList";
 import React from "react"
 import Minibar from "./Minibar";
 import useNavigates from "../../hooks/useNavigates";
-
+import dashboard from "../../assets/imgs/dashboard.svg";
 
 
 // 사이드바 컴포넌트

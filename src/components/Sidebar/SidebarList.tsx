@@ -11,13 +11,6 @@ import toggleON from '../../assets/imgs/toggleON.svg';
 import toggleOFF from '../../assets/imgs/toggleOFF.svg';
 import { useSidebarStore } from '../../store/useSidebarStore';
 
-// // 사이드바 리스트 컴포넌트 Props 정의
-// interface SidebarListProps {
-//     sidebarDatas: SidebarData[];
-//     setSidebarDatas : React.Dispatch<React.SetStateAction<SidebarData[]>>;
-// }
-
-
 // 사이드바 리스트 컴포넌트
 const SidebarList: React.FC = () => {
     // * 전역 state
@@ -58,8 +51,7 @@ const SidebarList: React.FC = () => {
                 <section className={styles.nav_section} key={dataIndex}>
                     {data.title.name && 
                     <div className={styles.nav_title_container} onClick={()=> toggleTitle(data.title.name as string)}>
-                        <h3 className={styles.nav_title}>{data.title.name} 
-                        </h3>
+                        <h3 className={styles.nav_title}>{data.title.name} </h3>
                         {  data.title.isToggle != null && <img src={ data.title.isToggle ? toggleON :toggleOFF} alt=''/>    }
                     </div>
 
@@ -69,7 +61,11 @@ const SidebarList: React.FC = () => {
                     <ul className={`${styles.nav_ul} ${data.title.isToggle === true ? styles.toggled : ''}`}>
                         {data.items.map((item) => (
                             <li
-                                className={`${styles.nav_item} ${selectedIndex === item.id ? styles.clicked : ''}`}
+                                className={`
+                                    ${styles.nav_item} 
+                                    ${selectedIndex === item.id ? styles.clicked : ''}
+                                    ${item.id === 0 ? styles.nav_item_dashboard : ''}
+                                    `}
                                 key={item.id}
                                 onClick={() => handleItemClick(item)}
                             >
