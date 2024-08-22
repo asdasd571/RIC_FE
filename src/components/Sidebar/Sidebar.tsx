@@ -4,16 +4,18 @@ import etriLogo from "../../assets/imgs/etriLogo.svg";
 import SidebarList from "./SidebarList";
 import React from "react"
 import Minibar from "./Minibar";
+import useNavigates from "../../hooks/useNavigates";
 
 
 
 // 사이드바 컴포넌트
 const Sidebar: React.FC = () => {
 
+    const {goMain} = useNavigates();
     return (
         <nav className={styles.container}>
             <section className={styles.top_container}>
-                <img src={etriLogo} alt="ETRI Logo" />
+                <img onClick = {goMain} src={etriLogo} alt="ETRI Logo" />
             </section>
 
             <hr />
