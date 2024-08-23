@@ -35,8 +35,8 @@ const FrameworkCard : React.FC<FrameworkProps> = ({data}) => {
                             <h2>{item.name}</h2>
                             <p>
                                 <strong>Version</strong>: {item.version} <br/>
-                                <strong>ServiceType</strong>: {item.ServiceType}<br/>
-                                <strong>Vendor</strong>: {item.vendor}
+                                <strong>Vendor</strong>: {item.vendor}<br/>
+                                <strong>ServiceType</strong>: {item.ServiceType}
                             </p>
 
                         </div>

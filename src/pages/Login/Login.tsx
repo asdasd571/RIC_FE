@@ -47,7 +47,7 @@ const Login: React.FC = () => {
                 } else { // 로그인 실패시  
                     Swal.fire({
                         icon:'error',
-                        text:'로그인에 실패했습니다.'
+                        text:'Login failed.' // 로그인에 실패했습니다.
                     });
                 }
 
@@ -56,7 +56,7 @@ const Login: React.FC = () => {
                 console.error(error);
                 Swal.fire({
                     icon:'error',
-                    text:'로그인에 실패했습니다.'
+                    text:'Login failed.' // 로그인에 실패했습니다.
                 })
             }
         } 

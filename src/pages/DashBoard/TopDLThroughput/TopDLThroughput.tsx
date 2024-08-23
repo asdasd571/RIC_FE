@@ -16,14 +16,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchCellData, fetchCellSumData } from "../../../apis/dashboardApi";
 import { CellSum } from "../../../types/apis.types";
 import DLSumPieChart from "./DLSum";
-
-
-
-// 바 차트 색상 .
-const colors = [ // .//todo : 이 친구를 전체 상태로 해야할듯 (bar에 적용해야함)
-    "#C8FFFF", "#A1EBFF", "#7AD8FF", "#55C4FF", "#00BFFF",
-    "#0098D4", "#0080B3", "#00699B", "#005282", "#31297C"
-];
+import { chartColors } from "../../../utils/chartColors";
 
 const TopDLThroughput : React.FC = () => {
 
@@ -44,7 +37,7 @@ const TopDLThroughput : React.FC = () => {
                 <Charts 
                     chartType="cell"
                     data={cellData}
-                    colors={colors}
+                    colors={chartColors}
                     dataKey="DL_rate"
                     title="DL_rate"
                     name="Cell_ID"

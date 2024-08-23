@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styles from './App.module.scss';
 
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes, useLocation, useNavigate } from 'react-router-dom';
 import DashBoard from './pages/DashBoard/DashBoard';
 import Login from './pages/Login/Login';
 import Sidebar from './components/Sidebar/Sidebar';
@@ -17,9 +17,23 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import Setting from './pages/SettingPage/SettingPage';
 import { useAuthStore } from './store/useAuthStore';
+import useNavigates from './hooks/useNavigates';
+import Swal from 'sweetalert2';
 
 
 function App() {
+  //* 전역 상태
+  const {isLogin, initializeAuthState} = useAuthStore( state => ({
+    isLogin: state.isLogin,
+    initializeAuthState : state.initializeAuthState
+  }))
+
+
+  // * 선언
+  const { goLogin } = useNavigates(); // 네비게이트 함수 
+  const location = useLocation(); //현재 위치 구하기.
+  
+
   // ** =============뷰포트 높이 구하기 ===============** //
   /** 현재 뷰포트 높이의 1%를 계산한다. */
   const setVh = () => {
@@ -55,17 +69,41 @@ function App() {
   });
 
 
-  // ! 첫 실행 시 로컬스토리지와 토큰 가져와 전역 상태와 동기화.
+  // * 첫 실행 시 로컬스토리지와 토큰 가져와 전역 상태와 동기화.
   useEffect(()=>{
-    useAuthStore.getState().initializeAuthState(); // 상태 초기화.
-  },[]);
+    initializeAuthState();
+    // useAuthStore.getState().initializeAuthState(); // 상태 초기화.
+  },[initializeAuthState]);
 
+  
+  //! 경로 변경마다 로그인 상태 판단하여 로그인 안되어있으면 login 페이지로 이동. --------//
+  //! 로그인이 안됐을때 다른페이지에 가도록 적용하시려면, 해당 주석을 푸시면 됩니다. 
+  useEffect(()=>{
+
+    // *초기화 중이거나, 이미 로그인 페이지에 있거나, 회원가입 페이지에 있는 경우엔 아무 작업 안 함
+    if (isLogin === null || ['/login', '/sign-up'].includes(location.pathname)) {
+        return;
+    }
+
+    // *ㅑ로그인 페이지, 회원가입 페이지가 아니고 and 로그인 상태가 false이면? -> login 페이지로 이동!
+    if (!isLogin && !['/login', '/sign-up'].includes(location.pathname)){
+      Swal.fire({
+        icon : "info",
+        title: 'Please Log In',
+        text: 'You need to log in to access this feature. Please log in to continue.', //이 기능을 사용하려면 로그인이 필요합니다. 계속하려면 로그인해 주세요.
+        didClose: () => { // 닫힌 후에 실행.
+          goLogin(); // '닫기' 버튼 클릭 시 , 로그인 페이지로 이동
+        }
+      })
+    }
+  },[location.pathname, isLogin]);
+  //! -------------------------------------------------------------------------------//
 
   // 로그인 부분 나타냄.
   return (
     <QueryClientProvider client={queryClient}>
       {/* 기본적으로 개발 도구가 열려 있도록 설정한다. */}
-      <ReactQueryDevtools initialIsOpen={false}/>     
+      {/* <ReactQueryDevtools initialIsOpen={false}/>      */}
         <div className={styles.screen}>
             <Routes>
               <Route path="/" element={<DashBoard />} />

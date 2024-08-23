@@ -23,9 +23,9 @@ const RAppCard : React.FC<RAppProps> = ({data }) => {
                     <section className={styles.header_container}>
                         <div className={styles.header_content}>
                             <h2>{item.name}</h2>
+                            <p><strong>Version</strong>: {item.rappSchema.version}</p>
+                            <p><strong>Vendor</strong>: {item.rappSchema.vendor}</p>
                             <p><strong>ServiceType: </strong>{item.rappSchema.ServiceType}</p>
-                            <p><strong>vendor</strong>: {item.rappSchema.vendor}</p>
-                            <p><strong>version</strong>: {item.rappSchema.version}</p>
                         </div>
                         <div className={styles.header_img}>
                             <img src={rapp} alt="rapp" />

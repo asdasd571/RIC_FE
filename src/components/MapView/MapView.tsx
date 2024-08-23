@@ -66,8 +66,8 @@ const MapView : React.FC = () => {
 
     return(
         <>
-            <Map     //center={{ lat: 36.38275, lng: 127.3611 }}
-                center={{ lat: 36.38275, lng: 127.36311 }} // //todo 임시 좌표 ,위도, 경도 지도 중심 좌표 (etri 11동 건물 기준)
+            <Map     //center={{lat: 36.38275, lng: 127.36311 }} />/ (etri 11동 건물 기준)
+                center={{ lat: 36.38292, lng: 127.3652 }} // todo : 임시 지도 위치. (셀 가운데)
                 style={{ width: "100%", height: "100%" , borderRadius:"10px" }}
             >
 

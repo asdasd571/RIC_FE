@@ -6,7 +6,6 @@ import SimpleAreaChart from './SimpleAreaChart';
 import MultiLineChart from './MultiLineChart';
 import testData from "./testData";
 import React from "react";
-import { ResponsiveContainer } from "recharts";
 import SimpleCellChart from "./SimpleCellChart";
 
 
@@ -52,23 +51,3 @@ const Charts : React.FC<ChartsProps> = ({
 // ) 
 
 export default Charts;
-
-//todo : 나중에 분리시켜야할듯.
-// * 멀티 차트
-export const MCharts : React.FC<MChartsProps> = ({ 
-    chartType="mLine",
-    data = testData, 
-    color = ["#59A5F5","#3e5b7a"], 
-    dataKey=["pv", "uv"], 
-    title="ChartName", 
-    name="name"}) => 
-
-{
-    
-    return(
-        chartType === "mLine" ? (
-            <MultiLineChart  data={data} name={name} title = {title} color={color} dataKey={dataKey}/>
-        )  : null // 기본값 설정 또는 에러 처리
-        
-    )
-}

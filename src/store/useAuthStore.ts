@@ -1,20 +1,15 @@
+import Swal from 'sweetalert2';
 import  { create }  from 'zustand';
-
-
-
-interface State {
-    count: number
-    increment: () => void
-    decrement: () => void
-}
+import useNavigates from '../hooks/useNavigates';
 
 // * 로그인 부분
 interface StoreState {
-    isLogin : boolean; // 로그인 상태정보
+    isLogin : boolean | null; // 로그인 상태정보
     username: string | null; // 사용자 이름 저장
     password: string | null; // 비밀번호 저장
     storeLogin: (username: string, password: string) => void; // 로그인 액션 함수
     storeLogout: () => void; // 로그아웃 액션 함수
+    storeAuthDelete: () => void; // 인증 상태 리셋 함수, 회원탈퇴
     initializeAuthState: () => void; // 초기화 함수 추가
 }
 
@@ -48,7 +43,7 @@ const removeToken = () => {
 //todo : 로그인 상태와 유저 정보를 저장하는 전역 상태.
 // * 로그인 전역 상태 
 export const useAuthStore = create<StoreState>((set) => ({
-    isLogin : false, // 로그인 상태 false로 선언.
+    isLogin : null, // 로그인 상태 null 선언. (isLogin 초기값을 null로 설정: isLogin이 null일 때 초기화가 진행 중)
     username: null, // 초기값 null //todo : 후에 token으로 변경 
     password: null, // 초기값 null
 
@@ -72,6 +67,15 @@ export const useAuthStore = create<StoreState>((set) => ({
         removeToken(); // 토큰 삭제.
     },
 
+    //* 회원탈퇴 상태
+    storeAuthDelete: () => {
+        set(() => ({
+            isLogin: null, // 상태를 null로 리셋
+            username: null,
+            password: null
+        }));
+        removeToken(); // 로컬 스토리지의 정보 삭제
+    },
     //* 초기화 함수 (로컬 스토리지에서 토큰 가져와 전역 상태와 동기화)
     initializeAuthState: () => {
         const { username, password } = getToken();
@@ -81,6 +85,12 @@ export const useAuthStore = create<StoreState>((set) => ({
                 username: username,
                 password: password
             }));
+        }else{
+            set(() => ({
+                isLogin: false, // unername, password가 없다면, login false로 바꾸기.
+            }))
+
+            
         }
     }
 }))

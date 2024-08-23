@@ -68,13 +68,13 @@ const SignUpPage: React.FC = () => {
                     if (response.data.message === "OK"){
                         Swal.fire({
                             icon: 'info',
-                            text: '회원가입 되었습니다.',
+                            text: 'Registration successful.', //회원가입 되었습니다.
                         });
                         goLogin();// 로그인 페이지로 이동
                     }else { //회원가입 실패시
                         Swal.fire({
                             icon: 'error',
-                            text: '회원가입에 실패했습니다.',
+                            text: 'Registration failed.',// 회원가입에 실패했습니다.
                         });
 
                         // input 초기화
@@ -87,8 +87,8 @@ const SignUpPage: React.FC = () => {
                     // *3-1. 비밀번호 유효성 검사 실패 시
                 } else{
                     Swal.fire({
-                        icon: 'warning',
-                        text: '비밀번호가 일치하지 않습니다.',
+                        icon: 'error',
+                        text: 'Passwords do not match.',
                     });
                     
                 }
@@ -99,7 +99,7 @@ const SignUpPage: React.FC = () => {
                 console.log(error);
                 Swal.fire({
                     icon: 'error',
-                    text: '회원가입에 실패했습니다.',
+                    text: 'Registration failed.', // 회원가입에 실패했습니다.
                 });
 
                 // input 초기화

@@ -38,7 +38,10 @@ const MultiLineChart :React.FC<MChartProps> = ({
                                 type="monotone"
                                 dataKey={currentName}
                                 stroke={color[index]} // 색상 지정
-                                activeDot={{ r: 6 }}
+                                activeDot={{ 
+                                    r: 4,
+                                    fill: color[index], // 점 내부를 선 색상과 동일하게 채우기
+                                }}
                                 strokeWidth={1}
                             />
                         ))

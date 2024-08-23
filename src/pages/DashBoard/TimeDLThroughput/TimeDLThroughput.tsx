@@ -2,19 +2,14 @@
 
 import React, { useEffect, useState } from "react"
 import defaultAxios from "../../../apis/defaultAxios";
-import Charts, { MCharts } from "../../../components/Charts/Charts";
+import Charts from "../../../components/Charts/Charts";
+import MCharts from "../../../components/Charts/MCharts";
 import { testMultiData } from "../../../components/Charts/testData";
 import { useQuery } from "@tanstack/react-query";
 import { fetchCellData, fetchDLData, fetchUEData, fetchULData } from "../../../apis/dashboardApi";
+import { chartColors } from "../../../utils/chartColors";
 
 
-interface RawData{
-    Cell_ID: number;
-    DL_rate: number;
-    UL_rate: number;
-    Num_UE: number;
-    Timestamp: string;
-}
 
 interface ChartData {
     Timestamp: string;
@@ -55,10 +50,6 @@ const TimeDLThroughput:React.FC<TimeDLThroughputProps> = ({type}) => {
     const [ULRateKey, setULRateKey] = useState<string[]>(); //ue rate 멀티라인 큐 키
     const [NumUEKey, setNumUEKey] = useState<string[]>(); // num ue 멀티라인 큐 키
 
-    const colors = [ // .//todo : 이 친구를 전체 상태로 해야할듯
-        "#C8FFFF", "#A1EBFF", "#7AD8FF", "#55C4FF", "#00BFFF",
-        "#0098D4", "#0080B3", "#00699B", "#005282", "#31297C"
-    ];
     // * ============================= //
 
 
@@ -126,7 +117,7 @@ const TimeDLThroughput:React.FC<TimeDLThroughputProps> = ({type}) => {
                 name="Timestamp"
                 chartType="mLine"
                 title=""
-                color={colors}
+                color={chartColors}
             />
         : (type === "UL_rate" && ULData && ULRateKey) ? // ul이면,
             <MCharts data={ULRateQueue} 
@@ -134,18 +125,15 @@ const TimeDLThroughput:React.FC<TimeDLThroughputProps> = ({type}) => {
                 name="Timestamp"
                 chartType="mLine"
                 title=""
-                color={colors}/>
+                color={chartColors}/>
         :  (type === "Num_UE" && UEData && NumUEKey) ? //num-ue이면,
             <MCharts data={NumUEQueue} 
             dataKey={NumUEKey} // type으로 넣어줘서 데이터를 뽑는다.
             name="Timestamp"
             chartType="mLine"
             title=""
-            color={colors}/>
+            color={chartColors}/>
         : null
-
-    
-        
     )
 }
 

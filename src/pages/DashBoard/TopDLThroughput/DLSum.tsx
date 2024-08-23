@@ -4,15 +4,8 @@ import { PieChart, Pie, Sector, Cell, ResponsiveContainer, Tooltip, XAxis } from
 import { fetchCellData, fetchCellSumData } from '../../../apis/dashboardApi';
 import { CellSum , CellData} from '../../../types/apis.types';
 import styles from '../../../components/Charts/Charts.module.scss';
+import { chartColors } from '../../../utils/chartColors';
 
-
-
-
-// 바 차트 색상 .
-const colors = [ // .//todo : 이 친구를 전체 상태로 해야할듯 (bar에 적용해야함)
-    "#C8FFFF", "#A1EBFF", "#7AD8FF", "#55C4FF", "#00BFFF",
-    "#0098D4", "#0080B3", "#00699B", "#005282", "#31297C"
-];
 
 const DLSumPieChart :React.FC = ()=>{
     const { data: cellSumData } = useQuery<CellSum>({
@@ -51,7 +44,7 @@ const DLSumPieChart :React.FC = ()=>{
                     >
                         
                         {cellData?.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+                            <Cell key={`cell-${index}`} fill={chartColors[index % chartColors.length]} />
                         ))}
                     </Pie>
                     {/* 텍스트 가운대 정렬 */}
