@@ -4,12 +4,12 @@ import useNavigates from '../hooks/useNavigates';
 
 // * 로그인 부분
 interface StoreState {
-    isLogin : boolean | null; // 로그인 상태정보
+    isLogin : boolean ; // 로그인 상태정보
     username: string | null; // 사용자 이름 저장
     password: string | null; // 비밀번호 저장
-    storeLogin: (username: string, password: string) => void; // 로그인 액션 함수
+    token: string | null;
+    storeLogin: (username: string, password: string, token: string) => void; // 로그인 액션 함수
     storeLogout: () => void; // 로그아웃 액션 함수
-    storeAuthDelete: () => void; // 인증 상태 리셋 함수, 회원탈퇴
     initializeAuthState: () => void; // 초기화 함수 추가
 }
 
@@ -22,7 +22,8 @@ interface StoreState {
 const getToken = () => {
     const username = localStorage.getItem('username');
     const password = localStorage.getItem('password');
-    return { username, password };
+    const token = localStorage.getItem('token');
+    return { username, password , token};
 };
 
 // const setToken = (token: string) => {
@@ -30,10 +31,11 @@ const getToken = () => {
 // };
 
 // todo : 후에 token으로 변경
-const setToken = (username:string, password:string) => {
+const setToken = (username:string, password:string, token:string) => {
     localStorage.setItem('username', username);
     localStorage.setItem('password', password);
-    };
+    localStorage.setItem('token', token);   // 토큰 저장 
+};
 
 const removeToken = () => {
     localStorage.clear();
@@ -43,17 +45,20 @@ const removeToken = () => {
 //todo : 로그인 상태와 유저 정보를 저장하는 전역 상태.
 // * 로그인 전역 상태 
 export const useAuthStore = create<StoreState>((set) => ({
-    isLogin : null, // 로그인 상태 null 선언. (isLogin 초기값을 null로 설정: isLogin이 null일 때 초기화가 진행 중)
+    isLogin : false, // 로그인 상태 null 선언. (isLogin 초기값을 null로 설정: isLogin이 null일 때 초기화가 진행 중)
     username: null, // 초기값 null //todo : 후에 token으로 변경 
     password: null, // 초기값 null
+    token: null,
 
     //* 로그인 진행 함수 (전역변수 지정, localstorage 저장)
-    storeLogin: (username: string, password: string) => {
+    storeLogin: (username: string, password: string, token:string) => {
         set(() => ({
             isLogin : true, 
             username: username , 
-            password: password }));
-        setToken(username, password); // 토큰 저장 //todo : 후에 token으로 변경  
+            password: password ,
+            token: token
+        }));
+        setToken(username, password,token); // 토큰 저장 //todo : 후에 token으로 변경  
     }, // 로그인 상태로 지정하는 함수
     
     //*로그아웃 상태 (전역변수 비우기, localstorage 삭제)
@@ -61,37 +66,39 @@ export const useAuthStore = create<StoreState>((set) => ({
         set(() => ({
             isLogin: false,
             username: null, //todo : 후에 token으로 변경  
-            password: null //logout 상태로 지정
+            password: null, //logout 상태로 지정
+            token: null
         }));
 
         removeToken(); // 토큰 삭제.
     },
 
-    //* 회원탈퇴 상태
-    storeAuthDelete: () => {
-        set(() => ({
-            isLogin: null, // 상태를 null로 리셋
-            username: null,
-            password: null
-        }));
-        removeToken(); // 로컬 스토리지의 정보 삭제
-    },
     //* 초기화 함수 (로컬 스토리지에서 토큰 가져와 전역 상태와 동기화)
     initializeAuthState: () => {
-        const { username, password } = getToken();
-        if (username && password) {
+        const { username, password, token } = getToken();
+        // console.log('응애',username, password, token); // 있는데,,
+        if (username && password && token) {
             set(() => ({
                 isLogin: true,
                 username: username,
-                password: password
+                password: password,
+                token: token
             }));
-        }else{
-            set(() => ({
-                isLogin: false, // unername, password가 없다면, login false로 바꾸기.
-            }))
-
-            
-        }
+        } 
+        // ! 로그인이 되어 있지 않은 경우, /login 페이지로 이동한다. --------------//
+        // else{
+        //     if (!['/login', '/sign-up'].includes(window.location.pathname)){
+        //         Swal.fire({
+        //             icon : "info",
+        //             title: 'Please Log In',
+        //             text: 'You need to log in to access this feature. Please log in to continue.', //이 기능을 사용하려면 로그인이 필요합니다. 계속하려면 로그인해 주세요.
+        //             didClose: () => { // 닫힌 후에 실행.
+        //               window.location.href = '/login'; // '닫기' 버튼 클릭 시 , 로그인 페이지로 이동
+        //             }
+        //         })
+        //     }
+        // }
+        // ! ----------------------------------------------------------------//
     }
 }))
 

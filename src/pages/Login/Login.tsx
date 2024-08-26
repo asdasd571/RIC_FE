@@ -37,13 +37,14 @@ const Login: React.FC = () => {
 
             try{
                 const response = await defaultAxios.post(url, formData);
-                
+                // console.log(response.data);
                 //2-1. 성공시/실패시 호출 
                 // 로그인 성공시,
-                if (response.data.message === "Login OK"){
+                if (response.data.data.message === "Login OK"){
                     const { storeLogin } = useAuthStore.getState(); // storeLogin 함수 가져오기
-                    storeLogin(userName, password); // 상태 업데이트
+                    storeLogin(userName, password, response.data.token); // 상태 업데이트
                     goMain(); //main 페이지로 이동
+                    
                 } else { // 로그인 실패시  
                     Swal.fire({
                         icon:'error',

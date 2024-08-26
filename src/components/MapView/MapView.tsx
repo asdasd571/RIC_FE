@@ -15,10 +15,12 @@ const StyledMarkerName = styled.div`
     display: flex;
     align-items: center;
 
-    color: #FFFFFF;
+    color: #333333;
     font-size: 0.9rem;
-    background-color : #59A5F5;
-    border-radius: 5px;
+    font-family: 'Pretendard';
+    font-weight: bold;
+    background-color : #f5f5f57a;
+    /* border-radius: 5px; */
     /* border: 1px solid #333333; */
     
     text-align: center;
@@ -99,7 +101,7 @@ const MapView : React.FC = () => {
                 <CustomOverlayMap 
                     position={{ lat: ric['Y_Pos'], lng: ric['X_Pos'] }}
                 >
-                    <StyledMarkerName>Cell_ID: {ric['Cell_ID']}</StyledMarkerName>
+                    <StyledMarkerName>Cell ID: {ric['Cell_ID']}</StyledMarkerName>
                 </CustomOverlayMap> 
 
                 
@@ -108,11 +110,11 @@ const MapView : React.FC = () => {
                     center={{lat : ric['Y_Pos'], lng : ric['X_Pos']}} 
                     radius={ric['Tx_Power']} // 파워값으로, 반지름
                     strokeWeight={1} // 선의 두께입니다
-                    strokeColor={"#0077C2"} // 선의 색깔입니다
+                    strokeColor={"#FFFFFF"} // 선의 색깔입니다
                     strokeOpacity={2} // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
                     strokeStyle={"solid"} // 선의 스타일 입니다
-                    fillColor={"#C8FFFF"} // 채우기 색깔입니다
-                    fillOpacity={0.5} // 채우기 불투명도 입니다
+                    fillColor={"#ccccccb7"} // 채우기 색깔입니다#C8FFFF
+                    fillOpacity={0.7} // 채우기 불투명도 입니다
                 />
 
 

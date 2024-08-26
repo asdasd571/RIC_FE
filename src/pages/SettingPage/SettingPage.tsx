@@ -9,7 +9,7 @@ import { settingData } from "./settingData";
 
 const Setting: React.FC = () => {
     const {goLogin} = useNavigates();
-    const {username, password, storeAuthDelete} = useAuthStore();
+    const {username, password, storeLogout} = useAuthStore();
 
         
         //* 삭제 API 호출
@@ -28,7 +28,7 @@ const Setting: React.FC = () => {
 
                 // 성공 시, // todo : 나중에 message는 바뀔 수 있다.
                 if (response.data.message === "Delete OK") {
-                    storeAuthDelete();/// 회원탈퇴 진행
+                    storeLogout();/// 회원탈퇴 진행
 
                     // * 탈퇴 성공시. 
                     Swal.fire({

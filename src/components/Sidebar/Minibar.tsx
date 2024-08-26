@@ -11,10 +11,14 @@ import styles from './Minibar.module.scss';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { useAuthStore } from '../../store/useAuthStore';
+import useNavigates from '../../hooks/useNavigates';
 
 const Minibar:React.FC= () =>{
     // * 전역 상태 --------------//
     const {isLogin, storeLogout} = useAuthStore();
+
+    //* hook
+    const {goLogin} = useNavigates();
 
     //* 알림 -------------------//
     const [alarmDatas, setAlarmDatas] = useState<AlarmData[]>([]); // 알림데이터
@@ -65,30 +69,38 @@ const Minibar:React.FC= () =>{
         navigate('/setting');
     }
 
-    // *로그아웃 처리 핸들러 -------- */
+    // *로그아웃 처리 핸들러 -------- */ 
+    // todo : 후에 로그아웃 핸들러로 변경.
     const handleLogout = async () => {
+        storeLogout(); // todo  후에 handleLogout으로 변경
+        Swal.fire({
+            icon: 'success',
+            text: 'Logged out successfully.',
+        });
+        goLogin(); // todo  후에 handleLogout으로 변경
 
-        //1. 로그아웃 API 호출 
-        const url=`/logout`; 
-        try{
-            const response = await defaultAxios.get(url);
-            //todo 로그아웃 성공했는지 비교하는 로직도 필요 (api data 추가되면 수정하기, 0812 ) 
-            storeLogout(); // 로그아웃 진행 (토큰 삭제, 전역 상태)
+                    
+
+        // //1. 로그아웃 API 호출 
+        // const url=`/logout`; 
+        // try{
+        //     const response = await defaultAxios.get(url);
+        //     //todo 로그아웃 성공했는지 비교하는 로직도 필요 (api data 추가되면 수정하기, 0812 ) 
+        //     // storeLogout(); // 로그아웃 진행 (토큰 삭제, 전역 상태)
             
-            Swal.fire({
-                icon: 'info',
-                text: '로그아웃 되었습니다.',
-            });
-            navigate('/login'); // 로그인 페이지로 이동
-        } catch(error){
-            console.error(error);
-            Swal.fire({
-                icon: 'error',
-                text: '로그아웃에 실패했습니다.',
-            });
-        }
+        //     Swal.fire({
+        //         icon: 'info',
+        //         text: 'Logged out successfully.',
+        //     });
+        //     navigate('/login'); // 로그인 페이지로 이동
+        // } catch(error){
+        //     console.error(error);
+        //     Swal.fire({
+        //         icon: 'error',
+        //         text: 'Logout failed.',
+        //     });
+        // }
         // console.log('Logging out...');
-
     };
         
     return(
@@ -104,7 +116,8 @@ const Minibar:React.FC= () =>{
             <div 
                 className= {`${styles.item} ${selectedIndex === 1 ? styles.clicked : ''}`} 
                 onClick={()=>{
-                    handleLogout();
+                    handleLogout(); //todo 후에 이걸로 사용
+
                     handleItemClick(1);
                     }}>
                 <img className= {styles.icon} src={logout} alt='logout'/>
