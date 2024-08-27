@@ -93,7 +93,7 @@ const Setting: React.FC = () => {
                                 
                             <table>
                                 <thead>
-                                    <th>이름</th>
+                                    <th>Environment Variable</th>
                                     <th>URL</th>
                                 </thead>
                                 <tbody>
@@ -101,9 +101,9 @@ const Setting: React.FC = () => {
                                     {settingData.map((item, index) => (
                                         <tr>
                                             <td>{item.name}</td>
-                                            <td>path (나중엔 보이게)</td> 
+                                            {/* <td>path (나중엔 보이게)</td>  */}
                                             {/* //! cetting url 나중엔 보여지게. */}
-                                            {/* <td>{item.path}</td> */}
+                                            <td>{item.path}</td>
                                         </tr>
                                     ))}
                                 </tbody>

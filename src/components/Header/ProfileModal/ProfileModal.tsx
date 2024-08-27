@@ -17,10 +17,13 @@ const ProfileModal :React.FC = () => {
     const {username, password} = useAuthStore(); //전역 상태로 저장된 값 불러오기
 
     //* 상태
-    // todo : 재랜더링이 너무 잦기 때문에, 방법 생각 
+    // todo : 재랜더링이 너무 잦기 때문에, 추후 방법 생각 
     const [userEmail, setUserEmail] = useState<string>('email@abc.def'); // 유저 이메일 저장
     const [inputNickname, setInputNickname] = useState<string>('nickname');
+    //* 상태-프로필모달
+    const [isShowProfile, setIsShowProfile] = useState<boolean>(false); // true : 알림창 보임, false : 알림창 끔
 
+    
     // * 사용자 정보 조회 /register GET
     const fetchUserInfo = async (username: string, password: string) =>{
         try{
@@ -34,26 +37,30 @@ const ProfileModal :React.FC = () => {
         }
     }
 
-    // 사용자 닉네임 업데이트.
+    // * 사용자 닉네임 업데이트.
     const handleModifyNickname = (newNickname : string):void =>{
         storeNickname(newNickname);
     }
+
     // * 사용자 정보 저장 // todo : 후에 patch 
     const handleSavePforile = (e: React.FormEvent<HTMLFormElement>):void =>{
         e.preventDefault(); // 폼의 이벤트 기본 동작 없앰( 새로고침 등)
         // 1. 닉네임 상태 변경
         handleModifyNickname(inputNickname); 
 
-        // 2. 모달 띄우기.
+        // 2. 알림창 끄기
+        setIsShowProfile(false);
+
+        // 3. 모달 띄우기.
         Swal.fire({
-            icon: 'info',
-            text: '저장 되었습니다.',
+            icon: 'success',
+            text: 'Saved successfully.',
         });
     }
 
     
     //* 프로필모달 -------------------//
-    const [isShowProfile, setIsShowProfile] = useState<boolean>(false); // true : 알림창 보임, false : 알림창 끔
+    
 
     //벨 버튼 클릭시 알림 on / off
     const handleShowProfile = ():void =>{
