@@ -1,0 +1,51 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+//* 흰색 대시보드 패널
+.pannel_container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+
+  box-sizing: border-box;
+  padding: 0.625rem; //10px
+
+  border: 0px;
+  border-radius: 10px;
+  background-color: $pannel_background;
+  box-shadow: $custom-shadow;
+
+  // 각 패널 제목
+  .title {
+    font-size: 1.25rem; //20px
+    margin: 0px;
+  }
+  // 타이틀 hr
+  hr {
+    @include pannel_hr;
+  }
+
+  // 각 패널 내용 컨테이너
+  .contents {
+    //남은 부분을 모두 차지하도록 진행.
+    flex: 1;
+    // overflow:scroll;
+
+    &::-webkit-scrollbar {
+      // 스크롤바 전체
+      width: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+      // 스크롤바 막대
+      background-color: #cccccc;
+      border-radius: 10px;
+    }
+    &::-webkit-scrollbar-track {
+      // 스크롤바 막대 외부
+      // background-color: rgb(173, 120, 120);
+      border-radius: 10px;
+    }
+  }
+}

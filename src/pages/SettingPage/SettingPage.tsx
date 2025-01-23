@@ -22,7 +22,7 @@ const Setting: React.FC = () => {
             formData.append('password', password);
 
             //2. 회원탈퇴 API 호출
-            const url=`/deregister`;
+            const url=`http://localhost:8080/login/deregister`;
             try{
                 const response = await defaultAxios.delete(url, { data: formData});
 

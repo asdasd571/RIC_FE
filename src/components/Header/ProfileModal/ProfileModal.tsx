@@ -13,13 +13,13 @@ import { useNicknameStore } from "../../../store/useNicknameStore";
 const ProfileModal :React.FC = () => {
 
     //* 전역상태
-    const {nickname, storeNickname} = useNicknameStore(); // 유저닉네임
+    const {nickname, storeNickname} = useNicknameStore(); // 유저닉네임 // nickname KSLEE
     const {username, password} = useAuthStore(); //전역 상태로 저장된 값 불러오기
 
     //* 상태
     // todo : 재랜더링이 너무 잦기 때문에, 추후 방법 생각 
-    const [userEmail, setUserEmail] = useState<string>('email@abc.def'); // 유저 이메일 저장
-    const [inputNickname, setInputNickname] = useState<string>('nickname');
+    const [userEmail, setUserEmail] = useState<string>('email@etri.re.kr'); // 유저 이메일 저장
+    const [inputNickname, setInputNickname] = useState<string>('etri'); // nickname KSLEE
     //* 상태-프로필모달
     const [isShowProfile, setIsShowProfile] = useState<boolean>(false); // true : 알림창 보임, false : 알림창 끔
 
@@ -28,7 +28,7 @@ const ProfileModal :React.FC = () => {
     const fetchUserInfo = async (username: string, password: string) =>{
         try{
             // 전역 상태로 쿼리스트링 
-            const url = `/register?username=${username}&password=${password}`;
+            const url = `http://localhost:8080/login/register?username=${username}`;
             const response = await defaultAxios.get(url);
 
             setUserEmail(response.data.email)

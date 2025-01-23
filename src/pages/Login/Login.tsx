@@ -33,7 +33,7 @@ const Login: React.FC = () => {
             formData.append('password',password);
 
             // 2. 로그인 API 호출
-            const url=`/login`;
+            const url=`http://localhost:8000/login/login`;
 
             try{
                 const response = await defaultAxios.post(url, formData);

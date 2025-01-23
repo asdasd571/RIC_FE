@@ -56,7 +56,7 @@ const SignUpPage: React.FC = () => {
             formData.append('password2', rePassword);
 
             // 2. API호출  //* 서버로 회원가입 요청
-            const url= `/register`;
+            const url= `http://localhost:8080/login/register`;
             try{
                 const response = await defaultAxios.post(url,formData); //todo : 회원가입 로직 하기!
                 // console.log('/register',response);
@@ -65,7 +65,7 @@ const SignUpPage: React.FC = () => {
                 if(password === rePassword){ // 비밀번호, 비밀번호 확인이 일치하는 경우,
                     // *4. 성공시 / 실패시 구현
                     // 회원가입 성공 시 
-                    if (response.data.message === "OK"){
+                    if (response.data.message === "Registration successful"){
                         Swal.fire({
                             icon: 'success',
                             text: 'Registration successful.', //회원가입 되었습니다.

@@ -9,7 +9,8 @@ import React from "react"
 //* 알림 데이터 형식
 interface AlarmData {
     name: string;
-    text?: string;
+    level?: string;
+    desc: string;
 }
 
 // *알림 있는지에 대한 props 정의
@@ -22,23 +23,23 @@ interface AlarmProps{
 const tempDatas : AlarmData[] = [
     {   
         name: '알림1',
-        text: '갑자기 수치가 80%가 넙고, 값이.. 그래프가... 높은... 경고... 등등... 어디 셀이 어떻고 저렇고'
+        desc: '갑자기 수치가 80%가 넙고, 값이.. 그래프가... 높은... 경고... 등등... 어디 셀이 어떻고 저렇고'
     },
     {   
         name: '알림2',
-        text: '갑자기 수치가 80%가 넙고, 값이.. 그래프가... 높은... 경고... 등등... 어디 셀이 어떻고 저렇고'
+        desc: '갑자기 수치가 80%가 넙고, 값이.. 그래프가... 높은... 경고... 등등... 어디 셀이 어떻고 저렇고'
     },
     {   
         name: '알림3',
-        text: '갑자기 수치가 80%가 넙고, 값이.. 그래프가... 높은... 경고... 등등... 어디 셀이 어떻고 저렇고'
+        desc: '갑자기 수치가 80%가 넙고, 값이.. 그래프가... 높은... 경고... 등등... 어디 셀이 어떻고 저렇고'
     },
     {   
         name: '알림4',
-        text: '갑자기 수치가 80%가 넙고, 값이.. 그래프가... 높은... 경고... 등등... 어디 셀이 어떻고 저렇고'
+        desc: '갑자기 수치가 80%가 넙고, 값이.. 그래프가... 높은... 경고... 등등... 어디 셀이 어떻고 저렇고'
     },
     {   
         name: '알림5',
-        text: '갑자기 수치가 80%가 넙고, 값이.. 그래프가... 높은... 경고... 등등... 어디 셀이 어떻고 저렇고'
+        desc: '갑자기 수치가 80%가 넙고, 값이.. 그래프가... 높은... 경고... 등등... 어디 셀이 어떻고 저렇고'
     }
 ];
 
@@ -55,7 +56,7 @@ const Alarm:React.FC<AlarmProps> = ({data=[]}) => {
             
             // icon: 'info',
             title: data?.name || "AlarmTitle",
-            text: data?.name  || "AlarmTest", //todo : text 내용으로 추후 변경
+            text: data?.desc  || "AlarmTest", 
         })
     }
 
@@ -83,7 +84,7 @@ const Alarm:React.FC<AlarmProps> = ({data=[]}) => {
                                 <article onClick={()=>handleShowAlarmModal(element)} className={styles.item}>
                                     <h4 className={styles.item_title}>{element.name}</h4>
                                     {/* //todo : 알림 내용을 다른 데이터 추가되면 넣어야함 */  }
-                                    <p className={styles.item_text}>{element.name}</p>
+                                    <p className={styles.item_text}>{element.desc}</p>
                                 </article>
                             ))
                             }

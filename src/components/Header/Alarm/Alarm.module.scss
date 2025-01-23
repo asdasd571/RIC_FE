@@ -24,7 +24,7 @@
         left: 180px;
 
         // @include full-size-flex(column);
-        z-index: 1; // * 우선순위
+        z-index: 2; // * 우선순위
         display: flex;
         flex-direction: column;
     

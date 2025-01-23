@@ -39,12 +39,13 @@ const DLSumPieChart :React.FC = ()=>{
                         innerRadius={45}
                         outerRadius={70}
                         fill="#8884d8"
-                        dataKey="DL_rate"
+                        dataKey="DL_rate" // DL_rate
                         // label // 각 값 표시
+                        isAnimationActive={false} // 애니메이션 끄기
                     >
                         
                         {cellData?.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={chartColors[index % chartColors.length]} />
+                            <Cell key={`cell-${index}`} fill={chartColors[index % chartColors.length]}  />
                         ))}
                     </Pie>
                     {/* 텍스트 가운대 정렬 */}
@@ -63,7 +64,7 @@ const DLSumPieChart :React.FC = ()=>{
                 </PieChart>
             </ResponsiveContainer>
             <h3 className={styles.chart_title}
-                > DL_SUM </h3>
+                > Total </h3> 
         </div>
     )
 }

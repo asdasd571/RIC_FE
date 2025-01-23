@@ -32,7 +32,7 @@ const Header : React.FC<HeaderProps> = ( {titleText = "DashBoard"}) => {
     // 알림 alarm 리스트 데이터를 받아오는 부분
     const getAlarmDatas = async (): Promise<void>  => {
         try{
-            const url:string = `/alarm`;
+            const url:string = `http://localhost:8080/alarm`;
             const response = await defaultAxios.get(url);
 
             setAlarmDatas(response?.data); 

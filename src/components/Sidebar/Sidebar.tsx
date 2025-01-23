@@ -1,52 +1,49 @@
-
 import styles from "./Sidebar.module.scss";
 import etriLogo from "../../assets/imgs/etriLogo.svg";
+import etriLogoV2 from "../../assets/imgs/etriLogoV2.png";
+import etriLogoV3 from "../../assets/imgs/etriLogoV3.png";
+import etriLogoV4 from "../../assets/imgs/etriLogoV4.png";
 import SidebarList from "./SidebarList";
-import React from "react"
+import React from "react";
 import Minibar from "./Minibar";
 import useNavigates from "../../hooks/useNavigates";
 import dashboard from "../../assets/imgs/dashboard.svg";
 
-
 // 사이드바 컴포넌트
 const Sidebar: React.FC = () => {
+  const { goMain } = useNavigates();
+  return (
+    <nav className={styles.container}>
+      <section className={styles.top_container}>
+        <img onClick={goMain} src={etriLogoV4} alt="ETRI Logo" />
+      </section>
 
-    const {goMain} = useNavigates();
-    return (
-        <nav className={styles.container}>
-            <section className={styles.top_container}>
-                <img onClick = {goMain} src={etriLogo} alt="ETRI Logo" />
-            </section>
-
-            <hr />
-            <section className={styles.mini_nav_continaer}>
-                <Minibar/>
-            </section>
-            <section className={styles.nav_container}>
-                {/* <SidebarList sidebarDatas={sidebarDatas} setSidebarDatas={setSidebarDatas}/> */}
-                <SidebarList/>
-            
-            </section>
-        </nav>
-    );
+      <hr />
+      <section className={styles.mini_nav_continaer}>
+        <Minibar />
+      </section>
+      <section className={styles.nav_container}>
+        {/* <SidebarList sidebarDatas={sidebarDatas} setSidebarDatas={setSidebarDatas}/> */}
+        <SidebarList />
+      </section>
+    </nav>
+  );
 };
 
-
-
 export default Sidebar;
-
 
 //* 추가 설명.
 // ...item이란,
 // 아래와 같이 작성할 수 있지만 불필요하게 긴 코드가 됨
-{/* <SidebarItem
+{
+  /* <SidebarItem
     key={itemIndex}
     name={item.name}
     icon={item.icon}
-/> */}
+/> */
+}
 
 //dlrjfkd rkxek.
-
 
 // *사이드바를 나타내는 데이터!
 // 사이드바 데이터 정의
@@ -55,8 +52,7 @@ export default Sidebar;
 //         title: {name: null, path: null},
 //         items: [
 //             { name: 'Dashboard', icon: dashboard, path: '/' , id:0},
-            
-            
+
 //         ]
 //     },
 //     {

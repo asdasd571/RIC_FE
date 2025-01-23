@@ -1,0 +1,84 @@
+@import "../../../../styles/mixins";
+@import "../../../../styles/fonts";
+@import "../../../../styles/variables";
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #333333;
+
+  // * 체크박스 크기
+  input {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  th,
+  td {
+    border: 1px solid #cccccc;
+  }
+
+  th {
+    text-align: center; // 가로 정렬
+    vertical-align: middle; // 세로 정렬
+    background-color: #e7e7e7;
+    height: 3.125rem;
+    font-family: "Pretendard-SemiBold";
+    font-size: 1.25rem;
+  }
+
+  td {
+    // background-color: #FFFFFF;
+    color: #353535;
+    vertical-align: middle;
+    font-family: "Pretendard-Medium";
+    font-size: 1.125rem;
+
+    background-color: #ffffff80;
+    &:hover {
+      background-color: #e7e7e7;
+    }
+  }
+
+  // Display Mode 부분
+  td:nth-child(1) {
+    background-color: #e7e7e7;
+    width: 6.25rem;
+    vertical-align: middle;
+    text-align: center;
+
+    //* 삭제 버튼
+    .btn_kpi_delete {
+      background-color: #ed9e9f;
+      border: 0rem;
+
+      width: 1.5625rem;
+      height: 1.5625rem;
+      border-radius: 0.3125rem;
+
+      color: #ffffff;
+
+      cursor: pointer;
+      @include custom-hover-btn(#ec5355);
+    }
+  }
+
+  td:nth-child(2) {
+    // background-color: #e7e7e7;
+    vertical-align: middle;
+    text-align: center; // 가로 정렬
+    .dropdown_td {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0rem 3.125rem;
+    }
+  }
+
+  tr {
+    color: #353535;
+    vertical-align: middle;
+    text-align: center;
+    font-family: "Pretendard-Medium";
+    font-size: 1rem;
+    height: 3.125rem;
+  }
+}

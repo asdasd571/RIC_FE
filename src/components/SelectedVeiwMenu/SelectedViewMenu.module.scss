@@ -1,0 +1,96 @@
+@import "../../styles/fonts";
+
+.container {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  .view_menu_container {
+    width: 100%;
+    height: 1.875rem; // 30px
+
+    display: flex;
+    flex-direction: row;
+    column-gap: 15px;
+
+    justify-content: start;
+    align-items: center;
+
+    font-size: 1.25rem; // 20px;
+    font-family: "Pretendard-SemiBold";
+    color: #cccccc;
+    margin-bottom: 15px;
+
+    position: relative;
+
+    // border-bottom: 1px solid #cccccc;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0px; /* 밑줄 간격 설정 */
+      height: 1px; /* 밑줄 굵기 설정 */
+      background-color: #cccccc; /* 밑줄 색상 */
+
+      border-radius: 1px;
+    }
+
+    .view_item {
+      cursor: pointer;
+      position: relative;
+      width: 5.625rem; //90px
+      height: 1.875rem; // 30px
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        color: #5c5c5c;
+        
+
+        // border-bottom: 3px solid #5c5c5c;
+      }
+
+      //* hover 시 밑줄 
+      // &:hover::after {
+      //   content: "";
+      //   position: absolute;
+      //   left: 0;
+      //   right: 0;
+      //   bottom: -1px; /* 밑줄 간격 설정 */
+      //   height: 3px; /* 밑줄 굵기 설정 */
+      //   background-color: #5c5c5c; /* 밑줄 색상 */
+      //   border-radius: 3px;
+      //   z-index: 1;
+      // }
+    }
+
+    .view_item_clicked {
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      // background-color: rgba(255, 255, 255, 0.801);
+      color: #5c5c5c;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -1px; /* 밑줄 간격 설정 */
+        height: 3px; /* 밑줄 굵기 설정 */
+        background-color: #5c5c5c; /* 밑줄 색상 */
+        border-radius: 3px;
+        z-index: 1;
+      }
+    }
+  }
+
+  // *  바디 부분
+  .view_contents {
+    width: 100%;
+    height: 100%;
+    flex: 1;
+  }
+}

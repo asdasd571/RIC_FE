@@ -27,7 +27,7 @@ const Minibar:React.FC= () =>{
     // 알림 alarm 리스트 데이터를 받아오는 부분
     const getAlarmDatas = async (): Promise<void>  => {
         try{
-            const url:string = `/alarm`;
+            const url:string = `http://localhost:8080/alarm`;
             const response = await defaultAxios.get(url);
 
             setAlarmDatas(response?.data); 
@@ -58,7 +58,7 @@ const Minibar:React.FC= () =>{
     useEffect(() => {
         if (location.pathname === "/setting") {
             handleItemClick(0);
-        } else if( location.pathname ==="/logout"){
+        } else if( location.pathname ==="/login/logout"){
             handleItemClick(1);
             
         }
@@ -82,7 +82,7 @@ const Minibar:React.FC= () =>{
                     
 
         // //1. 로그아웃 API 호출 
-        // const url=`/logout`; 
+        // const url=`/login/logout`; 
         // try{
         //     const response = await defaultAxios.get(url);
         //     //todo 로그아웃 성공했는지 비교하는 로직도 필요 (api data 추가되면 수정하기, 0812 ) 
@@ -92,7 +92,7 @@ const Minibar:React.FC= () =>{
         //         icon: 'info',
         //         text: 'Logged out successfully.',
         //     });
-        //     navigate('/login'); // 로그인 페이지로 이동
+        //     navigate('/login/login'); // 로그인 페이지로 이동
         // } catch(error){
         //     console.error(error);
         //     Swal.fire({

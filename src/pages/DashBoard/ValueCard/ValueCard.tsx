@@ -32,7 +32,7 @@ const ValueCard : React.FC<ValueProps> = ({type}) => {
     // * /value3 데이터, 각각 카드 데이터 받기.
     const getValues = async () =>{
         try{
-            const url:string = `/value3`;
+            const url:string = `http://localhost:8080/value3`;
 
             const response = await defaultAxios.get(url);
             // getValueIndex를 사용하여 필요한 데이터만 반환

@@ -70,7 +70,7 @@ const useNavigates = (): Record<string, ()=> void>  => {
     
     //로그인
     const goLogin = ():void => {
-        navigate("/login")
+        navigate("/login/login")
     }
     return {
             //메인 페이지(Dashboard)

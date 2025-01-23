@@ -15,29 +15,13 @@ import { useSidebarStore } from '../../store/useSidebarStore';
 const SidebarList: React.FC = () => {
     // * 전역 state
     const { sidebarDatas, toggleTitle } = useSidebarStore(); // 사이드바 데이터
-    //* 지역 state
-    const [selectedIndex, setSelectedIndex] = useState<number | null>(null); // 선택된 사이드바 index
-
     
     const navigate = useNavigate();
     const location = useLocation();
 
-    // *현재 경로에 맞는 메뉴 아이템을 자동으로 선택
-    useEffect(() => {
-        const currentPath = location.pathname;
-        const matchedItem = sidebarDatas
-            .flatMap(data => data.items)
-            .find(item => item.path === currentPath);
-        if (matchedItem) {
-            setSelectedIndex(matchedItem.id as number) ;
-        }
-    }, [location.pathname, sidebarDatas]); // pathname과 sidebarData가 바뀔때마다 실행된다.
-
 
     // *사이드바 아이템 클릭 핸들러
     const handleItemClick = (item: SidebarItem) => {
-        setSelectedIndex(item.id as number); // 선택된 아이템 index 설정
-
         if (item.externalUrl) {
             window.open(item.externalUrl, '_blank'); // 외부 링크 열기
         } else if (item.path) {
@@ -63,14 +47,14 @@ const SidebarList: React.FC = () => {
                             <li
                                 className={`
                                     ${styles.nav_item} 
-                                    ${selectedIndex === item.id ? styles.clicked : ''}
-                                    ${item.id === 0 ? styles.nav_item_dashboard : ''}
+                                    ${location.pathname === item.path ? styles.clicked : ''} 
+                                    ${item.name === 'Dashboard' ? styles.nav_item_dashboard : ''}
                                     `}
-                                key={item.id}
                                 onClick={() => handleItemClick(item)}
                             >
                                 <img className={styles.icon} 
                                     src={item.icon}
+                                    alt='icon'
                                 />
                                 {item.name}
                             </li>

@@ -1,126 +1,156 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+.container {
+  flex: 1; // 꽉채움.
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  row-gap: 1.25rem; //20px;
+  color: #333333;
 
-@import '../../../styles/variables';
-@import '../../../styles/mixins';
-.container{
-    flex: 1; // 꽉채움.
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    row-gap: 1.25rem; //20px;
-    color: #333333;
-    
-    position: relative;
+  position: relative;
+  width: 100%;
+
+  .description {
     width: 100%;
+    position: absolute;
+    // width: 100%;
 
-    .description{
-        width: 100%;
-        position: absolute;
-        // width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
 
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-        
-        justify-content: space-between;
-        column-gap: 10px;
-        box-sizing: border-box;
-        // padding: 0 10%;
-        // justify-content: space-between;
-        font-size: 1.2em;
-        top: -75px;
-        
-        place-items: center;
-        
+    justify-content: space-between;
+    column-gap: 10px;
+    box-sizing: border-box;
+    // padding: 0 10%;
+    // justify-content: space-between;
+    font-size: 1.2em;
+    top: -75px;
 
-        .des_item{
-            flex: 1;
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            column-gap: 5px;
-            margin: 0px;
-            // justify-content: left;
-            align-items: center;
+    place-items: center;
 
-            .state{
-                
-                width: 0.4375rem;
-                height: 0.4375rem;
-                border-radius: 50%;
-            }
+    .des_item {
+      flex: 1;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      column-gap: 5px;
+      margin: 0px;
+      // justify-content: left;
+      align-items: center;
 
-            .off{
-                background-color: #CCCCCC;
-            }
-            .on{
-                background-color: #9EEDA7;
-            }
-            .error{
-                background-color: #ED9E9F;
-            }
-            .warning{
-                background-color: #FFE990;
-            }
+      .state {
+        width: 0.4375rem;
+        height: 0.4375rem;
+        border-radius: 50%;
+        position: relative;
+      }
 
-            .text{
-                color: #5C5C5C;
-                // font-size: clamp(0.75rem,  0.75rem, 0.875rem); /* 최소 0.75rem, 최대 0.875rem, 부모 너비에 따라 유동적으로 조정 */;
-                font-size: 0.8em;
-            }
-        }
+      .off {
+        background-color: #cccccc;
+      }
+      .on {
+        background-color: #9eeda7;
+        // background: linear-gradient(to right, #9EEDA7, #CCCCCC);
+      }
+      .error {
+        background-color: #ed9e9f;
+      }
+      .warning {
+        background-color: #ffe990;
+      }
+
+      .text {
+        color: #5c5c5c;
+        // font-size: clamp(0.75rem,  0.75rem, 0.875rem); /* 최소 0.75rem, 최대 0.875rem, 부모 너비에 따라 유동적으로 조정 */;
+        font-size: 0.8em;
+      }
     }
-    // 그리드 아이템
-    .item{
-        background-color:  $pannel_inner_background;
-        border-radius: 0.625rem;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        column-gap: 15px;
-        
-        box-sizing: border-box;
-        padding: 0px 20px; // 높이, 너비
-        // padding-left: 10px;
-        // padding-right: 10px;
-        
-        @include custom-hover-scale-btn(#e9e9e9,1.03);
+  }
+  // 그리드 아이템
+  .item {
+    background-color: $pannel_inner_background;
+    border-radius: 0.625rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 15px;
 
-        // justify-content: center;
-        .item_titles{
-            width: 130px;
-            flex: 1;
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            color: #5C5C5C;
-            // 각 아이템 이름
-            .item_name{
-                font-size: 1.3em;
-                font-weight: bold;
-            }
+    box-sizing: border-box;
+    padding: 0px 20px; // 높이, 너비
+    // padding-left: 10px;
+    // padding-right: 10px;
 
-            .item_description{
-                font-size: 0.9em;
-                
-            }
-        }
+    @include custom-hover-scale-btn(#e9e9e9, 1.03);
 
-        
-        .item_value{
-            font-size: 2.3rem;
-            font-weight: bold;
+    // justify-content: center;
+    .item_titles {
+      width: 130px;
+      flex: 1;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      color: #5c5c5c;
+      // 각 아이템 이름
+      .item_name {
+        font-size: 1.3em;
+        font-weight: bold;
+      }
 
-            width: 40px;
-            
-        }
-
-
-        .item_state{
-            width: 3em;
-            height: 3em;
-            border-radius: 50%;
-            background-color: #CCCCCC;
-        }
+      .item_description {
+        font-size: 0.9em;
+      }
     }
 
+    .item_value {
+      font-size: 2.3rem;
+      font-weight: bold;
+
+      min-width: 40px;
+    }
+
+    // todo : 색상별로 바뀌게 설정하기
+    .item_state {
+      width: 3em;
+      height: 3em;
+      border-radius: 50%;
+      background-color: #cccccc;
+    }
+
+    @keyframes colorChange {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    // * 상태에 따른 동그라미 색상 변경
+    .item_state_off {
+      background: linear-gradient(-45deg, #f5f5f5, #cccccc, #5c5c5c);
+      background-size: 300% 300%; /* 배경 크기를 크게 설정  (*그라데이션이 충분히 움직일 수 있도록 합니다.) */
+      animation: colorChange 2s ease infinite; // * 에니메이션 적용
+    }
+    .item_state_on {
+      background: linear-gradient(-45deg, #d6ffdb, #9eeda7, #6ad977);
+      background-size: 300% 300%; /* 배경 크기를 크게 설정  (*그라데이션이 충분히 움직일 수 있도록 합니다.) */
+      animation: colorChange 2s ease infinite; // * 에니메이션 적용
+    }
+    .item_state_warning {
+      background: linear-gradient(-45deg, #fffbe9, #ffe990, #ffc43b);
+      background-size: 300% 300%; /* 배경 크기를 크게 설정  (*그라데이션이 충분히 움직일 수 있도록 합니다.) */
+      animation: colorChange 2s ease infinite; // * 에니메이션 적용
+    }
+
+    .item_state_error {
+      background: linear-gradient(-45deg, #ffe3e3, #ed9e9f, #ff4d4f);
+      background-size: 300% 300%; /* 배경 크기를 크게 설정  (*그라데이션이 충분히 움직일 수 있도록 합니다.) */
+      animation: colorChange 2s ease infinite; // * 에니메이션 적용
+    }
+  }
 }

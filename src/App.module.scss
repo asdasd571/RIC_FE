@@ -2,16 +2,20 @@
 // 프리텐다드
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
 
+
 .screen {
     
     margin: 0 auto;
     box-sizing: border-box;
-    height: calc(var(--vh, 1vh) * 100); /* CSS 변수를 사용하여 뷰포트 높이를 계산 */
+    height: auto;
+    min-height: max(calc(var(--vh, 1vh) * 100), 1024px); /* 뷰포트 높이와 최소 1024px 유지 */
+// 
+    // height: calc(var(--vh, 1vh) * 100); /* CSS 변수를 사용하여 뷰포트 높이를 계산 */
     // height: 100vw;
     width: 100vw;
     min-width: 1440px; /* 최소 너비 */
     // max-width: 1920px; /* 최대 너비 */
-    min-height: 1024px; /* 최대 높이 */
+    // min-height: 1024px; /* 최대 높이 */
     font-family: "Pretendard Variable", Pretendard;
     position: relative;
 

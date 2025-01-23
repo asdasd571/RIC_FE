@@ -11,6 +11,10 @@ export const settingData: settingItem[] = [
         path: process.env.REACT_APP_DEFAULT_ADDR
     },
     {
+        name: "REACT_APP_TS_DM_ADDR",
+        path: process.env.REACT_APP_TS_DM_ADDR
+    },
+    {
         name: "REACT_APP_KAKAO_KEY",
         path: process.env.REACT_APP_KAKAO_KEY
     },

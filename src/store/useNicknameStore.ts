@@ -7,7 +7,7 @@ interface Nickname {
 
 // * 닉네임 전역 상태 관리
 export const useNicknameStore = create<Nickname>((set) => ({
-    nickname: 'nickname',
+    nickname: 'etri', // KSLEE
     storeNickname: (newNickname) => { // 닉네임 변경 함수
         set({ nickname: newNickname }); // 입력받은 닉네임으로 상태 업데이트
     }

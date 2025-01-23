@@ -1,6 +1,5 @@
 // types/Sidebar.types.ts
 export interface SidebarItem {
-    id: number; //인덱스
     name: string;
     icon: string;
     path?: string;  // 내부 링크
