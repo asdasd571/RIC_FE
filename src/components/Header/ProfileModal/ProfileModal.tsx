@@ -28,6 +28,7 @@ const ProfileModal :React.FC = () => {
     const fetchUserInfo = async (username: string, password: string) =>{
         try{
             // 전역 상태로 쿼리스트링 
+            // user정보 조회할 때 username만 GET 요청시 PASSWORD 넘기는 건 보안상 안좋음
             const url = `http://localhost:8080/login/register?username=${username}`;
             const response = await defaultAxios.get(url);
 

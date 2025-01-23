@@ -19,7 +19,7 @@ export const fetchCellSumData = async (): Promise<CellSum> => {
 //* cellMetrics 데이터 받기 //cell-metrics (셀별 DL_Rate)
 export const fetchCellData = async () => { // todo : Charts 실시간 API 연결. 
     try {
-        const url: string = `hsttp://localhost:8080/cell-metrics`;
+        const url: string = `http://localhost:8080/cell-metrics`;
         const response = await defaultAxios.get(url);
         return response.data;
     } catch (error) {

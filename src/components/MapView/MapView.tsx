@@ -70,9 +70,10 @@ const MapView: React.FC = () => {
   
   // window.kakao. 일케 쓰면 됨
   //* RIC 데이터 받기 , /network-info
+  //카카오 지도에 기지국 찍기
   const getRicData = async () => {
     try {
-      const url: string = `/network-info`;
+      const url: string = `http://localhost:8080/network-info`;
       const response = await defaultAxios.get(url);
       return response.data;
     } catch (error) {
