@@ -86,18 +86,18 @@ export const useAuthStore = create<StoreState>((set) => ({
             }));
         } 
         // ! 로그인이 되어 있지 않은 경우, /login 페이지로 이동한다. --------------//
-        // else{
-        //     if (!['/login/login', '/sign-up'].includes(window.location.pathname)){
-        //         Swal.fire({
-        //             icon : "info",
-        //             title: 'Please Log In',
-        //             text: 'You need to log in to access this feature. Please log in to continue.', //이 기능을 사용하려면 로그인이 필요합니다. 계속하려면 로그인해 주세요.
-        //             didClose: () => { // 닫힌 후에 실행.
-        //               window.location.href = '/login/login'; // '닫기' 버튼 클릭 시 , 로그인 페이지로 이동
-        //             }
-        //         })
-        //     }
-        // }
+        else{
+            if (!['/login/login', '/sign-up'].includes(window.location.pathname)){
+                Swal.fire({
+                    icon : "info",
+                    title: 'Please Log In',
+                    text: 'You need to log in to access this feature. Please log in to continue.', //이 기능을 사용하려면 로그인이 필요합니다. 계속하려면 로그인해 주세요.
+                    didClose: () => { // 닫힌 후에 실행.
+                      window.location.href = '/login/login'; // '닫기' 버튼 클릭 시 , 로그인 페이지로 이동
+                    }
+                })
+            }
+        }
         // ! ----------------------------------------------------------------//
     }
 }))
