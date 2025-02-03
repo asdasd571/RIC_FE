@@ -1,0 +1,154 @@
+@import '../../styles/variables';
+
+$item-color : #FFFFFF;
+.container {
+    
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.3125rem;
+    // box-sizing: border-box;
+    // padding-top: 5%;
+    // padding-bottom: 5%;
+    justify-content: flex-start;
+    // justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    
+    flex-shrink: 1;
+
+
+    
+    // * 하나의 네비 색션
+    .nav_section {
+        width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 1;
+        row-gap: 0.3125rem;
+
+        //* 사이드바 타이틀 컨테이너 
+        .nav_title_container{
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            
+            background-color: #0077C2;
+            border-radius: 10px;
+            min-height: 45px;
+
+            // *네비 세부 타이틀 (SMO/OAM, Non-RT-RIC, Near-RT-RIC, E2 Nodes, Utilities)
+            .nav_title {
+                flex: 1;
+                box-sizing: border-box;
+                padding-left: 15px;
+                color: #ffffff;
+                font-size: 1.5rem;
+                margin: 0px 0px;
+
+            }
+            // *네비 세부 타이틀 이미지
+            >img {
+                max-width: 0.7em;
+                max-height: 1rem;
+                padding-right: 10px;
+            }
+        }
+
+        // * 토글 됐다면, .NAV_UL숨기기
+        .nav_ul.toggled { // toggled 클래스의 display 속성을 아예 다른 속성으로 덮어쓰는 것
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.2s ease-out;
+        }
+
+        // * 세부 세부 네비아이템간의 간격 
+        .nav_ul {
+            box-sizing: border-box;
+            margin: 0px;
+            width: 100%;
+            list-style-type: 'none'; /* ul 요소의 점을 없앱니다 */
+            margin-left: 0px;
+            padding-left: 0px;
+            flex-shrink: 1;
+            display: flex;
+            flex-direction: column;
+            row-gap: 0.1875rem;
+            align-items: center;
+            justify-content: flex-start;
+            flex-grow: 1;
+            overflow: hidden;
+
+            // 애니메이션. // 보이는 경우.
+            max-height: 500px; // 임의 값 지정.
+            transition: max-height 0.2s ease;
+            //애니메이션
+            // opacity: 1;
+            
+
+            .nav_item {
+                display: grid;
+                grid-template-columns: 1fr 3fr;
+                column-gap: 10px;
+                align-items: center;
+                min-height: 45px;
+                padding-left: 0px;
+                
+                min-width: 90%;
+                box-sizing: border-box;
+                font-size: 1.3rem;
+                color: #5C5C5C;
+                width: 95%;
+                background-color: $item-color;
+                border-radius: 10px;
+                transition: background-color 0.3s ease;
+                cursor: pointer;
+
+                // li 호버시
+                &:hover {
+                    background-color: $signature-color;
+                    color: $item-color;
+                    
+                }
+
+                .icon {
+                    width: 1.6rem;
+                    height: 1.6rem;
+                    aspect-ratio: 1;
+                    margin-left: auto;
+                    transition: filter 0.3s ease;
+                    // filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%);
+                    
+                }
+
+                &:hover .icon {
+                    // fill: #FFFFFF;
+                    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(232deg) brightness(107%) contrast(104%);    
+                }
+            }
+
+            .clicked {
+                color: $item-color;
+                background-color: $signature-color;
+
+                .icon {
+                    // filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%);
+                    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(232deg) brightness(107%) contrast(104%);    
+                
+                }
+            }
+
+            //* item.id ===0, 즉  대시보드 버튼인 경우,
+            .nav_item_dashboard{
+                font-size: 1.5rem;
+                font-weight: bold;
+                
+                box-sizing: border-box;
+                padding-right: 79px;
+                margin-bottom: 0.3125rem;
+            }   
+        }
+    }
+}

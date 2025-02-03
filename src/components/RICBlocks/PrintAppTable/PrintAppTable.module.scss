@@ -1,0 +1,106 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+
+$on-color: #9eeda7;
+$off-color: #ed9e9f;
+
+.table_container {
+  width: 100%;
+  box-shadow: $custom-shadow;
+
+  table {
+    table-layout: fixed; // 테이블 레이아웃을 고정으로 설정
+    width: 100%; // 테이블 전체 너비를 100%로 설정
+    border-collapse: collapse; // 테이블의 셀 간격을 없애줍니다.
+
+    thead {
+      position: sticky;
+      top: 0px;
+      left: 0px;
+
+      font-size: 25px;
+      background-color: #ffffff;
+      border-bottom: 2px solid #cccccc;
+      height: 3.75rem;
+    }
+
+    thead,
+    tbody {
+      width: 100%; // 헤더와 본문에 너비 100% 적용
+    }
+
+    tbody {
+      // border: 2px solid #0077C2;
+      // overflow-wrap: break-word;
+      // word-wrap: break-word;
+
+      tr {
+        cursor: pointer;
+        width: 100%; // 각 행의 너비를 100%로 설정
+        // border: 2px solid #0ac87f;
+
+        color: #333333;
+        vertical-align: middle;
+        text-align: center;
+        justify-content: center;
+
+        font-family: "Pretendard-Regular";
+
+        font-size: 1.25rem;
+        height: 3.125rem;
+
+        background-color: #ffffff80;
+        transition: background-color 0.15s ease;
+
+        &:hover {
+          background-color: #dbdbdb !important;
+        }
+
+        &:nth-child(even) {
+          background-color: #ffffff;
+        }
+
+        &:nth-child(odd) {
+          background-color: #F5F5F5;
+        }
+
+        td {
+          // border-bottom: 1px solid #cccccc;
+          text-align: center;
+          vertical-align: middle;
+          overflow-wrap: break-word;
+          word-wrap: break-word;
+          // width: 100%; // 각 셀의 너비도 100%로 설정
+          //이미지 아이콘 컨테이너 부분
+          .state_container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .state {
+              width: 2.1875rem;
+              height: 2.1875rem;
+              background-color: $on-color;
+              border-radius: 2.5rem;
+              display: grid;
+              place-items: center;
+            }
+
+            .off {
+              background-color: $off-color;
+            }
+          }
+        }
+      }
+
+      .error {
+        color: #ec5355;
+      }
+
+      .warning {
+        color: #0077c2;
+      }
+    }
+  }
+}

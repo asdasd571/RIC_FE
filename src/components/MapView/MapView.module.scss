@@ -1,0 +1,23 @@
+@import "../../styles/mixins";
+@import "../../styles/fonts";
+@import "../../styles/variables";
+
+
+.btn_goOriginalMapCenter{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index:2;
+
+  cursor: pointer;
+  
+  background-color: rgba(255, 255, 255, 0.9); /* 배경색을 검정색, 투명도 50%로 설정 */
+  color: #333333;
+  box-shadow: $custom-shadow;
+
+  width: 100px;
+  height: 30px;
+  border: 0px;
+  border-radius: 5px;
+
+}

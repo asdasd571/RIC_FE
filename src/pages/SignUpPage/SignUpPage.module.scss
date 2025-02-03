@@ -1,0 +1,159 @@
+
+// *믹스인 정의
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+// 기본 컨테이너
+.container {
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+
+    // 배경 색션
+    section:nth-child(1){
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        
+        
+        >img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    //* login 섹션
+    section:nth-child(2){
+        @include full-size-flex(column);
+        justify-content: center;
+        align-items: center;
+        row-gap: 20px;
+
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+
+        background-color: #FFFFFF;
+        color: #333333;
+
+        box-sizing: border-box;
+        padding-left: 15%;
+        
+        // Welcome 컨테이너
+        .intro_container{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+
+
+
+            
+
+            .title{
+                font-size: 3.7rem;
+                margin: 10px 0px;
+            }
+
+            // 설명
+            .description{
+                font-size: 2.2rem;
+                margin-bottom: 20px;
+            }
+            
+        }
+        //* 로그인폼 컨테이너
+        .form_container{
+            width: 100%;
+
+            display: flex;
+            flex-direction: column;
+            row-gap: 20px;
+
+            // 입력 박스
+            input{
+                // @include custom-shadow;
+                box-shadow: $custom-shadow; // 그림자
+
+                width: 90%;
+                height: 70px;
+                border-radius: 10px;
+        
+                min-width: 444px;
+                // width: ;
+                border: 1px solid #CCCCCC;
+                font-size: 1.5625rem;
+
+                box-sizing: border-box;
+                text-indent: 20px;
+            }
+            
+            .pass_container{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                .img_eye{
+                    position: relative;
+                    right: 10%;
+                    cursor: pointer;
+                }
+            }
+
+            
+
+            // 로그인 박스
+            .btn_submit{
+                box-shadow: $custom-shadow; // 그림자
+
+                margin-top: 20px;
+                margin-bottom: 20px;
+                width: 90%;
+                height: 65px;
+                border-radius: 10px;
+
+                background-color: #59A5F5;
+                border: 0px;
+
+                font-size: 1.5625rem;
+                text-align: center;
+                color: #FFFFFF;
+
+                cursor: pointer;
+                
+                @include custom-hover-btn;
+                
+            }
+        }
+
+        //* 바닥글 Don't have an account? 컴포넌트
+        .footer_container{
+
+            font-size: 1.375rem;
+            display: flex;
+            flex-direction: row;
+            text-align: center;
+        
+            column-gap: 1.25rem;
+
+            // Don't have an account?
+            .footer_text{
+                color: #5C5C5C;
+            }
+
+            // Sign up, sign in 버튼
+            .btn_sign{
+                color: #59A5F5;
+                border: 0;
+                background-color: transparent; // 배경색 투명
+                cursor: pointer;
+                font-size: 1.25rem;
+            }
+
+        }
+        
+    }
+}

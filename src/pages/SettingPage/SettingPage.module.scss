@@ -1,0 +1,76 @@
+@import '../../styles/mixins';
+
+@import '../../styles/variables';
+
+.setting_container{
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    row-gap: 24px;
+
+    // 회원 탈퇴 버튼
+    .btn_delete_user{
+        background-color: #ED9E9F;
+        border: 0px;
+        box-shadow: $custom-shadow;
+        
+        width: 200px;
+        height: 2.7rem;
+        border-radius: 10px;
+        
+        color: #FFFFFF;
+        font-size: 1.25rem;
+
+        cursor: pointer;
+        @include custom-hover-btn(#EC5355);
+    }
+
+    //* 테이블 컨테이너
+    ///* 테이블 설정 
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        color: #333333;
+
+
+
+        th,td {
+        border: 1px solid #CCCCCC;
+        }
+
+        th{
+            text-align: center; // 가로 정렬
+            vertical-align: middle; // 세로 정렬
+            background-color: #e7e7e7;
+            height: 50px;
+            font-family: "Pretendard-SemiBold";
+            font-size: 20px;
+        }
+
+        td {
+            // background-color: #FFFFFF;
+            color: #353535;
+            vertical-align: middle;
+            font-family: "Pretendard-Medium";
+            font-size: 18px;
+            background-color: #ffffff80;
+            &:hover{
+                background-color: #e7e7e7;
+            }
+        }
+
+
+        tr{
+            color: #353535;
+            vertical-align: middle;
+            text-align: center;
+            font-family: "Pretendard-Medium";
+            font-size: 16px;
+            height:50px;
+        }
+    }
+
+
+}

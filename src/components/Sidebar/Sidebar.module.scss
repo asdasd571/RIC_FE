@@ -1,0 +1,67 @@
+.container{
+    min-width: 280px;
+    height: 100%;
+    margin: 0px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    background-color: #FFFFFF;
+    
+    
+    // max 사이드바 지정 
+    max-width: 17.5rem;
+    // flex-shrink: 1;
+    // etri 로고
+    .top_container{
+        width: 100%;
+        min-height: 92.5px;
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        >img{
+            cursor: pointer;
+            
+            height: 75px;
+            width: 150px;
+        }
+        
+    }
+    
+    // 선
+    hr{
+        margin : 0px 0px;
+        border: 1px solid #F5F5F5;
+        transform: scaleY(0.5);
+        width: 95%;
+
+    }
+
+    // mini 네비 컨테이너
+    .mini_nav_continaer{
+        width: 100%;
+    }
+
+    // 네비바 부분 컨테이너
+    .nav_container{
+        background-color: #FFFFFF;
+        flex: 1;
+        width: 100%;
+        height: 100%;
+        
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+        justify-content: center;
+        box-sizing: border-box;
+
+        padding-top: 0.9375rem;
+        padding-bottom: 0.9375rem;
+        padding: 10px;
+
+
+        
+    }
+}

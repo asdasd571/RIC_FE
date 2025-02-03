@@ -1,0 +1,40 @@
+@import "../../../styles/mixins";
+@import "../../../styles/variables";
+@import "../../../styles/fonts";
+
+.container {
+  @include full-size-flex(column);
+
+  // min-height: 8.125rem; //130px
+  color: #c8ffff;
+  background-color: #00bfff;
+  box-shadow: $custom-shadow;
+
+  box-sizing: border-box;
+  // padding: 0.625rem; //10px
+
+  border-radius: 10px;
+
+  font-family: "Pretendard-Semibold";
+
+  flex-direction: row;
+  justify-content: space-between;
+  
+  .contents {
+    flex: 1;
+    max-width: 50%;
+    
+  }
+
+  .contents:nth-child(2) {
+    // border-top-right-radius: inherit;
+    // border-bottom-right-radius: inherit;
+    border-radius: inherit;
+    background-color: #ffffff;
+    border: 2px solid #00bfff;
+
+
+    
+    
+  }
+}

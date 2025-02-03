@@ -1,0 +1,53 @@
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #333333;
+
+
+    // * 체크박스 크기 
+    input{
+        width: 20px;
+        height: 20px;
+    }
+
+
+    th,td {
+    border: 1px solid #CCCCCC;
+    }
+
+    th{
+        text-align: center; // 가로 정렬
+        vertical-align: middle; // 세로 정렬
+        background-color: #e7e7e7;
+        height: 50px;
+        font-family: "Pretendard-SemiBold";
+        font-size: 20px;
+    }
+
+    td {
+        // background-color: #FFFFFF;
+        color: #353535;
+        vertical-align: middle;
+        font-family: "Pretendard-Medium";
+        font-size: 18px;
+        background-color: #ffffff80;
+        &:hover{
+            background-color: #e7e7e7;
+        }
+    }
+
+    // Display Mode 부분
+    td:nth-child(2), td:nth-child(1){
+        background-color: #e7e7e7;
+    }
+
+    tr{
+        color: #353535;
+        vertical-align: middle;
+        text-align: center;
+        font-family: "Pretendard-Medium";
+        font-size: 16px;
+        height:50px;
+    }
+}

@@ -1,0 +1,60 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+$item-color : #FFFFFF;
+.container{
+    background-color: #FFFFFF;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 2fr;
+    grid-template-rows: 1fr;
+    
+    column-gap: 5px;
+    box-sizing: border-box;
+    padding: 5px;
+    
+    place-content: center;
+    place-items: center;
+    width: 100%;
+    // min-width: 280px;
+    margin-top: 10px;
+    
+    .item{
+        transition: background-color 0.3s ease; /* 부드러운 배경색 전환 */
+        border-radius: 10px;
+        width: 100%;
+        height: 100%;
+        
+        min-height: 45px;
+
+        display: flex;
+        justify-content:center ;
+        align-items: center;
+        
+        &:hover {
+            background-color: $signature-color; /* hover 시 배경색 변경 */
+            // color:#FFFFFF;
+            cursor: pointer;
+
+
+        }
+
+        &:hover .icon {
+            filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(232deg) brightness(107%) contrast(104%);    
+            
+        }
+
+    }
+    }
+
+
+    
+    .clicked {
+        color: $item-color;
+        background-color: $signature-color;
+
+        .icon {
+            // filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%);
+            filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(232deg) brightness(107%) contrast(104%);    
+        
+        }
+    }

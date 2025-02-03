@@ -1,0 +1,57 @@
+.container{
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100px;
+    align-items: center;
+
+
+
+    //DashBoard
+    .header_left{
+        margin-left: 20px;
+        font-size: 2rem;
+        font-weight: bold;
+        flex: 1; // 크기 댕기기
+    }
+
+    // 벨, 사용자 프로필
+    .header_right{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        column-gap: 20px;
+
+        // 벨 아이콘
+        // .bell { 
+        //     width: 40px;
+        //     height: 40px;
+        //     cursor: pointer;
+        //     position: relative;
+        // }
+
+        .profile{
+            cursor: pointer;
+
+            
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+
+            column-gap: 10px;
+            
+            box-sizing: border-box;
+            padding: 10px;
+
+
+            >img{
+                width: 80px;
+                height: 80px;
+            }
+        }
+    }
+
+}

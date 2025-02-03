@@ -1,0 +1,55 @@
+// 믹스인 임포트
+@import "mixins";
+@import "./fonts";
+
+.container {
+  @include full-size-flex(row);
+  background-color: #ffffff;
+  height: auto;
+  min-height: 100%; /* 기본 높이 */
+
+  .main_header_container {
+    @include full-size-flex(column);
+    // * 1920 - 280 = 1640px
+    min-width: 1160px; //1440px - 280px= 1160px (크기-사이드바)
+    min-width: 1640px;
+    width: 100%;
+    align-items: center;
+    background-color: #f5f5f5;
+    min-height: 100%;
+    height: auto;
+    
+    
+    // 메인 & 헤더 컨테이너
+    .main_container {
+      @include full-size-flex(column);
+      overflow-y: visible; /* 스크롤 제거 */
+      // overflow-x: hidden;
+
+      align-items: center; // 내부 가운대 정렬
+
+      min-height: 100%;
+      height: auto;
+
+      box-sizing: border-box;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      padding-left: 50px;
+      padding-right: 50px;
+      max-width: 102.5rem; // 1640px
+
+      // * 1921px 이상일때 최대 width를 2280px까지 증가하게 만든다.
+      @media screen and (min-width: 1921px) {
+        max-width: 2280px; // 1920px 이상일 때 max-width를 1640px로 설정
+      
+      }
+
+      // * 타이틀 제목
+      .main_title {
+        width: 100%;
+        text-align: left;
+        font-size: 1.5625rem; //25px
+      }
+    }
+  }
+}

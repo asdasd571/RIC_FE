@@ -1,0 +1,90 @@
+@import '../../../styles/mixins';
+@import '../../../styles/variables';
+
+
+// 벨 + 알람 목록 컨테이너
+.alarm_container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+    position: relative;
+    // 벨 아이콘
+    .bell { 
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+    }
+
+    //알람 목록 컨테이너
+    .container{
+        position: absolute;
+        top:0px;
+        left: 180px;
+
+        // @include full-size-flex(column);
+        z-index: 2; // * 우선순위
+        display: flex;
+        flex-direction: column;
+    
+    
+        text-align: left;
+        box-sizing: border-box;
+        padding: 5px;
+        
+    
+        background-color: #FFFFFF;
+        width: 250px;
+        max-height: 900px;
+    
+        border-radius: 10px;
+        box-shadow: $custom-shadow;
+        
+
+        // z-index: 11;
+    
+        overflow-y: scroll;
+        // 알림
+        .title{
+            font-size: 1.5rem;
+            margin: 10px 0;
+            padding-left: 5px;
+        }
+    
+        .alarm_list{
+            @include full-size-flex(column);
+            row-gap: 10px;
+            box-sizing: border-box;
+            
+    
+            .item{
+                box-sizing: border-box;
+                min-height: 80px;
+                padding-left: 15px;
+    
+                cursor: pointer;
+                
+                .item_title{
+                    font-size: 1.2rem;
+                    margin: 5px 0px;
+                }
+    
+                .item_text{
+                    font-size: 1rem;
+                    margin: 0;
+                    
+                }
+    
+                transition: background-color 0.3s ease; /* 부드러운 배경색 전환 */
+    
+                &:hover{
+                    background-color: #F5F5F5;
+                }
+    
+            }
+        }
+    
+    }    
+}
+

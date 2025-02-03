@@ -1,0 +1,142 @@
+@import '../../../styles/mixins';
+@import '../../../styles/variables';
+
+// * 프로필 전체 컨테이너
+.profile_all_container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    
+
+    // * 프로필 아이콘, 이름
+    .profile{
+        
+        cursor: pointer;
+        font-size: 1.1rem;
+        
+        display: grid;
+        grid-template-columns: 70% 30%;
+        place-items: center;
+        column-gap: 5px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        width: 100%;
+        
+        box-sizing: border-box;
+        padding: 10px;
+        
+        >span { // 이름
+            text-align: center;
+            // min-width: 100px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    
+        >img{
+            width: 35px;
+            height: 35px;
+        }
+    }
+    
+    // * 프로필 모달 컨테이너
+    .container{
+        position: absolute;
+        top:0px;
+        left: 140px;
+    
+    
+        z-index: 2; // * 우선순위
+        
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        place-items: center;
+    
+        box-sizing: border-box;
+        padding: 15px;
+    
+        
+        background-color: #FFFFFF;
+        width: 330px;
+        max-height: 192px;
+    
+        border-radius: 15px;
+        box-shadow: $custom-shadow;
+        color: #333333;
+    
+    
+        // 이미지 섹션
+        section:nth-child(1){
+            img{
+                min-width: 110px;
+                min-height: 110px;
+                cursor: pointer;
+            }
+        }
+    
+        //사용자 정보 섹션
+        section:nth-child(2){
+            width: 100%;
+            @include full-size-flex(column);
+            
+            justify-content: center;
+            align-items: center;
+            
+            box-sizing: border-box;
+            // padding: 10px;
+            padding-left: 20px;
+            
+    
+            .info_container{
+                @include full-size-flex(column);
+                justify-content: center;
+                align-items: center;
+                text-align: left;
+                
+    
+    
+                input{
+                    border-radius: 10px;
+                    border: 1px solid #CCCCCC;
+                    background-color: #FFFFFF;
+                    font-size: 1.1rem;
+                    width: 100%;
+                    text-indent: 10px;
+                    min-height: 30px;
+                
+                }
+    
+                p{
+                    margin-top:5px;
+                    margin-bottom: 5px;
+                    font-size: 1.1rem;
+                    width: 100%;
+                }
+            }
+            
+            .btn_save{
+                background-color: #59A5F5;
+                color: #FFFFFF;
+                width: 100%;
+                min-height: 33px;
+                border-radius: 10px;
+                font-size: 1.2rem;
+                border: 0px;
+    
+                cursor: pointer;
+    
+                @include custom-hover-btn; //버튼에 커서 대면
+            }
+            
+        }
+        
+    
+    }
+}
+// 기본 

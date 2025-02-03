@@ -1,0 +1,66 @@
+@import "../../../styles/mixins";
+@import "../../../styles/variables";
+@import "../../../styles/fonts";
+
+.container {
+  @include full-size-flex(column);
+  // min-width: 15rem; //240px
+  // min-height: 8.125rem; //130px
+  color: #c8ffff;
+  background-color: $signature-color;
+  box-shadow: $custom-shadow;
+
+  box-sizing: border-box;
+  padding: 0.625rem; //10px
+
+  border-radius: 10px;
+
+  font-family: "Pretendard-Semibold";
+
+  .title {
+    font-size: 1.25rem; //20px
+
+    margin: 0px;
+    color: #ffffff;
+    font-family: "Pretendard-Semibold";
+  }
+
+  hr {
+    @include pannel_hr;
+  }
+
+  // * value값, +-값
+  .section_value {
+    @include full-size-flex(row);
+    justify-content: center;
+    justify-items: center;
+
+    // value값
+    .value {
+      font-size: 3.75rem;
+      flex: 2;
+      text-align: left;
+
+      display: flex;
+      align-items: center;
+    }
+
+    .plus_minus {
+      font-size: 1.25rem;
+      color: #ffffff;
+
+      flex: 1;
+      display: flex;
+      align-items: end;
+      box-sizing: border-box;
+      padding-bottom: 10px;
+    }
+  }
+
+  // * 작은 설명 부분
+  .section_description {
+    font-size: 0.9375rem;
+    width: 100%;
+    text-align: left;
+  }
+}
