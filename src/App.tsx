@@ -107,6 +107,7 @@ function App() {
           <Route path="/login/login" element={<Login />} />
           <Route path="/sign-up" element={<SignUpPage />} />
           <Route path="/dm" element={<DM />} />
+          {/* <Route path="/man" element={<Man />} /> */}
           <Route path="/ts" element={<TS />} />
           <Route path="*" element={<div>404 Not Found Page</div>} />
           <Route path="/test" element={<Test />} />
